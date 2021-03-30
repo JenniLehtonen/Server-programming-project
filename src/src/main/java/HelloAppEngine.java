@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(
-    name = "HelloAppEngine",
+    name = "HelloAppEngineHello",
     urlPatterns = {"/hello"}
 )
 public class HelloAppEngine extends HttpServlet {
