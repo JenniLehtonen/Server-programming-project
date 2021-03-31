@@ -1,6 +1,7 @@
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,18 +14,11 @@ public class Servlet2 extends HttpServlet {
 	
 	@Override
 	  public void doGet(HttpServletRequest request, HttpServletResponse response) 
-	      throws IOException {
+	      throws ServletException, IOException {
 
-	    response.setContentType("text/plain");
-	    response.setCharacterEncoding("UTF-8");
-
+	   
 	    response.getWriter().print("Toinen sivu");
-	    RequestDispatcher reqdisp = request.getRequestDispatcher("/Servlet2");
-	    try {
-	    	reqdisp.forward(request, response);
-	    }catch (Exception e) {
-	    	
-	    }
+	    
 	  }
 
 }
