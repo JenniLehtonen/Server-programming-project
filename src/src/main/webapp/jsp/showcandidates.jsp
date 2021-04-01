@@ -10,32 +10,41 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Fish application</title>
+<title>Candidates</title>
 
 <link rel="stylesheet" type="text/css" href="main.css">
 <script src="myscriptfile.js"></script>
 
 </head>
 <body>
-<h2>Fish application</h2>
+<%@ include file="../candidatesList.html" %>
 <ol>
 <c:forEach var="candidate" items="${requestScope.candidateslist}" >
-<li>${fish.id}: ${fish.breed}
+<li id="name">${candidate.ehdokas_id}: ${candidate.etunimi} ${candidate.sukunimi}
+<li id="bold">Puolue: 
+<li>${candidate.puolue}
+<li id="bold">Kotipaikkakunta:
+<li>${candidate.kotipaikkakunta}
+<li id="bold">Ikä:
+<li>${candidate.ika}
+<li id="bold">Ammatti:
+<li>${candidate.ammatti}
+<li id="bold">Miksi haluat eduskuntaan?
+<li>${candidate.miksi_eduskuntaan}
+<li id="bold">Mitä asioita haluat edistää?
+<li>${candidate.mita_asioita_haluat_edistaa}
+<br> <br>
+
 </c:forEach>
 </ol>
-
 <%
 ArrayList<Candidates> candidateList=(ArrayList<Candidates>)request.getAttribute("candidateslist");
-
+/*
 for (int i=0; candidateList != null && i < candidateList.size(); i++){
 	Candidates candidate = candidateList.get(i);
 	out.println(candidate.getEhdokas_id()+": "+candidate.getEtunimi());
-}
+}*/
 %>
-
-<%@ include file="../src/main/webapp/index.html" %>
-
-
 
 </body>
 </html>

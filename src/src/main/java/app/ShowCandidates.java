@@ -1,3 +1,4 @@
+package app;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ public class ShowCandidates extends HttpServlet{
 	
 	@Override
 	public void init() {
-		dao=new Dao("jdbc:mysql://localhost:3360/vaalikone", "admin", "salasana");
+		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "admin", "salasana");
 	}
        
     /**
@@ -41,14 +42,11 @@ public class ShowCandidates extends HttpServlet{
 		else {
 			System.out.println("No connection to database");
 		}
-		
-		response.getWriter().println("All candidates:");
-		response.getWriter().println(list);
-		/*
+	
 		request.setAttribute("candidateslist", list);
 
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showcandidates.jsp");
-		rd.forward(request, response); */
+		rd.forward(request, response); 
 		
 	}	
 

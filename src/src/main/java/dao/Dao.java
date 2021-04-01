@@ -66,7 +66,7 @@ public class Dao {
 				candidate.setIka(RS.getInt("ika"));
 				candidate.setMiksi_eduskuntaan(RS.getString("miksi_eduskuntaan"));
 				candidate.setMita_asioita_haluat_edistaa(RS.getString("mita_asioita_haluat_edistaa"));
-				candidate.setAmmatti(RS.getString("ammatti"));
+				candidate.setAmmatti(RS.getString("ammatti")); 
 				list.add(candidate);
 			}
 			return list;
