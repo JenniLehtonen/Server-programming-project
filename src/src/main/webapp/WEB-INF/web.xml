@@ -7,4 +7,29 @@
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  
+  <context-param>
+	<param-name>driver</param-name>
+	<param-value>
+	com.mysql.jdbc.Driver
+	</param-value>
+  </context-param>
+  <context-param>
+	<param-name>DBPath</param-name>
+	<param-value>
+	//localhost/demo
+	</param-value>
+  </context-param>
+  <context-param>
+	<param-name>username</param-name>
+	<param-value>
+	admin
+	</param-value>
+  </context-param>
+  <context-param>
+	<param-name>password</param-name>
+	<param-value>
+	salasana
+	</param-value>
+  </context-param>
 </web-app>
