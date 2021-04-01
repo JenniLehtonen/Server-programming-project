@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
  
  <%@ page import="java.util.ArrayList" %>   
- <%@ page import="data.Candidates" %>   
+ <%@ page import="data.Candidates" %> 
+ <%@ page import="dao.Dao" %>   
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
     
@@ -33,7 +34,6 @@
 <option value="itsenaisyys"> Itsen├ñisyyspuolue</option>
 </select>
 </div>
-
 
 <ol>
 <c:forEach var="candidate" items="${requestScope.candidateslist}" >
