@@ -153,16 +153,17 @@ public class Dao {
 	 * @return
 	 */
 	
-	public Candidates readByParty(String party) {
-		Candidates candidate = null;
+	public ArrayList<Candidates> readByParty(String party) {
+		ArrayList<Candidates> list=new ArrayList<>();
 		try {
+			Statement stmt=conn.createStatement();
 			String sql="select * from ehdokkaat where id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, party);
-			ResultSet RS=pstmt.executeQuery();
+			ResultSet RS=stmt.executeQuery(sql);
+			
 			while (RS.next()){
-				candidate = new Candidates();
-
+				Candidates candidate = new Candidates();
 				candidate.setEhdokas_id(RS.getInt("ehdokas_id"));
 				candidate.setSukunimi(RS.getString("sukunimi"));
 				candidate.setEtunimi(RS.getString("etunimi"));
@@ -171,15 +172,14 @@ public class Dao {
 				candidate.setIka(RS.getInt("ika"));
 				candidate.setMiksi_eduskuntaan(RS.getString("miksi_eduskuntaan"));
 				candidate.setMita_asioita_haluat_edistaa(RS.getString("mita_asioita_haluat_edistaa"));
-				candidate.setAmmatti(RS.getString("ammatti"));
-				
+				candidate.setAmmatti(RS.getString("ammatti")); 
+				list.add(candidate);
 			}
-			return candidate;
+			return list;
 		}
 		catch(SQLException e) {
 			return null;
 		}
 	}
-
 	
 }

@@ -20,6 +20,8 @@
 <body>
 <%@ include file="../candidatesList.html" %>
 
+<a href='/vasemmisto'>Vasemmisto</a>
+
 <div class= "dropdown">
 <select>
 <option value="all"> All </option>
@@ -34,6 +36,10 @@
 <option value="itsenaisyys"> Itsen├ñisyyspuolue</option>
 </select>
 </div>
+
+<%
+
+%>
 
 <ol>
 <c:forEach var="candidate" items="${requestScope.candidateslist}" >
