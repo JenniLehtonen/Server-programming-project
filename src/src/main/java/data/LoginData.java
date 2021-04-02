@@ -9,10 +9,10 @@ public class LoginData {
 		boolean passwordCorrect = false;
 		
 		if(password1.equals(password2)) {
-			System.out.println("TOSI");
+			System.out.println("Password correct");
 			passwordCorrect = true;
 		} else {
-			System.out.println("EPÄTOSI");
+			System.out.println("Password incorrect");
 			passwordCorrect = false;
 		}
 		

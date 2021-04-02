@@ -31,7 +31,6 @@ public class Login extends HttpServlet {
     
     String username = request.getParameter("username"); //Get the username from the login.jsp
 	String password = request.getParameter("password"); //Get the password from the login.jsp
-    System.out.println("tämä" + username);
     
     
     String dbUrl = getServletContext().getInitParameter("DBUrl");
@@ -40,10 +39,9 @@ public class Login extends HttpServlet {
     Connection conn = null;
     ResultSet result = null;
     Statement statement = null;
-    String adminUsername;
+    String adminUsername = null;
     String adminPassword;
-    String MD5Password;
-    boolean passwordCorrect = false;
+    String MD5Password = null;
     
     try {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -80,21 +78,12 @@ public class Login extends HttpServlet {
 		e.printStackTrace();
 	}
 	 
-	 
 	try {
 		while (result.next()){
-		    String name = result.getString(1);
-		    String pass = result.getString(2);
-		    System.out.println(MD5Password = crypt(pass)); //Sama md5 kuin myöhemmin eli string.format ei tarpeellinen?
-		    System.out.println(name + pass);
-		    adminUsername = String.format(name); //Tarviiko String.format?
-		    adminPassword = String.format(pass);
-		    System.out.println("Username:"+ adminUsername + "Password: " + adminPassword);
-		    System.out.println(MD5Password = crypt(adminPassword));
-		    System.out.println(password = crypt(password));
-		    if(data.LoginData.CheckPasswords(MD5Password, password)==true) {
-		    	passwordCorrect = true;
-		    }
+		    adminUsername = result.getString(1); //get admin's username and password from the database
+		    adminPassword = result.getString(2);
+		    MD5Password = data.LoginData.crypt(adminPassword); //crypt admin's password
+		    password = data.LoginData.crypt(password); //crypt the password that the user has provided
 		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
@@ -102,35 +91,10 @@ public class Login extends HttpServlet {
 	} catch(IllegalArgumentException e) {
 		e.printStackTrace();
 	}
- 
-    RequestDispatcher rd=request.getRequestDispatcher("/jsp/login.jsp");
-	rd.forward(request, response);
-
-  }
-  
-  public static String crypt(String str) {
-      if (str == null || str.length() == 0) {
-          throw new IllegalArgumentException("String to encript cannot be null or zero length");
-      }
-
-      MessageDigest digester;
-      try {
-          digester = MessageDigest.getInstance("MD5");
-
-          digester.update(str.getBytes());
-          byte[] hash = digester.digest();
-          StringBuffer hexString = new StringBuffer();
-          for (int i = 0; i < hash.length; i++) {
-              if ((0xff & hash[i]) < 0x10) {
-                  hexString.append("0" + Integer.toHexString((0xFF & hash[i])));
-              } else {
-                  hexString.append(Integer.toHexString(0xFF & hash[i]));
-              }
-          }
-          return hexString.toString();
-      } catch (NoSuchAlgorithmException e) {
-          e.printStackTrace();
-      }
-      return "";
+	request.setAttribute("userProvidedUsername", username); //send variables to login.jsp
+	request.setAttribute("username", adminUsername);
+	request.setAttribute("password", password); 
+	request.setAttribute("MD5Password", MD5Password);
+	request.getRequestDispatcher("/jsp/login.jsp").forward(request, response); 
   }
 }
