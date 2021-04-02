@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import data.LoginData;
 @WebServlet(
     name = "login",
     urlPatterns = {"/login"}
@@ -28,16 +29,21 @@ public class Login extends HttpServlet {
     response.setContentType("text/plain");
     response.setCharacterEncoding("UTF-8");
     
-    //String driver = getServletContext().getInitParameter("driver");
+    String username = request.getParameter("username"); //Get the username from the login.jsp
+	String password = request.getParameter("password"); //Get the password from the login.jsp
+    System.out.println("tämä" + username);
+    
+    
     String dbUrl = getServletContext().getInitParameter("DBUrl");
-    String username = getServletContext().getInitParameter("username");
-    String password = getServletContext().getInitParameter("password");
+    String dbUsername = getServletContext().getInitParameter("username");
+    String dbPassword = getServletContext().getInitParameter("password");
     Connection conn = null;
     ResultSet result = null;
     Statement statement = null;
     String adminUsername;
     String adminPassword;
     String MD5Password;
+    boolean passwordCorrect = false;
     
     try {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -47,7 +53,7 @@ public class Login extends HttpServlet {
 	} 
     
     try {
-	    conn = DriverManager.getConnection(dbUrl, username, password);
+	    conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
 	 
 	    if (conn != null) {
 	        System.out.println("Connected");
@@ -85,9 +91,15 @@ public class Login extends HttpServlet {
 		    adminPassword = String.format(pass);
 		    System.out.println("Username:"+ adminUsername + "Password: " + adminPassword);
 		    System.out.println(MD5Password = crypt(adminPassword));
+		    System.out.println(password = crypt(password));
+		    if(data.LoginData.CheckPasswords(MD5Password, password)==true) {
+		    	passwordCorrect = true;
+		    }
 		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch(IllegalArgumentException e) {
 		e.printStackTrace();
 	}
  

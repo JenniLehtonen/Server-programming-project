@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+ <%@ page import="data.LoginData" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,15 +21,28 @@
 		<div class="body">
 			<div class="body2">
 				<h1>Login</h1>
-				<form>
+				<form action="/login" method="GET">
 					<label>Username : </label><br>
-		            <input type="text" placeholder="Enter Username" name="username" required><br> 
+		            <input type="text" placeholder="Enter Username" name="username"><br> 
 		            <label>Password : </label><br>
-		            <input type="password" placeholder="Enter Password" name="password" required><br>  
-		            <button>Login</button>   
+		            <input type="password" placeholder="Enter Password" name="password"><br>  
+		            <button type="submit">Login</button>   
 				</form>
 				
-
+				
+				<%
+String name = request.getParameter("username");
+String password = request.getParameter("password");
+%>
+			<%
+if(!(name == null || (name.equals(""))))
+if(name.equals("testi") && password.equals("testi"))
+{
+%>
+<p>Welcome, <%=name %></p>
+<%
+}
+%>
 			</div>
 		</div>
 		<div class="footer">
