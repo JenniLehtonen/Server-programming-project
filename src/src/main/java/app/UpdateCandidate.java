@@ -32,13 +32,13 @@ public class UpdateCandidate extends HttpServlet{
 		
 		Candidates c=new Candidates();
 		
-		ArrayList<Can> list=null;
+		ArrayList<Candidates> list=null;
 		if (dao.getConnection()) {
-			list=dao.updateFish(f);
+			list=dao.updateCandidate(c);
 		}
 		
 		request.setAttribute("fishlist", list);
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showfish.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/updateCandidate.jsp");
 		rd.forward(request, response);
 	}
 }
