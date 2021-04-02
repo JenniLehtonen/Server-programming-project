@@ -157,9 +157,9 @@ public class Dao {
 		ArrayList<Candidates> list=new ArrayList<>();
 		try {
 			Statement stmt=conn.createStatement();
-			String sql="select * from ehdokkaat where id=?";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, party);
+			String sql="select * from ehdokkaat where puolue= "+ party;
+			//PreparedStatement pstmt=conn.prepareStatement(sql);
+			//pstmt.setString(1, party);
 			ResultSet RS=stmt.executeQuery(sql);
 			
 			while (RS.next()){

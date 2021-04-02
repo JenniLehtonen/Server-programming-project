@@ -13,27 +13,24 @@ import javax.servlet.http.HttpServletResponse;
 import dao.Dao;
 import data.Candidates;
 
+
 @WebServlet(
 	    name = "ReadParty",
-	    urlPatterns = {"/readparty"}
-	)
+	    urlPatterns = {"/readparty"})
+	    
 public class ReadParty extends HttpServlet{
 	
 	private Dao dao;
 	public void init() {
 		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "admin", "salasana");
 	}
-	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) 
-	     throws IOException {
-		response.sendRedirect("index.html");
-	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Candidates c = new Candidates();
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		ArrayList<Candidates> list=null;
 		String party = request.getParameter("party");
 		if (dao.getConnection()) {
-			list=dao.readByParty("party");
+			list=dao.readByParty(party);
 		}
 		else {
 			System.out.println("No connection to database");
@@ -41,7 +38,7 @@ public class ReadParty extends HttpServlet{
 	
 		request.setAttribute("candidateslist", list);
 
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showcandidates.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showcandidatesbyparty.jsp");
 		rd.forward(request, response); 
 		
 	}

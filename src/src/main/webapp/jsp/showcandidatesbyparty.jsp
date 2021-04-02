@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
  
  <%@ page import="java.util.ArrayList" %>   
- <%@ page import="data.Candidates" %> 
+ <%@ page import="data.*" %> 
  <%@ page import="dao.Dao" %>   
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
@@ -20,12 +20,10 @@
 <body>
 <%@ include file="../candidatesList.html" %>
 
-
-
-  <div class="dropdown">
-  	<button class="dropbtn">Dropdown</button>
-  	<div class="dropdown-content">
-
+<div class="dropdown">
+  <button class="dropbtn">Dropdown</button>
+  <div class="dropdown-content">
+  	<a href='/showcandidates'>All candidates</a>
     <a href="/readparty?party='Vasemmistoliitto'">Vasemmistoliitto</a>
     <a href="/readparty?party='Suomen Sosialidemokraattinen Puolue'">Suomen Sosialidemokraattinen Puolue</a>
     <a href="/readparty?party='Vihre├ñ liitto'">Vihreä liitto</a>
@@ -59,14 +57,7 @@
 
 </c:forEach>
 </ol>
-<%
-ArrayList<Candidates> candidateList=(ArrayList<Candidates>)request.getAttribute("candidateslist");
-/*
-for (int i=0; candidateList != null && i < candidateList.size(); i++){
-	Candidates candidate = candidateList.get(i);
-	out.println(candidate.getEhdokas_id()+": "+candidate.getEtunimi());
-}*/
-%>
+
 
 </body>
 </html>
