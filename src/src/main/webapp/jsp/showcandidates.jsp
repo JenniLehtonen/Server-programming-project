@@ -28,45 +28,38 @@
 
     <a href="/readparty?party='Vasemmistoliitto'">Vasemmistoliitto</a>
     <a href="/readparty?party='Suomen Sosialidemokraattinen Puolue'">Suomen Sosialidemokraattinen Puolue</a>
-    <a href="/readparty?party='Vihre├ñ liitto'">Vihreä liitto</a>
+    <a href="/readparty?party='Vihrealiitto'">Vihreä liitto</a>
     <a href="/readparty?party='Suomen Kommunistinen Puolue'">Suomen Kommunistinen Puolue</a>
     <a href="/readparty?party='Suomen Keskusta'">Suomen Keskusta</a>
     <a href="/readparty?party='Suomen ruotsalainen kansanpuolue'">Suomen ruotsalainen kansanpuolue</a>
     <a href="/readparty?party='Suomen Kristillisdemokraatit (KD)'">Suomen Kristillisdemokraatit (KD)</a>
     <a href="/readparty?party='Kansallinen Kokoomus'">Kansallinen Kokoomus</a>
-    <a href="/readparty?party='Itsen├ñisyyspuolue'">Itsenäisyyspuolue</a>
+    <a href="/readparty?party='Itsenaisyyspuolue'">Itsenäisyyspuolue</a>
     
   </div>
 </div>
 <br><br>
 
-<ol>
+
 <c:forEach var="candidate" items="${requestScope.candidateslist}" >
-<li id="name">${candidate.ehdokas_id}: ${candidate.etunimi} ${candidate.sukunimi}
-<li id="bold">Puolue: 
-<li>${candidate.puolue}
-<li id="bold">Kotipaikkakunta:
-<li>${candidate.kotipaikkakunta}
-<li id="bold">Ikä:
-<li>${candidate.ika}
-<li id="bold">Ammatti:
-<li>${candidate.ammatti}
-<li id="bold">Miksi haluat eduskuntaan?
-<li>${candidate.miksi_eduskuntaan}
-<li id="bold">Mitä asioita haluat edistää?
-<li>${candidate.mita_asioita_haluat_edistaa}
+<h2><b>${candidate.ehdokas_id}:</b> ${candidate.etunimi} ${candidate.sukunimi} </h2>
+<b>Puolue: </b><br>
+${candidate.puolue}
+<b>Kotipaikkakunta:</b><br>
+${candidate.kotipaikkakunta}<br>
+<b>Ikä: </b><br>
+${candidate.ika}<br>
+<b>Ammatti:</b><br>
+${candidate.ammatti}<br>
+<b>Miksi haluat eduskuntaan?</b><br>
+${candidate.miksi_eduskuntaan}<br>
+<b>Mitä asioita haluat edistää?</b><br>
+${candidate.mita_asioita_haluat_edistaa}<br>
 <br> <br>
 
 </c:forEach>
-</ol>
-<%
-ArrayList<Candidates> candidateList=(ArrayList<Candidates>)request.getAttribute("candidateslist");
-/*
-for (int i=0; candidateList != null && i < candidateList.size(); i++){
-	Candidates candidate = candidateList.get(i);
-	out.println(candidate.getEhdokas_id()+": "+candidate.getEtunimi());
-}*/
-%>
+
+
 
 </body>
 </html>
