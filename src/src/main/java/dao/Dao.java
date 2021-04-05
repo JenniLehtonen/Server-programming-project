@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -201,24 +202,53 @@ public class Dao {
 			return null;
 		}
 	}
+	/**
+	 * Ei toimi näin
+	 * @return
+	 */
 	
-	public ArrayList<Integer> candidatesAnswers(int ehdokas_id)
+	public HashMap<Integer, Integer> candidatesAnswers()
 	{
-		ArrayList<Integer> list=new ArrayList<>();
+		HashMap<Integer, Integer> answers1 = new HashMap<Integer, Integer>();
+		HashMap<Integer, Integer> answers2 = new HashMap<Integer, Integer>();
+		HashMap<Integer, Integer> answers3 = new HashMap<Integer, Integer>();
+		HashMap<Integer, Integer> answers4 = new HashMap<Integer, Integer>();
+		HashMap<Integer, Integer> answers5 = new HashMap<Integer, Integer>();
+		//ArrayList<Integer> list=new ArrayList<>();
 		try {
-			//Statement stmt=conn.createStatement();
-			String sql="select vastaus from vastaukset where ehdokas_id=?";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setInt(1, ehdokas_id);
+			Statement stmt=conn.createStatement();
+			String sql="select ehdokas_id, vastaus from vastaukset";
+			//PreparedStatement pstmt=conn.prepareStatement(sql);
+			//pstmt.setInt(1, ehdokas_id);
 			ResultSet RS=stmt.executeQuery(sql);
 			
 				while (RS.next()){
-				
+					
+					int ehdokas_id = RS.getInt("ehdokas_id");
+					int answer = RS.getInt("vastaus");
+					
+					switch(ehdokas_id)
+					{
+					case 1:
+						answers1.put(ehdokas_id, answer);
+					case 2:
+						answers2.put(ehdokas_id, answer);
+					case 3:
+						answers3.put(ehdokas_id, answer);
+					case 4:
+						answers4.put(ehdokas_id, answer);
+					case 5:
+						answers5.put(ehdokas_id, answer);
+					}
+		
 				}
-			return list;
+				System.out.println("Answers collected");
+				System.out.println("Ehdokkaan 1 vastaukset: " + answers1 + ". Ehdokkaan 2 vastaukset: " + answers2 +". Ehdokkaan 3 vastaukset: " + answers3 +". Ehdokkaan 4 vastaukset: " + answers4 +". Ehdokkaan 5 vastaukset: " + answers5 + "." );
+			return answers1;
 		}
 		catch(SQLException e)
 		{
+			System.out.println("Can't get the answers");
 			return null;
 		}
 

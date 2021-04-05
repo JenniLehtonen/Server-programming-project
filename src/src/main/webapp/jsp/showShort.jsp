@@ -22,7 +22,7 @@
 <br><br>
 
 <c:forEach var="candidate" items="${requestScope.candidateslist}" >
-<b>${candidate.ehdokas_id}:</b> ${candidate.etunimi} ${candidate.sukunimi}  <a href="/readcandidate?ehdokas_id=${candidate.ehdokas_id}">Edit</a> <a href="#">Delete</a>
+<b>${candidate.ehdokas_id}:</b> ${candidate.etunimi} ${candidate.sukunimi}  <a href="/readcandidate?ehdokas_id=${candidate.ehdokas_id}">Edit</a> <a href="/findcandidates?ehdokas_id=${candidate.ehdokas_id}">Show answers</a>
 
 <br> <br>
 
