@@ -87,26 +87,8 @@ public class Dao {
 	 */
 	public ArrayList<Candidates> updateCandidate(Candidates candidate) throws SQLException {
 			
-			stmt = conn.createStatement();
-			
-			String sukunimi = candidate.getSukunimi();
-			String etunimi = candidate.getEtunimi();
-			int ehdokas_id = candidate.getEhdokas_id();
-					
-			String sql="update ehdokkaat set sukunimi= '"+ sukunimi + "' etunimi = '" + etunimi + "' where ehdokas_id= " + ehdokas_id;
-
-	    	try {
-	            stmt.executeUpdate(sql);
-	            System.out.println("Updated");
-	            return readAllCandidates();
-	            
-	        } catch (Exception ex) {
-	            Logger.getLogger(Dao.class.getName()).log(Level.WARNING, "Failed updating", ex);
-	            // System.exit(0);
-	            return null;
-	            
-	    }
-			/*String sql="update ehdokkaat set sukunimi=?, etunimi=?, puolue=?, kotipaikkakunta=?, ika=?, miksi_eduskuntaan=?, mita_asioita_haluat_edistaa=?, ammatti=? where ehdokas_id=?";
+	try {
+			String sql="update ehdokkaat set sukunimi=?, etunimi=?, puolue=?, kotipaikkakunta=?, ika=?, miksi_eduskuntaan=?, mita_asioita_haluat_edistaa=?, ammatti=? where ehdokas_id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, candidate.getSukunimi());
 			pstmt.setString(2, candidate.getEtunimi());
@@ -124,7 +106,7 @@ public class Dao {
 		catch(SQLException e) {
 			System.out.println("Updating fails");
 			return null;
-		} */
+		} 
 			
 	}
 	
@@ -152,31 +134,36 @@ public class Dao {
 	 * @return
 	 */
 	public Candidates readCandidate(String id) {
+		System.out.println(id);
 		Candidates candidate = null;
 		try {
-			String sql="select * from ehdokkaat where id=?";
+			String sql="select * from ehdokkaat where ehdokas_id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			ResultSet RS=pstmt.executeQuery();
-			while (RS.next()){
-				candidate = new Candidates();
-
-				candidate.setEhdokas_id(RS.getInt("ehdokas_id"));
-				candidate.setSukunimi(RS.getString("sukunimi"));
-				candidate.setEtunimi(RS.getString("etunimi"));
-				candidate.setPuolue(RS.getString("puolue"));
-				candidate.setKotipaikkakunta(RS.getString("kotipaikkakunta"));
-				candidate.setIka(RS.getInt("ika"));
-				candidate.setMiksi_eduskuntaan(RS.getString("miksi_eduskuntaan"));
-				candidate.setMita_asioita_haluat_edistaa(RS.getString("mita_asioita_haluat_edistaa"));
-				candidate.setAmmatti(RS.getString("ammatti"));
-				
-			}
+				while (RS.next()){
+					candidate = new Candidates();
+	
+					candidate.setEhdokas_id(RS.getInt("ehdokas_id"));
+					candidate.setSukunimi(RS.getString("sukunimi"));
+					candidate.setEtunimi(RS.getString("etunimi"));
+					candidate.setPuolue(RS.getString("puolue"));
+					candidate.setKotipaikkakunta(RS.getString("kotipaikkakunta"));
+					candidate.setIka(RS.getInt("ika"));
+					candidate.setMiksi_eduskuntaan(RS.getString("miksi_eduskuntaan"));
+					candidate.setMita_asioita_haluat_edistaa(RS.getString("mita_asioita_haluat_edistaa"));
+					candidate.setAmmatti(RS.getString("ammatti"));
+					
+					}
+				System.out.println(candidate.getEtunimi());
 			return candidate;
 		}
-		catch(SQLException e) {
-			return null;
+			catch(SQLException e) {
+				System.out.println("Read candidate fail");
+				return null;
 		}
+		
+		
 	}
 	
 	
@@ -213,6 +200,28 @@ public class Dao {
 		catch(SQLException e) {
 			return null;
 		}
+	}
+	
+	public ArrayList<Integer> candidatesAnswers(int ehdokas_id)
+	{
+		ArrayList<Integer> list=new ArrayList<>();
+		try {
+			//Statement stmt=conn.createStatement();
+			String sql="select vastaus from vastaukset where ehdokas_id=?";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, ehdokas_id);
+			ResultSet RS=stmt.executeQuery(sql);
+			
+				while (RS.next()){
+				
+				}
+			return list;
+		}
+		catch(SQLException e)
+		{
+			return null;
+		}
+
 	}
 	
 }
