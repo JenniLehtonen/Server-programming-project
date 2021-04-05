@@ -2,25 +2,13 @@
     pageEncoding="UTF-8"%>
  
  <%@ page import="java.util.ArrayList" %>   
- <%@ page import="data.Candidates" %> 
+ <%@ page import="data.*" %> 
  <%@ page import="dao.Dao" %>   
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Candidates</title>
 
-<link rel="stylesheet" type="text/css" href="main.css">
-<script src="myscriptfile.js"></script>
-
-</head>
-<body>
-<%@ include file="../candidatesList.html" %>
-
-
+<%@ include file="../header.html" %>
 
   <div class="dropdown">
   	<button class="dropbtn">Dropdown</button>
@@ -44,7 +32,7 @@
 <c:forEach var="candidate" items="${requestScope.candidateslist}" >
 <h2><b>${candidate.ehdokas_id}:</b> ${candidate.etunimi} ${candidate.sukunimi} </h2>
 <b>Puolue: </b><br>
-${candidate.puolue}
+${candidate.puolue} <br>
 <b>Kotipaikkakunta:</b><br>
 ${candidate.kotipaikkakunta}<br>
 <b>Ikä: </b><br>
@@ -59,7 +47,4 @@ ${candidate.mita_asioita_haluat_edistaa}<br>
 
 </c:forEach>
 
-
-
-</body>
-</html>
+<%@ include file="../footer.html" %>
