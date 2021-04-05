@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import data.Candidates;
 
@@ -17,6 +19,7 @@ public class Dao {
 	private String user;
 	private String pass;
 	private Connection conn;
+	private Statement stmt = null;
 	
 	public Dao(String url, String user, String pass) {
 		this.url=url;
@@ -80,10 +83,30 @@ public class Dao {
 	 * Update a name of one candidate. 
 	 * @param c
 	 * @return list of candidates
+	 * @throws SQLException 
 	 */
-	public ArrayList<Candidates> updateCandidate(Candidates candidate) {
-		try {
-			String sql="update ehdokkaat set sukunimi=?, etunimi=?, puolue=?, kotipaikkakunta=?, ika=?, miksi_eduskuntaan=?, mita_asioita_haluat_edistaa=?, ammatti=? where ehdokas_id=?";
+	public ArrayList<Candidates> updateCandidate(Candidates candidate) throws SQLException {
+			
+			stmt = conn.createStatement();
+			
+			String sukunimi = candidate.getSukunimi();
+			String etunimi = candidate.getEtunimi();
+			int ehdokas_id = candidate.getEhdokas_id();
+					
+			String sql="update ehdokkaat set sukunimi= '"+ sukunimi + "' etunimi = '" + etunimi + "' where ehdokas_id= " + ehdokas_id;
+
+	    	try {
+	            stmt.executeUpdate(sql);
+	            System.out.println("Updated");
+	            return readAllCandidates();
+	            
+	        } catch (Exception ex) {
+	            Logger.getLogger(Dao.class.getName()).log(Level.WARNING, "Failed updating", ex);
+	            // System.exit(0);
+	            return null;
+	            
+	    }
+			/*String sql="update ehdokkaat set sukunimi=?, etunimi=?, puolue=?, kotipaikkakunta=?, ika=?, miksi_eduskuntaan=?, mita_asioita_haluat_edistaa=?, ammatti=? where ehdokas_id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, candidate.getSukunimi());
 			pstmt.setString(2, candidate.getEtunimi());
@@ -101,7 +124,8 @@ public class Dao {
 		catch(SQLException e) {
 			System.out.println("Updating fails");
 			return null;
-		}
+		} */
+			
 	}
 	
 	/**
