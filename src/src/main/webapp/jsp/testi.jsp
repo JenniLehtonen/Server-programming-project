@@ -25,9 +25,6 @@ ArrayList<Candidates> candidateList=(ArrayList<Candidates>)request.getAttribute(
 		response.sendRedirect("index.html");
 	}
 	)
-	
-	<form action='update' method='post'>
-Fish id: <input type='text' name='id' value='${requestScope.fish.id}' readonly><br> 
-Fish breed: <input type='text' name='breed' value='${requestScope.fish.breed}'><br>
-<input type='submit' name='ok' value='Send'> 
-</form>
+
+
+<script src="myscriptfile.js"></script>

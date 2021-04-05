@@ -14,7 +14,7 @@
 <title>Candidates</title>
 
 <link rel="stylesheet" type="text/css" href="main.css">
-<script src="myscriptfile.js"></script>
+
 
 </head>
 <body>
@@ -44,7 +44,7 @@
 <c:forEach var="candidate" items="${requestScope.candidateslist}" >
 <h2><b>${candidate.ehdokas_id}:</b> ${candidate.etunimi} ${candidate.sukunimi} </h2>
 <b>Puolue: </b><br>
-${candidate.puolue}
+${candidate.puolue} <br>
 <b>Kotipaikkakunta:</b><br>
 ${candidate.kotipaikkakunta}<br>
 <b>Ikä: </b><br>

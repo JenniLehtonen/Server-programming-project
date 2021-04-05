@@ -77,20 +77,29 @@ public class Dao {
 	}
 	
 	/**
-	 * Update a name of one candidate. Don't need this yet. Needs all parameters
+	 * Update a name of one candidate. 
 	 * @param c
-	 * @return
+	 * @return list of candidates
 	 */
-	public ArrayList<Candidates> updateCandidate(Candidates c) {
+	public ArrayList<Candidates> updateCandidate(Candidates candidate) {
 		try {
-			String sql="update ehdokkaat set etunimi=? where ehdokas_id=?";
+			String sql="update ehdokkaat set sukunimi=?, etunimi=?, puolue=?, kotipaikkakunta=?, ika=?, miksi_eduskuntaan=?, mita_asioita_haluat_edistaa=?, ammatti=? where ehdokas_id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, c.getEtunimi());
-			pstmt.setInt(2, c.getEhdokas_id());
+			pstmt.setString(1, candidate.getSukunimi());
+			pstmt.setString(2, candidate.getEtunimi());
+			pstmt.setString(3, candidate.getPuolue());
+			pstmt.setString(4, candidate.getKotipaikkakunta());
+			pstmt.setInt(5, candidate.getIka());
+			pstmt.setString(6, candidate.getMiksi_eduskuntaan());
+			pstmt.setString(7, candidate.getMita_asioita_haluat_edistaa());
+			pstmt.setString(8, candidate.getAmmatti());
+			pstmt.setInt(9, candidate.getEhdokas_id());
 			pstmt.executeUpdate();
+			System.out.println("Updated");
 			return readAllCandidates();
 		}
 		catch(SQLException e) {
+			System.out.println("Updating fails");
 			return null;
 		}
 	}

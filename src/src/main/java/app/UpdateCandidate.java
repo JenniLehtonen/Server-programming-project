@@ -26,19 +26,36 @@ public class UpdateCandidate extends HttpServlet{
 	}
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
+		     throws IOException
+		     {
+				response.sendRedirect("index.html");
+		     }
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
-		String id=request.getParameter("id");
-		String breed=request.getParameter("breed");
+		String ehdokas_id=request.getParameter("ehdokas_id");
+		String sukunimi=request.getParameter("sukunimi");
+		String etunimi=request.getParameter("etunimi");
+		String puolue=request.getParameter("puolue");
+		String kotipaikkakunta=request.getParameter("kotipaikkakunta");
+		String ika=request.getParameter("ika");
+		String miksi_eduskuntaan=request.getParameter("miksi_eduskuntaan");
+		String mita_asioita_haluat_edistaa=request.getParameter("mita_asioita_haluat_edistaa");
+		String ammatti=request.getParameter("ammatti");
 		
-		Candidates c=new Candidates();
+		Candidates candidate=new Candidates(ehdokas_id, sukunimi, etunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan, mita_asioita_haluat_edistaa, ammatti);
 		
 		ArrayList<Candidates> list=null;
 		if (dao.getConnection()) {
-			list=dao.updateCandidate(c);
+			list=dao.updateCandidate(candidate);
+		}
+		else
+		{
+			System.out.println("Connections fails");
 		}
 		
-		request.setAttribute("fishlist", list);
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/updateCandidate.jsp");
+		request.setAttribute("candidateslist", list);
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showShort.jsp");
 		rd.forward(request, response);
 	}
 }

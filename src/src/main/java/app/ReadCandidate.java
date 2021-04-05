@@ -13,7 +13,7 @@ import dao.Dao;
 import data.Candidates;
 
 @WebServlet("/readcandidate")
-public class ReadCandidate {
+public class ReadCandidate extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
 	private Dao dao;
@@ -26,20 +26,20 @@ public class ReadCandidate {
      */
     public ReadCandidate() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String id=request.getParameter("id");
-		Candidates c=null;
+
+		String id = request.getParameter("ehdokas_id");
+		Candidates candidate=null;
 		if (dao.getConnection()) {
-			c=dao.readCandidate(id);
+			candidate=dao.readCandidate(id);
 		}
-		request.setAttribute("candidate", c);
+		request.setAttribute("candidate", candidate);
 		
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/updatecandidate.jsp");
 		rd.forward(request, response);
