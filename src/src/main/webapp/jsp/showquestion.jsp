@@ -9,19 +9,8 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
    
     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Answer the questions</title>
+<%@ include file="../header.html" %>
 
-
-
-<link rel="stylesheet" type="text/css" href="koodit.css">
-<script src="jsp/myscriptfile.js"></script>
-
-</head>
-<body>
 
 <h2>Answer the questions</h2><br><br>
 <ol>
@@ -92,14 +81,4 @@
 </ol>
 
 
-<br></br>
-
-
-
-
-
-
-
-
-</body>
-</html>
+<%@ include file="../footer.html" %>

@@ -29,8 +29,8 @@
 <label for="mita_asioita_haluat_edistaa">Mitä asioita haluat edistää?</label> <br>
 <textarea id="mita_asioita_haluat_edistaa" name="mita_asioita_haluat_edistaa" rows="4" cols="50">
 </textarea> <br><br>
-<label for="Ammatti">Ammatti</label> <br>
-<input type="text" id="Ammatti" name="Ammatti"> <br><br>
+<label for="ammatti">Ammatti</label> <br>
+<input type="text" id="ammatti" name="ammatti"> <br><br>
 <input type="submit" value="Submit">
 </form>
 
