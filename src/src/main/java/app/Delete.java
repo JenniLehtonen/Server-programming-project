@@ -11,34 +11,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Dao;
-import data.Candidates;
+import data.Question;
 
 @WebServlet(
-	    name = "Update",
-	    urlPatterns = {"/updatecandidate"}
-	)
-
-public class UpdateCandidate extends HttpServlet{
-
+    name = "Delete",
+    urlPatterns = {"/delete"}
+)
+public class Delete extends HttpServlet {
 	private Dao dao;
 	public void init() {
-		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "admin", "salasana");
+		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "newuser2", "Rasmusvaltteri");
 	}
-	
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
 		String id=request.getParameter("id");
-		String breed=request.getParameter("breed");
-		
-		Candidates c=new Candidates();
-		
-		ArrayList<Candidates> list=null;
+		ArrayList<Question> list=null;
 		if (dao.getConnection()) {
-			list=dao.updateCandidate(c);
+			list=dao.deleteQuestion(id);
 		}
-		
-		request.setAttribute("fishlist", list);
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/updateCandidate.jsp");
+		request.setAttribute("questionlist", list);
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showquestion.jsp");
 		rd.forward(request, response);
 	}
 }
