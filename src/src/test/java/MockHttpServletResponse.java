@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 
 import app.HelloAppEngine;
+import app.Login;
 
 /**
  * This mock class is created to enable basic unit testing of the

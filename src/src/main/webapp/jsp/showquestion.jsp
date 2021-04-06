@@ -22,7 +22,7 @@
 
 </head>
 <body>
-<%@ include file="../html/somehtml.html" %>
+
 <h2>Answer the questions</h2><br><br>
 <ol>
 

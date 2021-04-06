@@ -7,4 +7,23 @@
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+  
+  <context-param>
+	<param-name>DBUrl</param-name>
+	<param-value>
+	jdbc:mysql://localhost:3306/vaalikone
+	</param-value>
+  </context-param>
+  <context-param>
+	<param-name>username</param-name>
+	<param-value>
+	admin
+	</param-value>
+  </context-param>
+  <context-param>
+	<param-name>password</param-name>
+	<param-value>
+	salasana
+	</param-value>
+  </context-param>
 </web-app>
