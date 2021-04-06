@@ -99,6 +99,39 @@ public class Dao {
 			return null;
 		}
 	}
+	
+	public ArrayList<Question> updateQuestion(Question f) {
+		try {
+			String sql="update kysymykset set kysymys=? where id=?";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, f.getWhatquestion());
+			pstmt.setInt(2, f.getId());
+			pstmt.executeUpdate();
+			return readAllQuestion();
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
+	
+	public Question readQuestion(String id) {
+		Question f=null;
+		try {
+			String sql="select * from kysymykset where id=?";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			ResultSet RS=pstmt.executeQuery();
+			while (RS.next()){
+				f=new Question();
+				f.setId(RS.getInt("id"));
+				f.setWhatquestion(RS.getString("whatquestion"));
+			}
+			return f;
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
 
 	/**
 	 * Update a name of one candidate. Don't need this yet. Needs all parameters
