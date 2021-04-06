@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import data.Candidates; //korjaa virhe
+import data.Answers;
 import data.Candidates;
 import data.Question;
 
@@ -79,6 +79,23 @@ public class Dao {
 		}
 	}
 	
+	public ArrayList<Answers> readAllAnswers(){
+		ArrayList<Answers> list = new ArrayList<>();
+		try {
+			Statement stmt = conn.createStatement();
+			ResultSet RS = stmt.executeQuery("select * from vastaukset");
+			while (RS.next()) {
+				Answers answer = new Answers();
+				answer.setEhdokas_id(RS.getInt("ehdokas_id"));
+				answer.setVastaus(RS.getString("vastaus"));
+				answer.setKysymys_id(RS.getInt("kysymys_id"));
+				list.add(answer);
+			}
+			return list;
+		} catch (SQLException e) {
+			return null;
+		}
+	}
 	
 	public ArrayList<Question> readAllQuestion() {
 		ArrayList<Question> list=new ArrayList<>();
