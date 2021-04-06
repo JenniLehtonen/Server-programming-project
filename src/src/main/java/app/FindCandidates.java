@@ -30,8 +30,8 @@ public class FindCandidates extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HashMap<Integer, Integer> list=null;
-		String id = request.getParameter("ehdokas_id");
-		int ehdokas_id = Integer.parseInt(id);
+		//String id = request.getParameter("ehdokas_id");
+		//int ehdokas_id = Integer.parseInt(id);
 		if (dao.getConnection()) {
 			list=dao.candidatesAnswers();
 		}

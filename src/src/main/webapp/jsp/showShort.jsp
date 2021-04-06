@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <title>Candidates</title>
 
-<link rel="stylesheet" type="text/css" href="main.css">
+
 
 </head>
 <body>
@@ -28,6 +28,6 @@
 
 </c:forEach>
 
-
+<%@ include file="../footer.html" %>
 </body>
 </html>

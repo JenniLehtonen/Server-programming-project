@@ -217,7 +217,7 @@ public class Dao {
 		//ArrayList<Integer> list=new ArrayList<>();
 		try {
 			Statement stmt=conn.createStatement();
-			String sql="select ehdokas_id, vastaus from vastaukset";
+			String sql="select ehdokas_id, kysymys_id, vastaus from vastaukset";
 			//PreparedStatement pstmt=conn.prepareStatement(sql);
 			//pstmt.setInt(1, ehdokas_id);
 			ResultSet RS=stmt.executeQuery(sql);
@@ -226,19 +226,21 @@ public class Dao {
 					
 					int ehdokas_id = RS.getInt("ehdokas_id");
 					int answer = RS.getInt("vastaus");
+					int kysymys_id = RS.getInt("kysymys_id");
+					
 					
 					switch(ehdokas_id)
 					{
 					case 1:
-						answers1.put(ehdokas_id, answer);
+						answers1.put(kysymys_id, answer);
 					case 2:
-						answers2.put(ehdokas_id, answer);
+						answers2.put(kysymys_id, answer);
 					case 3:
-						answers3.put(ehdokas_id, answer);
+						answers3.put(kysymys_id, answer);
 					case 4:
-						answers4.put(ehdokas_id, answer);
+						answers4.put(kysymys_id, answer);
 					case 5:
-						answers5.put(ehdokas_id, answer);
+						answers5.put(kysymys_id, answer);
 					}
 		
 				}

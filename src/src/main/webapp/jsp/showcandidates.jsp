@@ -60,6 +60,6 @@ ${candidate.mita_asioita_haluat_edistaa}<br>
 </c:forEach>
 
 
-
+<%@ include file="../footer.html" %>
 </body>
 </html>

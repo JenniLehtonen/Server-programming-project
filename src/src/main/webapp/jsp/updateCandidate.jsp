@@ -36,6 +36,6 @@
 <input type='Submit' name='ok' value='Send' class='dropbtn'> 
 
 </form>
-
+<%@ include file="../footer.html" %>
 </body>
 </html>
