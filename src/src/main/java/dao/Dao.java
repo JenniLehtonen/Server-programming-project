@@ -91,7 +91,7 @@ public class Dao {
 				f.setId(RS.getInt("KYSYMYS_ID"));
 				f.setWhatquestion(RS.getString("KYSYMYS"));
 				list.add(f);
-				System.out.println("kysymysarrayhin lisï¿½tty kysymykset");
+				System.out.println("kysymysarrayhin lisätty kysymykset");
 			}
 			return list;
 		}
