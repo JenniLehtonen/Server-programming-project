@@ -1,6 +1,8 @@
 package app;
+
 import java.io.IOException;
 import java.util.ArrayList;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,14 +11,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.Dao;
-import data.Candidates;
 
-@WebServlet("/showcandidates")
-public class ShowCandidates extends HttpServlet{
+
+
+
+import data.Question;
+
+
+
+import dao.Dao;
+import data.Question;
+
+/**
+ * Servlet implementation class ShowQuestion
+ */
+@WebServlet("/ShowQuestion")
+public class ShowQuestion extends HttpServlet {
+	
+	public ShowQuestion() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	
+  
 	
 	private static final long serialVersionUID = 1L;
-	 Dao dao = null;
+	private Dao dao=null;
+	
+	
 	
 	@Override
 	public void init() {
@@ -26,28 +49,29 @@ public class ShowCandidates extends HttpServlet{
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowCandidates() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+    
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Candidates> list=null;
+	
+		
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+		
+		ArrayList<Question> list=null;
 		if (dao.getConnection()) {
-			list=dao.readAllCandidates();
+			list=dao.readAllQuestion();
+			System.out.println("connected");
 		}
 		else {
 			System.out.println("No connection to database");
 		}
-	
-		request.setAttribute("candidateslist", list);
-
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showcandidates.jsp");
-		rd.forward(request, response); 
+		//response.getWriter().println(dao.readAllQuestion());
+		request.setAttribute("questionlist", list);
 		
-	}	
-
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showquestion.jsp");
+		rd.forward(request, response);
+	}
 }
+
