@@ -5,7 +5,7 @@
  <%@ page import="data.Question" %>  
  <%@ page import="dao.Dao" %> 
  <%@ page import="app.ShowQuestion" %>
- 
+ <%@ include file="/header.html" %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
    
     
