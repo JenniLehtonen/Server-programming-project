@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import data.Candidates; //korjaa virhe
 import data.Candidates;
@@ -105,18 +106,30 @@ public class Dao {
 	 * @param c
 	 * @return
 	 */
-	public ArrayList<Candidates> updateCandidate(Candidates c) {
+	public ArrayList<Candidates> updateCandidate(Candidates candidate) throws SQLException {
+		
 		try {
-			String sql = "update ehdokkaat set etunimi=? where ehdokas_id=?";
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, c.getEtunimi());
-			pstmt.setInt(2, c.getEhdokas_id());
-			pstmt.executeUpdate();
-			return readAllCandidates();
-		} catch (SQLException e) {
-			return null;
+				String sql="update ehdokkaat set sukunimi=?, etunimi=?, puolue=?, kotipaikkakunta=?, ika=?, miksi_eduskuntaan=?, mita_asioita_haluat_edistaa=?, ammatti=? where ehdokas_id=?";
+				PreparedStatement pstmt=conn.prepareStatement(sql);
+				pstmt.setString(1, candidate.getSukunimi());
+				pstmt.setString(2, candidate.getEtunimi());
+				pstmt.setString(3, candidate.getPuolue());
+				pstmt.setString(4, candidate.getKotipaikkakunta());
+				pstmt.setInt(5, candidate.getIka());
+				pstmt.setString(6, candidate.getMiksi_eduskuntaan());
+				pstmt.setString(7, candidate.getMita_asioita_haluat_edistaa());
+				pstmt.setString(8, candidate.getAmmatti());
+				pstmt.setInt(9, candidate.getEhdokas_id());
+				pstmt.executeUpdate();
+				System.out.println("Updated");
+				return readAllCandidates();
+			}
+			catch(SQLException e) {
+				System.out.println("Updating fails");
+				return null;
+			} 
+				
 		}
-	}
 
 	/**
 	 * Delete candidate based on id
@@ -167,7 +180,7 @@ public class Dao {
 	public Candidates readCandidate(String id) {
 		Candidates candidate = null;
 		try {
-			String sql = "select * from ehdokkaat where id=?";
+			String sql = "select * from ehdokkaat where ehdokas_id=?";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			ResultSet RS = pstmt.executeQuery();
@@ -224,6 +237,54 @@ public class Dao {
 		} catch (SQLException e) {
 			return null;
 		}
+	}
+	
+	public HashMap<Integer, Integer> candidatesAnswers()
+	{
+		HashMap<Integer, Integer> answers1 = new HashMap<Integer, Integer>();
+		HashMap<Integer, Integer> answers2 = new HashMap<Integer, Integer>();
+		HashMap<Integer, Integer> answers3 = new HashMap<Integer, Integer>();
+		HashMap<Integer, Integer> answers4 = new HashMap<Integer, Integer>();
+		HashMap<Integer, Integer> answers5 = new HashMap<Integer, Integer>();
+		//ArrayList<Integer> list=new ArrayList<>();
+		try {
+			Statement stmt=conn.createStatement();
+			String sql="select ehdokas_id, vastaus from vastaukset";
+			//PreparedStatement pstmt=conn.prepareStatement(sql);
+			//pstmt.setInt(1, ehdokas_id);
+			ResultSet RS=stmt.executeQuery(sql);
+			
+				while (RS.next()){
+					
+					int ehdokas_id = RS.getInt("ehdokas_id");
+					int answer = RS.getInt("vastaus");
+					int kysymys_id = RS.getInt("kysymys_id");
+					
+					switch(ehdokas_id)
+					{
+					case 1:
+						answers1.put(kysymys_id, answer);
+					case 2:
+						answers2.put(kysymys_id, answer);
+					case 3:
+						answers3.put(kysymys_id, answer);
+					case 4:
+						answers4.put(kysymys_id, answer);
+					case 5:
+						answers5.put(kysymys_id, answer);
+					}
+		
+				}
+				System.out.println("Answers collected");
+				System.out.println("Ehdokkaan 1 vastaukset: " + answers1 + ". Ehdokkaan 2 vastaukset: " + answers2 +". Ehdokkaan 3 vastaukset: " + answers3 +". Ehdokkaan 4 vastaukset: " + answers4 +". Ehdokkaan 5 vastaukset: " + answers5 + "." );
+			return answers1;
+		}
+		catch(SQLException e)
+		{
+			System.out.println("Can't get the answers");
+			return null;
+		}
+
 	}
 
 }
