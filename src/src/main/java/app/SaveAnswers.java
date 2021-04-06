@@ -13,12 +13,9 @@ import dao.Dao;
 import data.*;
 
 
-@WebServlet("/saveanswers")
+@WebServlet("/SaveAnswers")
 public class SaveAnswers extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	private Dao dao=null;
 	
-	@Override
 	public SaveAnswers() {
         super();
         // TODO Auto-generated constructor stub
