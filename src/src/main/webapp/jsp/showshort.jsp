@@ -9,6 +9,7 @@
     
 
 <%@ include file="../header.html" %>
+<%@ include file="../candidatesList.html" %>
 
 <br><br>
 
