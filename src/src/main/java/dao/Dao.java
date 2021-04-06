@@ -44,7 +44,7 @@ public class Dao {
 			return true;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			System.out.println("Yhdistï¿½minen ei onnistu");
+			System.out.println("Yhdistäminen ei onnistu");
 			return false;
 		}
 	}
