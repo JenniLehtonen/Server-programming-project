@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import data.Candidates;
+import data.Candidates; //korjaa virhe
 import data.Question;
 
 import java.sql.Connection;
