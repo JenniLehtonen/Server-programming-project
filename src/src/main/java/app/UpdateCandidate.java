@@ -1,6 +1,7 @@
 package app;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -34,7 +35,12 @@ public class UpdateCandidate extends HttpServlet{
 		
 		ArrayList<Candidates> list=null;
 		if (dao.getConnection()) {
-			list=dao.updateCandidate(c);
+			try {
+				list=dao.updateCandidate(c);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		request.setAttribute("fishlist", list);
