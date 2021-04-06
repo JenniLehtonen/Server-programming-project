@@ -3,7 +3,7 @@
  
  <%@ page import="java.util.ArrayList" %>   
  <%@ page import="data.Question" %>  
- <%@ page import="dao.Dao" %> 
+ <%@ page import="Dao.Dao" %> 
  <%@ page import="app.ShowQuestion" %>
  
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -22,7 +22,7 @@
 
 </head>
 <body>
-<%@ include file="../html/somehtml.html" %>
+
 <h2>Answer the questions</h2><br><br>
 <ol>
 
