@@ -13,8 +13,8 @@ import dao.Dao;
 import data.*;
 
 
-@WebServlet("/showshort")
-public class ShowShort extends HttpServlet {
+@WebServlet("/saveanswers")
+public class SaveAnswers extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Dao dao=null;
 	
@@ -26,7 +26,7 @@ public class ShowShort extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowShort() {
+    public SaveAnswers() {
         super();
         // TODO Auto-generated constructor stub
     }
