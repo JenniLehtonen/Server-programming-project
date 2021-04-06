@@ -13,7 +13,7 @@ import dao.Dao;
 import data.*;
 
 
-@WebServlet("/showshort")
+@WebServlet("/saveanswers")
 public class ShowShort extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Dao dao=null;
