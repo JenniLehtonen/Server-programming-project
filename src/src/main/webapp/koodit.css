@@ -112,3 +112,51 @@ body {
 .dropdown:hover .dropbtn {
 	background-color:#589696;
 }
+
+#loginFailed{
+	 padding: 0.5rem;
+	 width: 18rem;
+  	 margin: auto;
+  	 margin-top: 1rem;
+  	 background: #fafafa;
+  	 border: 1px solid #ccc;
+  	 color: #ba3939;
+  	 background: #ffe0e0;
+  	 border: 1px solid #a33a3a;
+}
+label{
+	font-family: Arial, Helvetica, sans-serif;
+	margin-top: 0.5rem;
+}
+form{
+	margin-top: 1.5rem;
+}
+input {
+  margin-bottom: 1.5rem !important;
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #589696;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #589696;
+  color: white;
+}
