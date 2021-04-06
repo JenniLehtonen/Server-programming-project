@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import data.Candidates; //korjaa virhe
+import data.Candidates;
 import data.Question;
 
 import java.sql.Connection;
@@ -43,7 +44,7 @@ public class Dao {
 			return true;
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			System.out.println("Yhdistäminen ei onnistu");
+			System.out.println("Yhdistï¿½minen ei onnistu");
 			return false;
 		}
 	}
@@ -89,7 +90,7 @@ public class Dao {
 				f.setId(RS.getInt("KYSYMYS_ID"));
 				f.setWhatquestion(RS.getString("KYSYMYS"));
 				list.add(f);
-				System.out.println("kysymysarrayhin lisätty kysymykset");
+				System.out.println("kysymysarrayhin lisï¿½tty kysymykset");
 			}
 			return list;
 		}
