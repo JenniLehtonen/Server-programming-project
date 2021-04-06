@@ -87,7 +87,7 @@ public class Dao {
 			while (RS.next()) {
 				Answers answer = new Answers();
 				answer.setEhdokas_id(RS.getInt("ehdokas_id"));
-				answer.setVastaus(RS.getString("vastaus"));
+				answer.setVastaus(RS.getInt("vastaus"));
 				answer.setKysymys_id(RS.getInt("kysymys_id"));
 				list.add(answer);
 			}

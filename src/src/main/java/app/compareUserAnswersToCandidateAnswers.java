@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Dao;
+import data.Answers;
 import data.Candidates;
 
 @WebServlet("/compareUserAnswersToCandidateAnswers")
@@ -35,15 +36,24 @@ public class compareUserAnswersToCandidateAnswers extends HttpServlet{
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Candidates> list=null;
+		ArrayList<Answers> list=null;
 		if (dao.getConnection()) {
-			list=dao.readAllCandidates();
+			list=dao.readAllAnswers();
+		}
+		else {
+			System.out.println("No connection to database");
+		}
+		
+		ArrayList<Candidates> list1=null;
+		if (dao.getConnection()) {
+			list1=dao.readAllCandidates();
 		}
 		else {
 			System.out.println("No connection to database");
 		}
 	
-		request.setAttribute("candidateslist", list);
+		request.setAttribute("answerslist", list);
+		request.setAttribute("candidateslist", list1);
 
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/compareUserAnswersToCandidateAnswers.jsp");
 		rd.forward(request, response); 
