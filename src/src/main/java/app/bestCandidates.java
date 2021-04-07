@@ -24,7 +24,7 @@ import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
 import dao.Dao;
-import data.Answers;
+import data.CandidatesAndAnswers;
 import data.Candidates;
 import data.Question;
 
@@ -75,11 +75,11 @@ public class bestCandidates extends HttpServlet {
 
 		int difference = 0;
 		int differenceSum = 0;
-		Answers candidateAnswer = null;
+		CandidatesAndAnswers candidateAnswer = null;
 		HashMap<Integer, Integer> points = new HashMap<Integer, Integer>();
 		for (int i = 0; i < candidatelist.size(); i++) {
 			differenceSum = 0;
-			ArrayList<Answers> candidatesAnswers = null;
+			ArrayList<CandidatesAndAnswers> candidatesAnswers = null;
 			if (dao.getConnection()) {
 				candidatesAnswers = dao.readCandidatesAnswers(i);
 			} else {
@@ -99,6 +99,7 @@ public class bestCandidates extends HttpServlet {
 		}
 
 		request.setAttribute("points", points);
+		request.setAttribute("candidatelist", candidatelist);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/bestCandidates.jsp");
 		dispatcher.forward(request, response);
