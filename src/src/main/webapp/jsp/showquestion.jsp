@@ -21,28 +21,18 @@
 <br>
 <form method="post" action="bestCandidates">
 	<c:forEach var="question" items="${requestScope.questionlist}">
-		<b>${question.id}: </b>${question.whatquestion}<a> <br>
-		<br>
-		<input type="radio" id="${question.id}1" name="${question.id}"
+		<b>${question.id}: </b>${question.whatquestion}<a> <br> <br>
+			<input type="radio" id="${question.id}1" name="${question.id}"
 			value="1"><label for="${question.id}1">1 Totally
-				disagree</label><br>
-		</a>
-		<a><input type="radio" id="${question.id}2" name="${question.id}"
-			value="2"><label for="${question.id}2">2</label> </a>
-		<br>
-		<a><input type="radio" id="${question.id}3" name="${question.id}"
-			value="3"><label for="${question.id}3">3</label><br> </a>
-		<input type="radio" id="${question.id}4" name="${question.id}"
-			value="4">
-		<label for="${question.id}4">4</label>
-		</a>
-		<br>
-		<a><input type="radio" id="${question.id}5" name="${question.id}"
-			value="5"><label for="${question.id}5">5 Totally
-				agree</label> </a>
-
-		<br>
-		<br>
+				disagree</label><br> <input type="radio" id="${question.id}2"
+			name="${question.id}" value="2"><label for="${question.id}2">2</label>
+			<br> <input type="radio" id="${question.id}3"
+			name="${question.id}" value="3"> <label for="${question.id}3">3</label>
+			<br> <input type="radio" id="${question.id}4"
+			name="${question.id}" value="4"> <label for="${question.id}4">4</label>
+			<br> <input type="radio" id="${question.id}5"
+			name="${question.id}" value="5"><label for="${question.id}5">5
+				Totally agree</label> <br> <br>
 	</c:forEach>
 
 	<input type="submit" value="Submit">
