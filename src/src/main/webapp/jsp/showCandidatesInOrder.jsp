@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
  
  <%@ page import="java.util.ArrayList" %>   
- <%@ page import="data.Candidates" %> 
+ <%@ page import="data.*" %> 
  <%@ page import="dao.Dao" %>   
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
@@ -15,20 +15,17 @@
 
 <link rel="stylesheet" type="text/css" href="main.css">
 
-
 </head>
 <body>
 <%@ include file="../candidatesList.html" %>
 
-
-
-  <div class="dropdown">
-  	<button class="dropbtn">Dropdown</button>
-  	<div class="dropdown-content">
-
+<div class="dropdown">
+  <button class="dropbtn">Dropdown</button>
+  <div class="dropdown-content">
+  	<a href='/showcandidates'>All candidates</a>
     <a href="/readparty?party='Vasemmistoliitto'">Vasemmistoliitto</a>
     <a href="/readparty?party='Suomen Sosialidemokraattinen Puolue'">Suomen Sosialidemokraattinen Puolue</a>
-    <a href="/readparty?party='Vihrea liitto'">Vihreä liitto</a>
+    <a href="/readparty?party='Vihrealiitto'">Vihreä liitto</a>
     <a href="/readparty?party='Suomen Kommunistinen Puolue'">Suomen Kommunistinen Puolue</a>
     <a href="/readparty?party='Suomen Keskusta'">Suomen Keskusta</a>
     <a href="/readparty?party='Suomen ruotsalainen kansanpuolue'">Suomen ruotsalainen kansanpuolue</a>
@@ -40,11 +37,10 @@
 </div>
 <br><br>
 
-
 <c:forEach var="candidate" items="${requestScope.candidateslist}" >
 <h2><b>${candidate.ehdokas_id}:</b> ${candidate.etunimi} ${candidate.sukunimi} </h2>
 <b>Puolue: </b><br>
-${candidate.puolue} <br>
+${candidate.puolue}<br>
 <b>Kotipaikkakunta:</b><br>
 ${candidate.kotipaikkakunta}<br>
 <b>Ikä: </b><br>
@@ -58,8 +54,7 @@ ${candidate.mita_asioita_haluat_edistaa}<br>
 <br> <br>
 
 </c:forEach>
-
-
 <%@ include file="../footer.html" %>
+
 </body>
 </html>
