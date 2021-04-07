@@ -1,13 +1,13 @@
 <%@ include file="../header.html" %>
 <link rel="stylesheet" href="/jsp/login.css">
 
-				<h1>Login</h1>
+				<h1>Kirjaudu sis‰‰n</h1>
 				<form action="/login" method="GET">
-					<label>Username : </label><br>
-		            <input type="text" placeholder="Enter Username" name="username"><br> 
-		            <label>Password : </label><br>
-		            <input type="password" placeholder="Enter Password" name="password"><br>  
-		            <button type="submit">Login</button>   
+					<label>K‰ytt‰j‰tunnus : </label><br>
+		            <input type="text" placeholder="Syˆt‰ k‰ytt‰j‰tunnus" name="username"><br> 
+		            <label>Salasana : </label><br>
+		            <input type="password" placeholder="Syˆt‰ salasana" name="password"><br>  
+		            <button type="submit">Kirjaudu sis‰‰n</button>   
 				</form>
 				<%
 					String userProvidedUsername = (String)request.getAttribute("userProvidedUsername");
@@ -27,7 +27,7 @@
 					} else if (data.LoginData.CheckPasswords(MD5Password, password)==false || userProvidedUsername!=username)
 					{
 				%>
-						<div id="loginFailed">Username or password incorrect!</div> <!-- if the password is incorrect, show this -->
+						<div id="loginFailed">K‰ytt‰j‰tunnus tai salasana v‰‰rin!</div> <!-- if the password is incorrect, show this -->
 				<%
 					}
 				%>
