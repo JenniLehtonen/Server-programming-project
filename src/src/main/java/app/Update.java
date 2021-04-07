@@ -18,6 +18,10 @@ import data.Question;
     urlPatterns = {"/showquestiontoedit"}
 )
 public class Update extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Dao dao;
 	public void init() {
 		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "admin", "salasana");
