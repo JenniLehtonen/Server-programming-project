@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Dao;
-import data.Answers;
 import data.Candidates;
+import data.CandidatesAndAnswers;
 
 @WebServlet("/compareUserAnswersToCandidateAnswers")
 public class compareUserAnswersToCandidateAnswers extends HttpServlet{
@@ -41,17 +41,12 @@ public class compareUserAnswersToCandidateAnswers extends HttpServlet{
 	 * @param list 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    public ArrayList<Answers> getBoth(ArrayList<Answers> list, ArrayList<Candidates> list1){ //Combine two arraylists
-    	/*ArrayList<Answers> candidatesAndAnswers = new ArrayList<>();
-    	candidatesAndAnswers.addAll(list);
-    	candidatesAndAnswers.addAll(list1);*/
-		return null;
-		
-	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Answers> list=null;
+		ArrayList<CandidatesAndAnswers> list=null;
 		if (dao.getConnection()) {
 			list=dao.readAllAnswers();
+			System.out.println(list);
 		}
 		else {
 			System.out.println("No connection to database");
@@ -64,16 +59,8 @@ public class compareUserAnswersToCandidateAnswers extends HttpServlet{
 		else {
 			System.out.println("No connection to database");
 		}
-		//System.out.println(list.addAll(list1));
-		List<String> combinedList = (List<String>) Stream.of(list, list1)
-                .flatMap(x -> x.stream())
-                .collect(Collectors.toList());
-		System.out.println(combinedList);
-		
-		//getBoth(list, list1);
-		request.setAttribute("cadidatesAndAnswers",combinedList);
-		request.setAttribute("answerslist", list);
-		request.setAttribute("candidateslist", list1);
+
+		request.setAttribute("candidatesAndAnswersList", list);
 
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/compareUserAnswersToCandidateAnswers.jsp");
 		rd.forward(request, response); 

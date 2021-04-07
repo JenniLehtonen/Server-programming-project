@@ -13,7 +13,7 @@
 		<c:forEach var="question" items="${requestScope.questionlist}">
 
 			<b>Kysymysid</b>
-			${question.id}<a href="removeQuestion?id=${question.id}">Poista kysymys</a><br>
+			${question.id}<a href="removeQuestions?id=${question.id}">Poista kysymys</a><br>
 			<b>Kysymys</b><br>
 			<b>${question.whatquestion}</b><br>	
 		</c:forEach>
