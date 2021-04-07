@@ -245,7 +245,12 @@ public class Dao {
 		
 				}
 				System.out.println("Answers collected");
-				System.out.println("Ehdokkaan 1 vastaukset: " + answers1 + ". Ehdokkaan 2 vastaukset: " + answers2 +". Ehdokkaan 3 vastaukset: " + answers3 +". Ehdokkaan 4 vastaukset: " + answers4 +". Ehdokkaan 5 vastaukset: " + answers5 + "." );
+				System.out.println("Ehdokkaan 1 vastaukset: " + answers1 + ". ");
+				System.out.println("Ehdokkaan 2 vastaukset: " + answers2 + ". ");
+				System.out.println("Ehdokkaan 3 vastaukset: " + answers3 + ". ");
+				System.out.println("Ehdokkaan 4 vastaukset: " + answers4 + ". ");
+				System.out.println("Ehdokkaan 5 vastaukset: " + answers5 + ". ");
+						 
 			return answers1;
 		}
 		catch(SQLException e)
