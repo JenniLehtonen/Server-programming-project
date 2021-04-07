@@ -6,10 +6,10 @@
  <%@ page import="dao.Dao" %> 
  <%@ page import="app.ShowQuestion" %>
  <%@ include file="/header.html" %>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
    
     
-<%@ include file="../header.html" %>
+
 
 
 <h2>Answer the questions</h2><br><br>
@@ -17,6 +17,30 @@
 
 
  <%
+            @SuppressWarnings("unchecked") 
+            ArrayList<Question> questionList = (ArrayList<Question>)request.getAttribute("questionlist");
+            for (int i=0;questionList!=null && i<questionList.size();i++) {
+            	Question question=questionList.get(i);
+            	%>
+            <div>
+                <%= question.getId() %> <br>
+                <%= question.getWhatquestion() %>
+                 </div>
+                <form><b>
+                     <input type = "radio" name = "Q1" value="1"> 1 Totally agreed<br>
+    				 <input type = "radio" name = "Q1" value="2"> 2<br>
+    				 <input type = "radio" name = "Q1" value="3"> 3<br>
+    				 <input type = "radio" name = "Q1" value="4"> 4<br>
+    				 <input type = "radio" name = "Q1" value="5"> 5 Totally disagreed<br>
+                </b></form>
+                    
+                <%
+            } 
+        %>
+
+
+
+ <%/***
  @SuppressWarnings("unchecked")
  ArrayList<Question> questionList=(ArrayList<Question>)request.getAttribute("questionlist");
  Question f2=questionList.get(0);
@@ -39,7 +63,7 @@
  Question f19=questionList.get(17);
  Question f20=questionList.get(18);
  Question f21=questionList.get(19);***/
- out.println("<form action=\"Game\" method=\"POST\">" +
+ /***out.println("<form action=\"Game\" method=\"POST\">" +
 			
 		 
  
@@ -77,8 +101,8 @@
     "<Center><a href=>/SaveAnswers</a><INPUT  TYPE=\"SUBMIT\"></Center>" +
 
     "</form>"
-    );%>
-</ol>
+    );***/%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%></ol>
 
 
 <%@ include file="../footer.html" %>
