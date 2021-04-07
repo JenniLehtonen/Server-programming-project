@@ -1,4 +1,5 @@
 <%@ include file="../header.html" %>
+<link rel="stylesheet" href="/jsp/login.css">
 
 				<h1>Login</h1>
 				<form action="/login" method="GET">
