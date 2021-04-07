@@ -10,6 +10,12 @@
 
 <%@ include file="../header.html" %>
 
+<c:forEach var="candidatePoints" items="${requestScope.points}">
 
+
+
+${candidatePoints.key} | ${candidatePoints.value} <br><br>
+
+</c:forEach>
 
 <%@ include file="../footer.html" %>

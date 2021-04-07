@@ -115,6 +115,30 @@ public class Dao {
 		}
 	}
 	
+	public ArrayList<Answers> readCandidatesAnswers(int id) {
+		Answers a = null;
+		ArrayList<Answers> list = new ArrayList();
+		try {
+			String sql="select * from vastaukset where ehdokas_id=?";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			ResultSet RS=pstmt.executeQuery();
+			while (RS.next()){
+				a = new Answers();
+				System.out.println("Haetaan tietoja...");
+				a.setEhdokas_id(RS.getInt("ehdokas_id"));
+				a.setVastaus(RS.getInt("vastaus"));
+				a.setKysymys_id(RS.getInt("kysymys_id"));			
+				list.add(a);
+				System.out.println("Tiedot haettu!");
+			}
+			return list;
+		}
+		catch(SQLException e) {
+			return null;
+		}
+	}
+	
 	public ArrayList<Question> updateQuestion(Question f) {
 		try {
 			String sql="update kysymykset set kysymys=? where id=?";
