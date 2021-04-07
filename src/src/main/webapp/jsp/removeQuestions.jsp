@@ -9,13 +9,13 @@
 <head>
 <link rel="stylesheet" href="koodit.css">
 </head>
-	  <h1>Poista vaalikoneen kysymyksiä</h1>
+	  <h1 style="text-align:center;">Poista vaalikoneen kysymyksiä</h1>
 		<c:forEach var="question" items="${requestScope.questionlist}">
-
 			<b>Kysymysid</b>
-			${question.id}<a href="removeQuestion?id=${question.id}">Poista kysymys</a><br>
-			<b>Kysymys</b><br>
-			<b>${question.whatquestion}</b><br>	
+			${question.id}<br>
+			<b>Kysymys: </b><br>
+			${question.whatquestion}<br>	
+			<a id="removeButton" href="removeQuestions?id=${question.id}">Poista kysymys</a><br>
 		</c:forEach>
 		
 <%@ include file="../footer.html" %>

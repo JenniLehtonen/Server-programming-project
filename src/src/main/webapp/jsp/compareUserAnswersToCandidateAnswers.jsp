@@ -10,13 +10,20 @@
 <link rel="stylesheet" href="koodit.css">
 </head>
 	  <h1>Vertaa vastauksiasi kandidaattien vastauksiin</h1>
-		<c:forEach var="answer" items="${requestScope.answerslist}">
-			<b>Ehdokasid: </b>
+		<c:forEach var="answer" items="${requestScope.candidatesAndAnswersList}">
+			<b>Ehdokas: </b>
 			${answer.ehdokas_id}<br>
+			<b>${answer.ehdokasSukunimi}</b>
+			<b>${answer.ehdokasEtunimi}</b>
 			<b>Kysymysid</b>
 			${answer.kysymys_id}<br>
 			<b>Vastaus</b>
 			<b>${answer.vastaus}</b>
+			
 			<br> <br>
 		</c:forEach>
+		<!--<c:forEach var="answer" items="${requestScope.candidateslist}">
+			<b>Ehdokkaan nimi: </b>
+			${answer.etunimi}<br>
+		</c:forEach>-->
 <%@ include file="../footer.html" %>

@@ -14,7 +14,7 @@
 <h2>Edit question</h2>
 <form action='update' method='post'>
 Question id: <input type='text' name='id' value='${requestScope.question.id}' readonly><br> 
-Question: <input type='text' name='breed' value='${requestScope.question.whatquestion}'><br>
+Question: <input type='text' name='question' value='${requestScope.question.whatquestion}'><br>
 <input type='submit' name='ok' value='Send'> 
 </form>
 </body>

@@ -8,8 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import data.Answers;
 import data.Candidates;
+import data.CandidatesAndAnswers;
 import data.Question;
 
 import java.sql.Connection;
@@ -29,7 +29,7 @@ public class Dao {
 
 	/**
 	 * Connecting to database, returns true if the connection is done successfully
-	 * 
+	 *
 	 * @return
 	 */
 	public boolean getConnection() {
@@ -52,7 +52,7 @@ public class Dao {
 
 	/**
 	 * Read all candidates and add the to the list
-	 * 
+	 *
 	 * @return
 	 */
 	public ArrayList<Candidates> readAllCandidates() {
@@ -78,14 +78,16 @@ public class Dao {
 			return null;
 		}
 	}
-	
-	public ArrayList<Answers> readAllAnswers(){
-		ArrayList<Answers> list = new ArrayList<>();
+
+	public ArrayList<CandidatesAndAnswers> readAllAnswers(){
+		ArrayList<CandidatesAndAnswers> list = new ArrayList<>();
 		try {
 			Statement stmt = conn.createStatement();
-			ResultSet RS = stmt.executeQuery("select * from vastaukset");
+			ResultSet RS = stmt.executeQuery("select vastaukset.kysymys_id, vastaukset.vastaus, ehdokkaat.ehdokas_id, ehdokkaat.etunimi, ehdokkaat.sukunimi from vastaukset inner join ehdokkaat on vastaukset.ehdokas_id=ehdokkaat.ehdokas_id;");
 			while (RS.next()) {
-				Answers answer = new Answers();
+				CandidatesAndAnswers answer = new CandidatesAndAnswers();
+				answer.setEhdokasEtunimi(RS.getString("etunimi"));
+				answer.setEhdokasSukunimi(RS.getString("sukunimi"));
 				answer.setEhdokas_id(RS.getInt("ehdokas_id"));
 				answer.setVastaus(RS.getInt("vastaus"));
 				answer.setKysymys_id(RS.getInt("kysymys_id"));
@@ -96,7 +98,7 @@ public class Dao {
 			return null;
 		}
 	}
-	
+
 	public ArrayList<Question> readAllQuestion() {
 		ArrayList<Question> list=new ArrayList<>();
 		try {
@@ -115,16 +117,16 @@ public class Dao {
 		}
 	}
 	
-	public ArrayList<Answers> readCandidatesAnswers(int id) {
-		Answers a = null;
-		ArrayList<Answers> list = new ArrayList();
+	public ArrayList<CandidatesAndAnswers> readCandidatesAnswers(int id) {
+		CandidatesAndAnswers a = null;
+		ArrayList<CandidatesAndAnswers> list = new ArrayList();
 		try {
 			String sql="select * from vastaukset where ehdokas_id=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, id);
 			ResultSet RS=pstmt.executeQuery();
 			while (RS.next()){
-				a = new Answers();
+				a = new CandidatesAndAnswers();
 				System.out.println("Haetaan tietoja...");
 				a.setEhdokas_id(RS.getInt("ehdokas_id"));
 				a.setVastaus(RS.getInt("vastaus"));
@@ -137,8 +139,27 @@ public class Dao {
 		catch(SQLException e) {
 			return null;
 		}
+		}
+
+	public ArrayList<Question> addQuestion(Question q) {
+		String sql = "INSERT INTO kysymykset (kysymys_id, kysymys) VALUES (?,?)";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, q.getId());
+			pstmt.setString(2, q.getWhatquestion());
+			pstmt.executeUpdate();
+			return readAllQuestion();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
-	
+
 	public ArrayList<Question> updateQuestion(Question f) {
 		try {
 			String sql="update kysymykset set kysymys=? where id=?";
@@ -152,7 +173,7 @@ public class Dao {
 			return null;
 		}
 	}
-	
+
 	public Question readQuestion(String id) {
 		Question f=null;
 		try {
@@ -174,12 +195,12 @@ public class Dao {
 
 	/**
 	 * Update a name of one candidate. Don't need this yet. Needs all parameters
-	 * 
+	 *
 	 * @param c
 	 * @return
 	 */
 	public ArrayList<Candidates> updateCandidate(Candidates candidate) throws SQLException {
-		
+
 		try {
 				String sql="update ehdokkaat set sukunimi=?, etunimi=?, puolue=?, kotipaikkakunta=?, ika=?, miksi_eduskuntaan=?, mita_asioita_haluat_edistaa=?, ammatti=? where ehdokas_id=?";
 				PreparedStatement pstmt=conn.prepareStatement(sql);
@@ -199,13 +220,13 @@ public class Dao {
 			catch(SQLException e) {
 				System.out.println("Updating fails");
 				return null;
-			} 
-				
+			}
+
 		}
 
 	/**
 	 * Delete candidate based on id
-	 * 
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -216,6 +237,18 @@ public class Dao {
 			pstmt.setString(1, id);
 			pstmt.executeUpdate();
 			return readAllCandidates();
+		} catch (SQLException e) {
+			return null;
+		}
+	}
+
+	public ArrayList<Question> removeQuestion(String id) {
+		try {
+			String sql = "delete from kysymykset where kysymys_id=?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			return readAllQuestion();
 		} catch (SQLException e) {
 			return null;
 		}
@@ -245,7 +278,7 @@ public class Dao {
 
 	/**
 	 * Read one candidate based on ehdokas_id
-	 * 
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -278,7 +311,7 @@ public class Dao {
 
 	/**
 	 * Read candidates based on party
-	 * 
+	 *
 	 * @param party
 	 * @return
 	 */
@@ -310,7 +343,7 @@ public class Dao {
 			return null;
 		}
 	}
-	
+
 	public HashMap<Integer, Integer> candidatesAnswers()
 	{
 		HashMap<Integer, Integer> answers1 = new HashMap<Integer, Integer>();
@@ -325,13 +358,13 @@ public class Dao {
 			//PreparedStatement pstmt=conn.prepareStatement(sql);
 			//pstmt.setInt(1, ehdokas_id);
 			ResultSet RS=stmt.executeQuery(sql);
-			
+
 				while (RS.next()){
-					
+
 					int ehdokas_id = RS.getInt("ehdokas_id");
 					int answer = RS.getInt("vastaus");
 					int kysymys_id = RS.getInt("kysymys_id");
-					
+
 					switch(ehdokas_id)
 					{
 					case 1:
@@ -345,10 +378,14 @@ public class Dao {
 					case 5:
 						answers5.put(kysymys_id, answer);
 					}
-		
+
 				}
 				System.out.println("Answers collected");
-				System.out.println("Ehdokkaan 1 vastaukset: " + answers1 + ". Ehdokkaan 2 vastaukset: " + answers2 +". Ehdokkaan 3 vastaukset: " + answers3 +". Ehdokkaan 4 vastaukset: " + answers4 +". Ehdokkaan 5 vastaukset: " + answers5 + "." );
+				System.out.println("Ehdokkaan 1 vastaukset: " + answers1 + ".");
+				System.out.println("Ehdokkaan 2 vastaukset: " + answers2 + ".");
+				System.out.println("Ehdokkaan 3 vastaukset: " + answers3 + ".");
+				System.out.println("Ehdokkaan 4 vastaukset: " + answers4 + ".");
+				System.out.println("Ehdokkaan 5 vastaukset: " + answers5 + ".");
 			return answers1;
 		}
 		catch(SQLException e)

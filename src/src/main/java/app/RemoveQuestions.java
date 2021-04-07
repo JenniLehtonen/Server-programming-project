@@ -25,9 +25,10 @@ public class RemoveQuestions extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
+		String id=request.getParameter("id"); //Get the question id from removeQuestions.jsp
 		ArrayList<Question> list=null;
 		if (dao.getConnection()) {
-			list=dao.readAllQuestion();
+			list=dao.removeQuestion(id); //send the question id to dao
 			System.out.println("connected");
 			System.out.println(list);
 		}
