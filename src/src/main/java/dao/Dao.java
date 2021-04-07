@@ -8,8 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import data.Answers;
 import data.Candidates;
+import data.CandidatesAndAnswers;
 import data.Question;
 
 import java.sql.Connection;
@@ -79,13 +79,15 @@ public class Dao {
 		}
 	}
 	
-	public ArrayList<Answers> readAllAnswers(){
-		ArrayList<Answers> list = new ArrayList<>();
+	public ArrayList<CandidatesAndAnswers> readAllAnswers(){
+		ArrayList<CandidatesAndAnswers> list = new ArrayList<>();
 		try {
 			Statement stmt = conn.createStatement();
-			ResultSet RS = stmt.executeQuery("select * from vastaukset");
+			ResultSet RS = stmt.executeQuery("select vastaukset.kysymys_id, vastaukset.vastaus, ehdokkaat.ehdokas_id, ehdokkaat.etunimi, ehdokkaat.sukunimi from vastaukset inner join ehdokkaat on vastaukset.ehdokas_id=ehdokkaat.ehdokas_id;");
 			while (RS.next()) {
-				Answers answer = new Answers();
+				CandidatesAndAnswers answer = new CandidatesAndAnswers();
+				answer.setEhdokasEtunimi(RS.getString("etunimi"));
+				answer.setEhdokasSukunimi(RS.getString("sukunimi"));
 				answer.setEhdokas_id(RS.getInt("ehdokas_id"));
 				answer.setVastaus(RS.getInt("vastaus"));
 				answer.setKysymys_id(RS.getInt("kysymys_id"));
@@ -111,6 +113,25 @@ public class Dao {
 			return list;
 		}
 		catch(SQLException e) {
+			return null;
+		}
+	}
+	
+	public ArrayList<Question> addQuestion(Question q) {
+		String sql = "INSERT INTO kysymykset (kysymys_id, kysymys) VALUES (?,?)";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, q.getId());
+			pstmt.setString(2, q.getWhatquestion());
+			pstmt.executeUpdate();
+			return readAllQuestion();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return null;
 		}
 	}
