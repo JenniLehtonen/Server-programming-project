@@ -29,20 +29,20 @@ public class FindCandidates extends HttpServlet{
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HashMap<Integer, Integer> list=null;
+		HashMap<Integer, Integer> bestCandidates=null;
 		//String id = request.getParameter("ehdokas_id");
 		//int ehdokas_id = Integer.parseInt(id);
 		if (dao.getConnection()) {
-			list=dao.candidatesAnswers();
+			bestCandidates=dao.candidatesAnswers();
 		}
 		else {
 			System.out.println("No connection to database");
 		}
 	
-		//request.setAttribute("candidateslist", list);
+		//request.setAttribute("bestCandidates", bestCandidates);
 		
-		response.getWriter().println(list);
-		//RequestDispatcher rd=request.getRequestDispatcher("/jsp/showcandidatesbyparty.jsp");
+		response.getWriter().println(bestCandidates);
+		//RequestDispatcher rd=request.getRequestDispatcher("/jsp/showcCandidatesInOrder.jsp");
 		//rd.forward(request, response); 
 		
 	}

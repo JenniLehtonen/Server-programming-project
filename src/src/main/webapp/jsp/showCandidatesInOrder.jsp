@@ -19,25 +19,10 @@
 <body>
 <%@ include file="../candidatesList.html" %>
 
-<div class="dropdown">
-  <button class="dropbtn">Dropdown</button>
-  <div class="dropdown-content">
-  	<a href='/showcandidates'>All candidates</a>
-    <a href="/readparty?party='Vasemmistoliitto'">Vasemmistoliitto</a>
-    <a href="/readparty?party='Suomen Sosialidemokraattinen Puolue'">Suomen Sosialidemokraattinen Puolue</a>
-    <a href="/readparty?party='Vihrealiitto'">Vihreä liitto</a>
-    <a href="/readparty?party='Suomen Kommunistinen Puolue'">Suomen Kommunistinen Puolue</a>
-    <a href="/readparty?party='Suomen Keskusta'">Suomen Keskusta</a>
-    <a href="/readparty?party='Suomen ruotsalainen kansanpuolue'">Suomen ruotsalainen kansanpuolue</a>
-    <a href="/readparty?party='Suomen Kristillisdemokraatit (KD)'">Suomen Kristillisdemokraatit (KD)</a>
-    <a href="/readparty?party='Kansallinen Kokoomus'">Kansallinen Kokoomus</a>
-    <a href="/readparty?party='Itsenaisyyspuolue'">Itsenäisyyspuolue</a>
-    
-  </div>
-</div>
+
 <br><br>
 
-<c:forEach var="candidate" items="${requestScope.candidateslist}" >
+<c:forEach var="candidate" items="${requestScope.bestCandidates}" >
 <h2><b>${candidate.ehdokas_id}:</b> ${candidate.etunimi} ${candidate.sukunimi} </h2>
 <b>Puolue: </b><br>
 ${candidate.puolue}<br>
