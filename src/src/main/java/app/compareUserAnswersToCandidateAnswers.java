@@ -1,6 +1,10 @@
 package app;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,8 +37,17 @@ public class compareUserAnswersToCandidateAnswers extends HttpServlet{
     }
 
 	/**
+	 * @param list1 
+	 * @param list 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    public ArrayList<Answers> getBoth(ArrayList<Answers> list, ArrayList<Candidates> list1){ //Combine two arraylists
+    	/*ArrayList<Answers> candidatesAndAnswers = new ArrayList<>();
+    	candidatesAndAnswers.addAll(list);
+    	candidatesAndAnswers.addAll(list1);*/
+		return null;
+		
+	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Answers> list=null;
 		if (dao.getConnection()) {
@@ -51,7 +64,14 @@ public class compareUserAnswersToCandidateAnswers extends HttpServlet{
 		else {
 			System.out.println("No connection to database");
 		}
-	
+		//System.out.println(list.addAll(list1));
+		List<String> combinedList = (List<String>) Stream.of(list, list1)
+                .flatMap(x -> x.stream())
+                .collect(Collectors.toList());
+		System.out.println(combinedList);
+		
+		//getBoth(list, list1);
+		request.setAttribute("cadidatesAndAnswers",combinedList);
 		request.setAttribute("answerslist", list);
 		request.setAttribute("candidateslist", list1);
 

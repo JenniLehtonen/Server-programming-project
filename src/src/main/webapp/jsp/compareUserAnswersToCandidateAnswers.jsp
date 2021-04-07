@@ -10,15 +10,9 @@
 <link rel="stylesheet" href="koodit.css">
 </head>
 	  <h1>Vertaa vastauksiasi kandidaattien vastauksiin </h1>
-		<c:forEach var="answer" items="${requestScope.answerslist}" >
-			<b>Ehdokasid: </b><br>
-			
-			<!--<c:forEach var="candidate" items="${requestScope.candidateslist}">
-			<b>Ehdokasnimi:</b> 
-			${candidate.etunimi}
-			</c:forEach>-->
-			
-			${answer.ehdokas_id} <br>
+		<c:forEach var="answer" items="${requestScope.answerslist}">
+			<b>Ehdokasid: </b>
+			${answer.ehdokas_id}<br>
 			<b>Kysymysid</b>
 			${answer.kysymys_id}<br>
 			<b>Vastaus</b>
