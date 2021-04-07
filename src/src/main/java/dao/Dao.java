@@ -102,13 +102,11 @@ public class Dao {
 		try {
 			Statement stmt=conn.createStatement();
 			ResultSet RS=stmt.executeQuery("select * from kysymykset");
-			System.out.println("kysymysarray");
 			while (RS.next()){
 				Question f=new Question();
 				f.setId(RS.getInt("KYSYMYS_ID"));
 				f.setWhatquestion(RS.getString("KYSYMYS"));
 				list.add(f);
-				System.out.println("kysymysarrayhin lis�tty kysymykset");
 			}
 			return list;
 		}

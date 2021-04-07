@@ -9,14 +9,13 @@
 <head>
 <link rel="stylesheet" href="koodit.css">
 </head>
-	  <h1>Vertaa vastauksiasi kandidaattien vastauksiin</h1>
-		<c:forEach var="answer" items="${requestScope.answerslist}">
-			<b>Ehdokasid: </b>
-			${answer.ehdokas_id}<br>
+	  <h1>Poista vaalikoneen kysymyksiä</h1>
+		<c:forEach var="question" items="${requestScope.questionlist}">
+
 			<b>Kysymysid</b>
-			${answer.kysymys_id}<br>
-			<b>Vastaus</b>
-			<b>${answer.vastaus}</b>
-			<br> <br>
+			${question.id}<a href="removeQuestion?id=${question.id}">Poista kysymys</a><br>
+			<b>Kysymys</b><br>
+			<b>${question.whatquestion}</b><br>	
 		</c:forEach>
+		
 <%@ include file="../footer.html" %>
