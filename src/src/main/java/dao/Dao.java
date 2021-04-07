@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -214,6 +215,8 @@ public class Dao {
 		HashMap<Integer, Integer> answers3 = new HashMap<Integer, Integer>();
 		HashMap<Integer, Integer> answers4 = new HashMap<Integer, Integer>();
 		HashMap<Integer, Integer> answers5 = new HashMap<Integer, Integer>();
+		
+		
 		//ArrayList<Integer> list=new ArrayList<>();
 		try {
 			Statement stmt=conn.createStatement();
