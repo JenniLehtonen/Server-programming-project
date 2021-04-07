@@ -40,7 +40,7 @@ public class Update extends HttpServlet {
 		}
 		
 		request.setAttribute("questionlist", list);
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showquestion.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showquestiontoedit.jsp");
 		rd.forward(request, response);
 	}
 }
