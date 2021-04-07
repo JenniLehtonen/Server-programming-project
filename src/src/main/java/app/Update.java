@@ -15,12 +15,12 @@ import data.Question;
 
 @WebServlet(
     name = "Update",
-    urlPatterns = {"/update"}
+    urlPatterns = {"/showquestiontoedit"}
 )
 public class Update extends HttpServlet {
 	private Dao dao;
 	public void init() {
-		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "admin", "salasanasalasana");
+		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "admin", "salasana");
 	}
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
