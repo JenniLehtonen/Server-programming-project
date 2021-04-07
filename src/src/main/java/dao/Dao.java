@@ -127,12 +127,10 @@ public class Dao {
 			ResultSet RS=pstmt.executeQuery();
 			while (RS.next()){
 				a = new CandidatesAndAnswers();
-				System.out.println("Haetaan tietoja...");
 				a.setEhdokas_id(RS.getInt("ehdokas_id"));
 				a.setVastaus(RS.getInt("vastaus"));
 				a.setKysymys_id(RS.getInt("kysymys_id"));			
 				list.add(a);
-				System.out.println("Tiedot haettu!");
 			}
 			return list;
 		}
