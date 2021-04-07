@@ -17,7 +17,6 @@
 
 
 <h2>Answer the questions</h2><br><br>
-<ol>
 <c:forEach var="question" items="${requestScope.questionlist}" >
 <b>${question.id}: </b>${question.whatquestion}<a>
 <br><br><input type="radio" id="1" name="${question.id}" value="1"><label for="1">1  Totally disagree</label><br> </a><a><input type="radio" id="2" name="${question.id}" value="2"><label for="2">2</label> </a><br><a><input type="radio" id="3" name="${question.id}" value="3"><label for="3">3</label><br> </a>
