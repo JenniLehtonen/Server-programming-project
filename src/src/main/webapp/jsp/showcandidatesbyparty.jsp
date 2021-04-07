@@ -16,7 +16,7 @@
   	<a href='/showcandidates'>All candidates</a>
     <a href="/readparty?party='Vasemmistoliitto'">Vasemmistoliitto</a>
     <a href="/readparty?party='Suomen Sosialidemokraattinen Puolue'">Suomen Sosialidemokraattinen Puolue</a>
-    <a href="/readparty?party='Vihrealiitto'">Vihreä liitto</a>
+    <a href="/readparty?party='Vihrea liitto'">Vihreä liitto</a>
     <a href="/readparty?party='Suomen Kommunistinen Puolue'">Suomen Kommunistinen Puolue</a>
     <a href="/readparty?party='Suomen Keskusta'">Suomen Keskusta</a>
     <a href="/readparty?party='Suomen ruotsalainen kansanpuolue'">Suomen ruotsalainen kansanpuolue</a>

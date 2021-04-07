@@ -20,7 +20,7 @@ import data.Question;
 
 
 import dao.Dao;
-import data.Question;
+
 
 /**
  * Servlet implementation class ShowQuestion
