@@ -31,6 +31,20 @@ public class Candidates {
 		
 	}
 	
+	public Candidates(String id, String sukunimi, String etunimi, String puolue, String koti, String ika, String miksi, String mita, String ammatti)
+	{
+		setEhdokas_id(id);
+		this.sukunimi = sukunimi;
+		this.etunimi = etunimi;
+		this.puolue = puolue;
+		this.kotipaikkakunta = koti;
+		setIka(ika);
+		this.miksi_eduskuntaan = miksi;
+		this.mita_asioita_haluat_edistaa = mita;
+		this.ammatti = ammatti;
+		
+	}
+	
 	public int getEhdokas_id() {
 		return ehdokas_id;
 	}

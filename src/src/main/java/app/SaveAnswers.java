@@ -13,10 +13,21 @@ import dao.Dao;
 import data.*;
 
 
-@WebServlet("/saveanswers")
+@WebServlet("/SaveAnswers")
 public class SaveAnswers extends HttpServlet {
+	
+	public SaveAnswers() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	
+  
+	
 	private static final long serialVersionUID = 1L;
 	private Dao dao=null;
+	
+	
 	
 	@Override
 	public void init() {
@@ -26,26 +37,17 @@ public class SaveAnswers extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SaveAnswers() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+    
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Candidates> list=null;
-		
-		if (dao.getConnection()) {
-			list=dao.readAllCandidates();
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    String q1 = request.getParameter("Q1");
+	    String q2 = request.getParameter("Q2");
+	   
 		}
-		else {
-			System.out.println("No connection to database");
-		}
-		request.setAttribute("candidateslist", list);
+	    // more processing code...
 		
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showshort.jsp");
-		rd.forward(request, response);
-	}
+	
 }
