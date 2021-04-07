@@ -163,6 +163,18 @@ public class Dao {
 			return null;
 		}
 	}
+	
+	public ArrayList<Question> removeQuestion(String id) {
+		try {
+			String sql = "delete from kysymykset where kysymys_id=?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+			return readAllQuestion();
+		} catch (SQLException e) {
+			return null;
+		}
+	}
 
 	public ArrayList<Candidates> addCandidate(Candidates c) {
 		String sql = "INSERT INTO ehdokkaat (ehdokas_id, sukunimi, etunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan, mita_asioita_haluat_edistaa, ammatti) VALUES (?,?,?,?,?,?,?,?,?)";
