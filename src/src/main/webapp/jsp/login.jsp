@@ -1,7 +1,7 @@
 <%@ include file="../header.html" %>
 <link rel="stylesheet" href="/jsp/login.css">
 
-				<h1>Kirjaudu sisään</h1>
+				<h2>Kirjaudu sisään</h2>
 				<form action="/login" method="GET">
 					<label>Käyttäjätunnus : </label><br>
 		            <input type="text" placeholder="Syötä käyttäjätunnus" name="username"><br> 
