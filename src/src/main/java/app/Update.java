@@ -14,22 +14,26 @@ import dao.Dao;
 import data.Question;
 
 @WebServlet(
-    name = "Update",
+    name = "showQuestionToEdit",
     urlPatterns = {"/showQuestionToEdit"}
 )
 public class Update extends HttpServlet {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private Dao dao;
 	public void init() {
 		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "admin", "salasana");
 	}
-	@Override
+	
+	/***public void doGet(HttpServletRequest request, HttpServletResponse response) 
+		     throws IOException
+		     {
+				response.sendRedirect("index.html");
+		     }****/
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException {
-		response.sendRedirect("index.html");
+		response.sendRedirect("\"/jsp/showquestiontoedit.jsp\"");
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
