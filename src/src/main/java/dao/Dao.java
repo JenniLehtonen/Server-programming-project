@@ -160,7 +160,7 @@ public class Dao {
 
 	public ArrayList<Question> updateQuestion(Question f) {
 		try {
-			String sql="update kysymykset set kysymys=? where id=?";
+			String sql="update kysymykset set kysymys=? where KYSYMYS_ID=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, f.getWhatquestion());
 			pstmt.setInt(2, f.getId());
@@ -175,7 +175,7 @@ public class Dao {
 	public Question readQuestion(String id) {
 		Question f=null;
 		try {
-			String sql="select * from kysymykset where id=?";
+			String sql="select * from kysymykset where KYSYMYS_ID=?";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			ResultSet RS=pstmt.executeQuery();

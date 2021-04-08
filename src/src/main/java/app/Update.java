@@ -15,7 +15,7 @@ import data.Question;
 
 @WebServlet(
     name = "Update",
-    urlPatterns = {"/showquestiontoedit"}
+    urlPatterns = {"/showQuestionToEdit"}
 )
 public class Update extends HttpServlet {
 	/**
