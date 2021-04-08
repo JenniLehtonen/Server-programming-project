@@ -25,25 +25,11 @@ ${candidatePoints.key} | ${candidatePoints.value} <br><br>
 
 
 
-
-
-<%
-int i = 0;
-%>
-
 <c:forEach var="pointsAndCandidates"
 	items="${requestScope.pointsAndCandidates}">
 
-	<c:set var="currentID" value="${pointsAndCandidates.getCandidate_id()}" />
-	<c:set var="candidate" value="${candidatelist.get(i)}" />
-
-
-${pointsAndCandidates.getCandidate_id()} | ${candidate.getEtunimi()} ${candidate.getSukunimi()} | ${pointsAndCandidates.getPointAmount()} <br>
+${pointsAndCandidates.candidate_id} | ${pointsAndCandidates.candidateFirstname} ${pointsAndCandidates.candidateSurname} | ${pointsAndCandidates.pointAmount} <br>
 	<br>
-
-	<%
-	i = i++;
-	%>
 
 </c:forEach>
 

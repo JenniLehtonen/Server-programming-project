@@ -84,13 +84,14 @@ public class bestCandidates extends HttpServlet {
 		CandidatesAndAnswers candidateAnswer = null;
 		ArrayList<CandidatesAndAnswers> candidatesAnswers = null;
 
-		Points points = new Points();
 		//HashMap<Integer, Integer> pointsHash = new HashMap<Integer, Integer>();
 		ArrayList<Points> pointsAndCandidates = new ArrayList<>();
 		for (int i = 0; i < candidatelist.size(); i++) {
+			Points points = new Points();
 			differenceSum = 0;
 			if (dao.getConnection()) {
-				candidatesAnswers = dao.readCandidatesAnswers(i);
+				Candidates c = candidatelist.get(i);
+				candidatesAnswers = dao.readCandidatesAnswers(c.getEhdokas_id());
 			} else {
 				System.out.println("No connection to database");
 			}
@@ -100,12 +101,15 @@ public class bestCandidates extends HttpServlet {
 					candidateAnswer = candidatesAnswers.get(j);
 					difference = useranswerlist.get(j) - candidateAnswer.getVastaus();
 					differenceSum = differenceSum + Math.abs(difference);
-
-					//pointsHash.put(candidateAnswer.getEhdokas_id(), differenceSum);
+					
+					System.out.println("ID: " + candidatelist.get(i).getEhdokas_id() + ", vastaus: " + candidatesAnswers.get(j).getVastaus());
 
 				}
+				//pointsHash.put(candidateAnswer.getEhdokas_id(), differenceSum);
 				points.setCandidate_id(candidatelist.get(i).getEhdokas_id());
 				points.setPointAmount(differenceSum);
+				points.setCandidateFirstname(candidatelist.get(i).getEtunimi());
+				points.setCandidateSurname(candidatelist.get(i).getSukunimi());
 				pointsAndCandidates.add(points);
 				System.out.println("ID: " + points.getCandidate_id() + ", points: " + points.getPointAmount());
 				
@@ -115,7 +119,6 @@ public class bestCandidates extends HttpServlet {
 
 		request.setAttribute("pointsAndCandidates", pointsAndCandidates);
 		//request.setAttribute("pointsHash", pointsHash);
-		request.setAttribute("candidatelist", candidatelist);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/bestCandidates.jsp");
 		dispatcher.forward(request, response);

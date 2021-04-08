@@ -121,7 +121,7 @@ public class Dao {
 		CandidatesAndAnswers a = null;
 		ArrayList<CandidatesAndAnswers> list = new ArrayList();
 		try {
-			String sql="select * from vastaukset where ehdokas_id=?";
+			String sql="select * from vastaukset where ehdokas_id=? order by kysymys_id";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, id);
 			ResultSet RS=pstmt.executeQuery();

@@ -3,7 +3,25 @@ package data;
 public class Points {
 	private int candidate_id;
 	private int pointAmount;
+	private String candidateFirstname;
+	private String candidateSurname;
 	
+	public String getCandidateFirstname() {
+		return candidateFirstname;
+	}
+
+	public void setCandidateFirstname(String candidateFirstname) {
+		this.candidateFirstname = candidateFirstname;
+	}
+
+	public String getCandidateSurname() {
+		return candidateSurname;
+	}
+
+	public void setCandidateSurname(String candidateSurname) {
+		this.candidateSurname = candidateSurname;
+	}
+
 	public Points() {
 		
 	}
