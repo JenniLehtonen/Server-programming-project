@@ -10,6 +10,7 @@
 
 <%@ include file="../header.html" %>
 
-<center>The data was successfully edited!</center>
-
+<center>Tietojen muuttaminen onnistui! <br>
+<a href="http://localhost:8080">Palaa etusivulle</a>
+</center>
 <%@ include file="../footer.html" %>
