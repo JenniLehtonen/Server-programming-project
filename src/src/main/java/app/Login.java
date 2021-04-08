@@ -22,7 +22,12 @@ import data.LoginData;
 )
 public class Login extends HttpServlet {
 
-  @Override
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+@Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws IOException, ServletException {
 	    
