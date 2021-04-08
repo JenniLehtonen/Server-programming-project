@@ -19,7 +19,6 @@ import data.Candidates;
 	    urlPatterns = {"/readparty"})
 	    
 public class ReadParty extends HttpServlet{
-
 	private static final long serialVersionUID = 1L;
 	private Dao dao;
 	public void init() {
