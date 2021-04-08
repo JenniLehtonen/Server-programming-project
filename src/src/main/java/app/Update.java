@@ -14,8 +14,8 @@ import dao.Dao;
 import data.Question;
 
 @WebServlet(
-    name = "showQuestionToEdit",
-    urlPatterns = {"/showQuestionToEdit"}
+    name = "updateQuestion",
+    urlPatterns = {"/updateQuestion"}
 )
 public class Update extends HttpServlet {
 	
@@ -25,16 +25,16 @@ public class Update extends HttpServlet {
 		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "admin", "salasana");
 	}
 	
-	/***public void doGet(HttpServletRequest request, HttpServletResponse response) 
+	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 		     throws IOException
 		     {
 				response.sendRedirect("index.html");
-		     }****/
+		     }
 	
-	public void doGet(HttpServletRequest request, HttpServletResponse response) 
+	/***public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException {
 		response.sendRedirect("\"/jsp/showquestiontoedit.jsp\"");
-	}
+	}***/
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
 		String id=request.getParameter("id");
@@ -48,7 +48,7 @@ public class Update extends HttpServlet {
 		}
 		
 		request.setAttribute("questionlist", list);
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showquestiontoedit.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showquestion2foredit.jsp");
 		rd.forward(request, response);
 	}
 }
