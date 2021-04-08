@@ -1,6 +1,6 @@
 package data;
 
-public class Points {
+public class Points implements Comparable<Points>{
 	private int candidate_id;
 	private int pointAmount;
 	private String candidateFirstname;
@@ -45,5 +45,23 @@ public class Points {
 
 	public void setPointAmount(int pointAmount) {
 		this.pointAmount = pointAmount;
+	}
+
+	/**
+	 * Verrataan pisteit‰, jotta voidaan j‰rjest‰‰ lista niiden mukaan
+	 * @param arg0
+	 * @return
+	 */
+	@Override
+	public int compareTo(Points p) {
+		
+		int compare = Integer.compare(pointAmount, p.pointAmount);
+		
+		return compare;
+	}
+	
+	public String toString()
+	{
+		return ""+candidate_id;
 	}
 }
