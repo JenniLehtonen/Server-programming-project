@@ -11,9 +11,9 @@
 <%@ include file="../header.html" %>
 
 <div class="dropdown">
-  <button class="dropbtn">Dropdown</button>
+  <button class="dropbtn">Valitse puolue</button>
   <div class="dropdown-content">
-  	<a href='/showcandidates'>All candidates</a>
+  	<a href='/showcandidates'>Kaikki ehdokkaat</a>
     <a href="/readparty?party='Vasemmistoliitto'">Vasemmistoliitto</a>
     <a href="/readparty?party='Suomen Sosialidemokraattinen Puolue'">Suomen Sosialidemokraattinen Puolue</a>
     <a href="/readparty?party='Vihrea liitto'">Vihreä liitto</a>

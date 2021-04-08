@@ -3,6 +3,7 @@ package app;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Hashtable;
 
@@ -112,6 +113,8 @@ public class bestCandidates extends HttpServlet {
 				points.setCandidateSurname(candidatelist.get(i).getSukunimi());
 				pointsAndCandidates.add(points);
 				System.out.println("ID: " + points.getCandidate_id() + ", points: " + points.getPointAmount());
+				
+				Collections.sort(pointsAndCandidates);
 				
 			}
 

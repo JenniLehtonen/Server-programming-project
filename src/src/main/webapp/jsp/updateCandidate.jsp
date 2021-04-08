@@ -1,6 +1,7 @@
 <%@ include file="../header.html" %>
+<link rel="stylesheet" href="koodit.css">
 
-<h2>Edit candidate</h2>
+<h2>Muokkaa ehdokkaan tietoja</h2>
 <br>
 <form action='/updatecandidate' method='post'>
 <b> Candidate's id </b> <br>

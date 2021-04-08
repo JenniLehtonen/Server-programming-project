@@ -11,7 +11,7 @@
 <%@ include file="../header.html" %>
 
   <div class="dropdown">
-  	<button class="dropbtn">Dropdown</button>
+  	<button class="dropbtn">Valitse puolue</button>
   	<div class="dropdown-content">
 
     <a href="/readparty?party='Vasemmistoliitto'">Vasemmistoliitto</a>
