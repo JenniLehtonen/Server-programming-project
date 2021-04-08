@@ -21,7 +21,7 @@
 <br>
 <form method="post" action="bestCandidates">
 	<c:forEach var="question" items="${requestScope.questionlist}">
-		<b>${question.id}: </b>${question.whatquestion}<a> <br> <br>
+		<b>${question.id}: </b>${question.whatquestion} <br> <br>
 			<input type="radio" id="${question.id}1" name="${question.id}"
 			value="1"><label for="${question.id}1">1 Totally
 				disagree</label><br> <input type="radio" id="${question.id}2"
