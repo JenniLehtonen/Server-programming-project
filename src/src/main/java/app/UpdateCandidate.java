@@ -62,7 +62,7 @@ public class UpdateCandidate extends HttpServlet{
 		}
 		
 		request.setAttribute("candidateslist", list);
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showShort.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/editOk.jsp");
 		rd.forward(request, response);
 	}
 }
