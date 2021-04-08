@@ -25,6 +25,7 @@ import com.mysql.jdbc.PreparedStatement;
 
 import dao.Dao;
 import data.CandidatesAndAnswers;
+import data.Points;
 import data.Candidates;
 import data.Question;
 
@@ -59,11 +60,16 @@ public class bestCandidates extends HttpServlet {
 		ArrayList<Candidates> candidatelist = null;
 		if (dao.getConnection()) {
 			candidatelist = dao.readAllCandidates();
+			for (int i = 0; i < candidatelist.size(); i++) {
+				Candidates x = candidatelist.get(i);
+				//System.out.println(x.getEhdokas_id());
+				//System.out.println(x.getEtunimi() + " " + x.getSukunimi());
+			}
 		} else {
 			System.out.println("No connection to database");
 		}
 
-		ArrayList<Integer> useranswerlist = new ArrayList();
+		ArrayList<Integer> useranswerlist = new ArrayList<>();
 		String answer_string = null;
 		int answer = 0;
 
@@ -76,10 +82,13 @@ public class bestCandidates extends HttpServlet {
 		int difference = 0;
 		int differenceSum = 0;
 		CandidatesAndAnswers candidateAnswer = null;
-		HashMap<Integer, Integer> points = new HashMap<Integer, Integer>();
+		ArrayList<CandidatesAndAnswers> candidatesAnswers = null;
+
+		Points points = new Points();
+		//HashMap<Integer, Integer> pointsHash = new HashMap<Integer, Integer>();
+		ArrayList<Points> pointsAndCandidates = new ArrayList<>();
 		for (int i = 0; i < candidatelist.size(); i++) {
 			differenceSum = 0;
-			ArrayList<CandidatesAndAnswers> candidatesAnswers = null;
 			if (dao.getConnection()) {
 				candidatesAnswers = dao.readCandidatesAnswers(i);
 			} else {
@@ -91,14 +100,21 @@ public class bestCandidates extends HttpServlet {
 					candidateAnswer = candidatesAnswers.get(j);
 					difference = useranswerlist.get(j) - candidateAnswer.getVastaus();
 					differenceSum = differenceSum + Math.abs(difference);
-					points.put(candidateAnswer.getEhdokas_id(), differenceSum);
+
+					//pointsHash.put(candidateAnswer.getEhdokas_id(), differenceSum);
 
 				}
+				points.setCandidate_id(candidatelist.get(i).getEhdokas_id());
+				points.setPointAmount(differenceSum);
+				pointsAndCandidates.add(points);
+				System.out.println("ID: " + points.getCandidate_id() + ", points: " + points.getPointAmount());
+				
 			}
-			
+
 		}
 
-		request.setAttribute("points", points);
+		request.setAttribute("pointsAndCandidates", pointsAndCandidates);
+		//request.setAttribute("pointsHash", pointsHash);
 		request.setAttribute("candidatelist", candidatelist);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/bestCandidates.jsp");
