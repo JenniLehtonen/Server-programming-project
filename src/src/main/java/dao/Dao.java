@@ -118,11 +118,10 @@ public class Dao {
 	}
 	
 	public ArrayList<Question> addQuestion(Question q) {
-		String sql = "INSERT INTO kysymykset (kysymys_id, kysymys) VALUES (?,?)";
+		String sql = "INSERT INTO kysymykset (kysymys) VALUES (?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, q.getId());
-			pstmt.setString(2, q.getWhatquestion());
+			pstmt.setString(1, q.getWhatquestion());
 			pstmt.executeUpdate();
 			return readAllQuestion();
 		} catch (SQLException e) {
