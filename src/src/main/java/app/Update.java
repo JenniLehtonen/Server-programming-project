@@ -28,7 +28,7 @@ public class Update extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 		     throws IOException
 		     {
-				response.sendRedirect("index.html");
+				response.sendRedirect("/jsp/showquestion2foredit.jsp");
 		     }
 	
 	/***public void doGet(HttpServletRequest request, HttpServletResponse response) 

@@ -17,10 +17,10 @@
 
 </head>
 <body>
-<h2>Kysymykset</h2>
+<h2>Muokkaa kysymyksiä</h2>
 <ol>
 <c:forEach var="question" items="${requestScope.questionlist}" >
-<li>${question.id}: ${question.whatquestion} <a href='/readquestiontoupdate?id=${question.id}'>update</a>
+<li>${question.id}: ${question.whatquestion} <a href='/readquestiontoupdate?KYSYMYS_ID=${question.id}'>update</a>
 </c:forEach>
 </ol>
 
