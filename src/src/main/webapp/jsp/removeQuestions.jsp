@@ -8,7 +8,7 @@
 <head>
 <link rel="stylesheet" href="../center.css">
 </head>
-	  <h1 style="text-align:center;">Poista vaalikoneen kysymyksiä</h1>
+	  <h2 style="text-align:center;">Poista vaalikoneen kysymyksiä</h2>
 	  <br>
 		<c:forEach var="question" items="${requestScope.questionlist}">
 			<b>Kysymysid</b>
