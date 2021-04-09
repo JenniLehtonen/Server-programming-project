@@ -35,6 +35,11 @@ body {
 
 .navi a {
 	color: white;
+	text-decoration: none;
+}
+
+.navi a:hover {
+	text-decoration:underline;
 }
 
 .body {
