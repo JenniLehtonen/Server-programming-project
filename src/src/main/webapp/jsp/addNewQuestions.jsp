@@ -6,7 +6,7 @@
 <%@ page import="dao.Dao" %>   
  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
-<%@ include file="../adminHeader.html" %>
+<c:import url="../adminHeader.html" charEncoding="UTF-8"/>
 <link rel="stylesheet" href="/jsp/login.css">
 
 <h2>Syötä vaalikoneeseen uusi kysymys</h2>

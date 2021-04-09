@@ -78,6 +78,25 @@ input {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
+.adminButtons{
+  background-color: white; 
+  color: black; 
+  border: 2px solid #589696;
+  color: black;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.adminButtons:hover {
+  background-color: #589696;
+  color: white;
+}
 
 button {
   background-color: white; 
