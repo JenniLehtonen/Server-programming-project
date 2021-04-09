@@ -9,19 +9,8 @@
 <%@ page import="app.ReadQuestionToUpdate"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>KYSYMYKSET</title>
+<c:import url="../header.html" charEncoding="UTF-8"/>
 
-<link rel="stylesheet" type="text/css" href="mycssfilesomewhere.css">
-
-
-
-
-</head>
-<body>
 <h2>Muokkaa kysymyksiä</h2>
 
 
@@ -33,6 +22,9 @@
 <%System.out.println("looppi toimii");%>
 </c:forEach>
 </ol>
+
+
+<c:import url="../footer.html" charEncoding="UTF-8"/>
 
 
 

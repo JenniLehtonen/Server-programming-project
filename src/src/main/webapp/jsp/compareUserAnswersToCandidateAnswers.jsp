@@ -5,10 +5,8 @@
  <%@ page import="data.*" %> 
  <%@ page import="dao.Dao" %>   
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
- <%@ include file="../header.html" %>
-<head>
-<link rel="stylesheet" href="koodit.css">
-</head>
+<c:import url="../header.html" charEncoding="UTF-8"/>
+
 	  <h2>Vertaa vastauksiasi kandidaattien vastauksiin</h2>
 		<c:forEach var="answer" items="${requestScope.candidatesAndAnswersList}">
 		

@@ -1,4 +1,8 @@
-<%@ include file="../header.html" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
+
+
+<c:import url="../header.html" charEncoding="UTF-8"/>
+
 <link rel="stylesheet" href="koodit.css">
 
 <h2>Muokkaa ehdokkaan tietoja</h2>
