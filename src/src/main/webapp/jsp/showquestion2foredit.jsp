@@ -13,9 +13,6 @@
 
 <h2>Muokkaa kysymyksiä</h2>
 
-
-
-
 <ol>
 <c:forEach var="question" items="${requestScope.questionlist}" >
 <li>${question.id}: ${question.whatquestion} <a href='/readquestiontoupdate?id=${question.id}'>update</a>
