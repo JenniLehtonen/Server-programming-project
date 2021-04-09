@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
- <%@ page import="java.util.ArrayList" %>   
- <%@ page import="data.*" %> 
- <%@ page import="dao.Dao" %>   
- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
- <%@ include file="../header.html" %>
-<head>
+
+<%@ page import="java.util.ArrayList" %>   
+<%@ page import="data.*" %> 
+<%@ page import="dao.Dao" %>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<c:import url="../header.html" charEncoding="UTF-8"/>
 <link rel="stylesheet" href="koodit.css">
-</head>
-	  <h2>Vertaa vastauksiasi kandidaattien vastauksiin</h2>
+<link rel="stylesheet" href="center.css">
+
+	  <h2>Vertaa vastauksiasi kandidaattien vastauksiin</h2><br>
 		<c:forEach var="answer" items="${requestScope.candidatesAndAnswersList}">
 		
 		<c:choose> <%-- If the same candidate's name has been shown already, the program won't show it another time --%>
@@ -20,7 +20,7 @@
 				<b>Ehdokas: </b>
 				<b>${answer.ehdokasSukunimi}</b>
 				<b>${answer.ehdokasEtunimi}</b>
-				<br>
+				<br><br>
 			</c:when>
 		</c:choose>
 			
