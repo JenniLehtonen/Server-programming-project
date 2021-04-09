@@ -41,7 +41,7 @@ public class ReadQuestionToUpdate extends HttpServlet {
 		if (dao.getConnection()) {
 			f=dao.readQuestion(id);
 		}
-		System.out.println("Lista readquestionmetodi workkii");
+		
 		request.setAttribute("question", f);
 		
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showquestiontoedit.jsp");

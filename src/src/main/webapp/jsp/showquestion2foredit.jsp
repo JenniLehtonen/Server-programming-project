@@ -29,8 +29,8 @@
 
 <ol>
 <c:forEach var="question" items="${requestScope.questionlist}" >
-<li>${question.id}: ${question.whatquestion} <a href='/readquestiontoupdate?id=${question.id}'>update</a>
-<%System.out.println("looppi toimii");%>
+<li>${question.whatquestion} <a href='/readquestiontoupdate?id=${question.id}'>update</a>
+
 </c:forEach>
 </ol>
 
