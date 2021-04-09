@@ -11,8 +11,6 @@
 <c:import url="../header.html" charEncoding="UTF-8"/>
 
 <form method="post" action="addCandidate">
-<label for="ehdokas_id">ID</label> <br>
-<input type="text" id="ehdokas_id" name="ehdokas_id"> <br><br>
 <label for="etunimi">Etunimi</label> <br>
 <input type="text" id="etunimi" name="etunimi"> <br><br>
 <label for="sukunimi">Sukunimi</label> <br>

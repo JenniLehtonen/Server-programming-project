@@ -256,18 +256,17 @@ public class Dao {
 	}
 
 	public ArrayList<Candidates> addCandidate(Candidates c) {
-		String sql = "INSERT INTO ehdokkaat (ehdokas_id, sukunimi, etunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan, mita_asioita_haluat_edistaa, ammatti) VALUES (?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO ehdokkaat (sukunimi, etunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan, mita_asioita_haluat_edistaa, ammatti) VALUES (?,?,?,?,?,?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, c.getEhdokas_id());
-			pstmt.setString(2, c.getEtunimi());
-			pstmt.setString(3, c.getSukunimi());
-			pstmt.setString(4, c.getPuolue());
-			pstmt.setString(5, c.getKotipaikkakunta());
-			pstmt.setInt(6, c.getIka());
-			pstmt.setString(7, c.getMiksi_eduskuntaan());
-			pstmt.setString(8, c.getMita_asioita_haluat_edistaa());
-			pstmt.setString(9, c.getAmmatti());
+			pstmt.setString(1, c.getEtunimi());
+			pstmt.setString(2, c.getSukunimi());
+			pstmt.setString(3, c.getPuolue());
+			pstmt.setString(4, c.getKotipaikkakunta());
+			pstmt.setInt(5, c.getIka());
+			pstmt.setString(6, c.getMiksi_eduskuntaan());
+			pstmt.setString(7, c.getMita_asioita_haluat_edistaa());
+			pstmt.setString(8, c.getAmmatti());
 			pstmt.executeUpdate();
 			return readAllCandidates();
 		} catch (SQLException e) {
