@@ -179,8 +179,8 @@ button:hover {
   color: white;
 }
 #removeButton{
- background-color: white; 
-  color: black; 
+ background-color: white !important; 
+  color: black !important; 
   border: 2px solid #589696;
   color: black;
   padding: 12px 18px;
@@ -198,8 +198,8 @@ button:hover {
 }
 
 #removeButton:hover {
-	background-color: #589696;
-	color: white;
+	background-color: #589696 !important;
+	color: white !important;
 }
 
 .btn {
