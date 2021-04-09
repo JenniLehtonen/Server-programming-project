@@ -3,7 +3,8 @@
  
  <%@ page import="java.util.ArrayList" %>   
  <%@ page import="data.*" %> 
- <%@ page import="dao.Dao" %>   
+ <%@ page import="dao.Dao" %> 
+ <%@ page import="app.*" %>  
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
 <c:import url="../header.html" charEncoding="UTF-8"/>
 
@@ -28,5 +29,12 @@
 			<br> <br>
 			<c:set var="firstname" value = "${answer.ehdokasEtunimi}" />
 			<c:set var="lastname" value = "${answer.ehdokasSukunimi}" />
+		</c:forEach>
+		
+		
+		
+		<c:forEach var="useranswerlist" items="${requestScope.useranswerlist}">
+		<c:set var="kysymys" value = "${useranswerlist.question}" />
+			<c:set var="vastaus" value = "${useranswerlist.answer}" />
 		</c:forEach>
 <%@ include file="../footer.html" %>

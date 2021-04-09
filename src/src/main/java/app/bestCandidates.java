@@ -69,7 +69,7 @@ public class bestCandidates extends HttpServlet {
 		} else {
 			System.out.println("No connection to database");
 		}
-
+		
 		ArrayList<Integer> useranswerlist = new ArrayList<>();
 		String answer_string = null;
 		int answer = 0;
@@ -77,14 +77,24 @@ public class bestCandidates extends HttpServlet {
 		for (int i = 0; i < questionlist.size(); i++) {
 			answer_string = request.getParameter("" + (i + 1));
 			if (answer_string != null) {
+				
 				answer = Integer.valueOf(answer_string);
 				useranswerlist.add(answer);
+				
 			} else {
 				answer = 0;
 				useranswerlist.add(answer);
 			}
 
 		}
+		
+		for (int i = 0; i < questionlist.size(); i++) {
+			
+		}
+		 response.setContentType("text/plain");
+		    response.setCharacterEncoding("UTF-8");
+
+		    response.getWriter().print(useranswerlist);
 
 		int difference = 0;
 		int differenceSum = 0;
@@ -131,10 +141,16 @@ public class bestCandidates extends HttpServlet {
 		}
 
 		request.setAttribute("pointsAndCandidates", pointsAndCandidates);
+		
 		// request.setAttribute("pointsHash", pointsHash);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/bestCandidates.jsp");
+		
+		
+		
 		dispatcher.forward(request, response);
+		
+		
 
 	}
 }
