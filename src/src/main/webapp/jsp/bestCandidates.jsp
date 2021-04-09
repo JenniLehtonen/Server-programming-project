@@ -8,7 +8,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-<%@ include file="../header.html"%>
+<c:import url="../header.html" charEncoding="UTF-8"/>
 
 
 
@@ -23,12 +23,14 @@ ${candidatePoints.key} | ${candidatePoints.value} <br><br>
 
 
 
-
+<h2> Sinulle sopivimmat ehdokkaat:</h2>
+<br>
+<br>
 
 <c:forEach var="pointsAndCandidates"
 	items="${requestScope.pointsAndCandidates}">
 
-${pointsAndCandidates.candidate_id} | ${pointsAndCandidates.candidateFirstname} ${pointsAndCandidates.candidateSurname} | ${pointsAndCandidates.pointAmount} | <a href="/readformore?ehdokas_id=${pointsAndCandidates.candidate_id}">Lisätietoja</a> <br>
+<h3>${pointsAndCandidates.candidate_id}  ${pointsAndCandidates.candidateFirstname} ${pointsAndCandidates.candidateSurname} </h3> <a href="/readformore?ehdokas_id=${pointsAndCandidates.candidate_id}">Lisätietoja</a> <br>
 	<br>
 
 </c:forEach>

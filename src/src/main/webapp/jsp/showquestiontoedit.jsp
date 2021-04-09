@@ -4,13 +4,8 @@
   <%@ include file="../header.html" %>  
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
     
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Muokkaa kysymyksiä</title>
-</head>
-<body>
+<c:import url="../header.html" charEncoding="UTF-8"/>
+
 <h2>Muokkaa kysymyksiä</h2>
 <form action='/saveupdatedquestion' method='post'>
 Question id: <input type='text' name='id' value='${requestScope.question.id}' readonly><br> 
@@ -20,4 +15,4 @@ Question id: <input type='text' name='id' value='${requestScope.question.id}' re
 </body>
 </html>
 
-<%@ include file="../footer.html" %>
+<c:import url="../footer.html" charEncoding="UTF-8"/>

@@ -7,7 +7,7 @@
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
     
-<%@ include file="../header.html" %>
+<c:import url="../header.html" charEncoding="UTF-8"/>
 
 <h2>Muokkaa tai poista ehdokkaita</h2> <br>
 
