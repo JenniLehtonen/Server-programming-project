@@ -28,7 +28,7 @@ ${candidatePoints.key} | ${candidatePoints.value} <br><br>
 <c:forEach var="pointsAndCandidates"
 	items="${requestScope.pointsAndCandidates}">
 
-${pointsAndCandidates.candidate_id} | ${pointsAndCandidates.candidateFirstname} ${pointsAndCandidates.candidateSurname} | ${pointsAndCandidates.pointAmount} <br>
+${pointsAndCandidates.candidate_id} | ${pointsAndCandidates.candidateFirstname} ${pointsAndCandidates.candidateSurname} | ${pointsAndCandidates.pointAmount} | <a href="/readformore?ehdokas_id=${pointsAndCandidates.candidate_id}">Lisätietoja</a> <br>
 	<br>
 
 </c:forEach>
