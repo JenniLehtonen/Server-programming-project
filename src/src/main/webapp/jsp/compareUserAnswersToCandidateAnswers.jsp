@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="koodit.css">
 <link rel="stylesheet" href="center.css">
 
-<h2>Vertaa vastauksiasi kandidaattien vastauksiin</h2><br>
+<h2>Vertaa vastauksiasi ehdokkaiden vastauksiin</h2><br>
 
 <c:forEach var="answer" items="${requestScope.candidatesAndAnswersList}">
 		

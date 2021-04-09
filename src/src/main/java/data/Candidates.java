@@ -17,9 +17,8 @@ public class Candidates {
 		
 	}
 
-	public Candidates(int id, String sukunimi, String etunimi, String puolue, String koti, int ika, String miksi, String mita, String ammatti)
+	public Candidates(String sukunimi, String etunimi, String puolue, String koti, int ika, String miksi, String mita, String ammatti)
 	{
-		setEhdokas_id(id);
 		this.sukunimi = sukunimi;
 		this.etunimi = etunimi;
 		this.puolue = puolue;
