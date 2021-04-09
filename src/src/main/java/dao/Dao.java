@@ -110,10 +110,13 @@ public class Dao {
 				f.setWhatquestion(RS.getString("KYSYMYS"));
 				list.add(f);
 			}
+			System.out.println("Lista haettu");
 			return list;
 		}
 		catch(SQLException e) {
+			System.out.println("Listaa ei haettu");
 			return null;
+			
 		}
 	}
 	
@@ -181,8 +184,8 @@ public class Dao {
 			ResultSet RS=pstmt.executeQuery();
 			while (RS.next()){
 				f=new Question();
-				f.setId(RS.getInt("id"));
-				f.setWhatquestion(RS.getString("whatquestion"));
+				f.setId(RS.getInt("KYSYMYS_ID"));
+				f.setWhatquestion(RS.getString("KYSYMYS"));
 			}
 			return f;
 		}
