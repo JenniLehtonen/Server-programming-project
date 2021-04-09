@@ -1,6 +1,11 @@
-<%@ include file="../header.html" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 
-<h2>Edit candidate</h2>
+
+<c:import url="../header.html" charEncoding="UTF-8"/>
+
+<link rel="stylesheet" href="koodit.css">
+
+<h2>Muokkaa ehdokkaan tietoja</h2>
 <br>
 <form action='/updatecandidate' method='post'>
 <b> Candidate's id </b> <br>

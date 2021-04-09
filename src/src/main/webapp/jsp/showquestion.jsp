@@ -6,10 +6,10 @@
 <%@ page import="dao.Dao"%>
 <%@ page import="app.ShowQuestion"%>
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%></ol>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:import url="../header.html" charEncoding="UTF-8"/>
 
 
-<%@ include file="/header.html"%>
 
 
 
@@ -21,7 +21,7 @@
 <br>
 <form method="post" action="bestCandidates">
 	<c:forEach var="question" items="${requestScope.questionlist}">
-		<b>${question.id}: </b>${question.whatquestion}<a> <br> <br>
+		<b>${question.id}: </b>${question.whatquestion} <br> <br>
 			<input type="radio" id="${question.id}1" name="${question.id}"
 			value="1"><label for="${question.id}1">1 Totally
 				disagree</label><br> <input type="radio" id="${question.id}2"
@@ -35,7 +35,7 @@
 				Totally agree</label> <br> <br>
 	</c:forEach>
 
-	<input type="submit" value="Submit">
+	<input type="submit" value="Submit" class="dropbtn">
 </form>
 
 

@@ -3,6 +3,8 @@ package app;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Hashtable;
 
 import javax.naming.Context;
@@ -18,11 +20,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
+import com.google.api.services.discovery.Discovery.Apis.List;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
 import dao.Dao;
+import data.CandidatesAndAnswers;
+import data.Points;
 import data.Candidates;
+import data.Question;
 
 @WebServlet(name = "bestCandidates", urlPatterns = { "/bestCandidates" })
 public class bestCandidates extends HttpServlet {
@@ -43,53 +49,91 @@ public class bestCandidates extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		ArrayList<Candidates> list = null;
-		if (dao.getConnection()) {
-			list = dao.readAllCandidates();
-		} else {
-			System.out.println("No connection to database");
-		}
-
-		request.setAttribute("candidateslist", list);
-
-		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/bestCandidate.jsp");
-		dispatcher.forward(request, response);
-
-	}
-
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String ehdokas_id_string = request.getParameter("ehdokas_id");
-		String etunimi = request.getParameter("etunimi");
-		String sukunimi = request.getParameter("sukunimi");
-		String puolue = request.getParameter("puolue");
-		String kotipaikkakunta = request.getParameter("kotipaikkakunta");
-		String ika_string = request.getParameter("ika");
-		String miksi_eduskuntaan = request.getParameter("miksi_eduskuntaan");
-		String mita_asioita_haluat_edistaa = request.getParameter("mita_asioita_haluat_edistaa");
-		String ammatti = request.getParameter("ammatti");
-
-		int ehdokas_id = Integer.parseInt(ehdokas_id_string);
-		int ika = Integer.parseInt(ika_string);
-
-		Candidates c = new Candidates(ehdokas_id, etunimi, sukunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan,
-				mita_asioita_haluat_edistaa, ammatti);
-
-		dao.addCandidate(c);
-
-		ArrayList<Candidates> list = null;
+		ArrayList<Question> questionlist = null;
 		if (dao.getConnection()) {
-			list = dao.readAllCandidates();
+			questionlist = dao.readAllQuestion();
 		} else {
 			System.out.println("No connection to database");
 		}
 
-		request.setAttribute("candidateslist", list);
+		ArrayList<Candidates> candidatelist = null;
+		if (dao.getConnection()) {
+			candidatelist = dao.readAllCandidates();
+			for (int i = 0; i < candidatelist.size(); i++) {
+				Candidates x = candidatelist.get(i);
+				// System.out.println(x.getEhdokas_id());
+				// System.out.println(x.getEtunimi() + " " + x.getSukunimi());
+			}
+		} else {
+			System.out.println("No connection to database");
+		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/addCandidate.jsp");
+		ArrayList<Integer> useranswerlist = new ArrayList<>();
+		String answer_string = null;
+		int answer = 0;
+
+		for (int i = 0; i < questionlist.size(); i++) {
+			answer_string = request.getParameter("" + (i + 1));
+			if (answer_string != null) {
+				answer = Integer.valueOf(answer_string);
+				useranswerlist.add(answer);
+			} else {
+				answer = 0;
+				useranswerlist.add(answer);
+			}
+
+		}
+
+		int difference = 0;
+		int differenceSum = 0;
+		CandidatesAndAnswers candidateAnswer = null;
+		ArrayList<CandidatesAndAnswers> candidatesAnswers = null;
+
+		// HashMap<Integer, Integer> pointsHash = new HashMap<Integer, Integer>();
+		ArrayList<Points> pointsAndCandidates = new ArrayList<>();
+		for (int i = 0; i < candidatelist.size(); i++) {
+			Points points = new Points();
+			differenceSum = 0;
+			if (dao.getConnection()) {
+				Candidates c = candidatelist.get(i);
+				candidatesAnswers = dao.readCandidatesAnswers(c.getEhdokas_id());
+			} else {
+				System.out.println("No connection to database");
+			}
+
+			if (candidatesAnswers.size() != 0) {
+
+				for (int j = 0; j < questionlist.size(); j++) {
+					if (useranswerlist.get(j) != 0) {
+						candidateAnswer = candidatesAnswers.get(j);
+						difference = useranswerlist.get(j) - candidateAnswer.getVastaus();
+						differenceSum = differenceSum + Math.abs(difference);
+
+						System.out.println("ID: " + candidatelist.get(i).getEhdokas_id() + ", vastaus: "
+								+ candidatesAnswers.get(j).getVastaus());
+					}	
+
+				}
+				// pointsHash.put(candidateAnswer.getEhdokas_id(), differenceSum);
+				points.setCandidate_id(candidatelist.get(i).getEhdokas_id());
+				points.setPointAmount(differenceSum);
+				points.setCandidateFirstname(candidatelist.get(i).getEtunimi());
+				points.setCandidateSurname(candidatelist.get(i).getSukunimi());
+				pointsAndCandidates.add(points);
+				System.out.println("ID: " + points.getCandidate_id() + ", points: " + points.getPointAmount());
+
+				Collections.sort(pointsAndCandidates);
+
+			}
+
+		}
+
+		request.setAttribute("pointsAndCandidates", pointsAndCandidates);
+		// request.setAttribute("pointsHash", pointsHash);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/bestCandidates.jsp");
 		dispatcher.forward(request, response);
 
 	}

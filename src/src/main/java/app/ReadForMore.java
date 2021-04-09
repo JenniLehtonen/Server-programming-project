@@ -1,6 +1,6 @@
 package app;
+
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,15 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Dao;
-import data.*;
+import data.Candidates;
 
-
-@WebServlet("/showshort")
-public class ShowShort extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	private Dao dao=null;
+@WebServlet("/readformore")
+public class ReadForMore extends HttpServlet{
 	
-	@Override
+	private static final long serialVersionUID = 1L;
+	private Dao dao;
 	public void init() {
 		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "admin", "salasana");
 	}
@@ -26,27 +24,26 @@ public class ShowShort extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowShort() {
+    public ReadForMore() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Candidates> list=null;
-		
+
+		String id = request.getParameter("ehdokas_id");
+		Candidates candidate=null;
 		if (dao.getConnection()) {
-			list=dao.readAllCandidates();
-			System.out.println("Lyhyt ehdokaslista haettu");
+			candidate=dao.readCandidate(id);
+			System.out.println("Haetaan ehdokasta");
 		}
-		else {
-			System.out.println("No connection to database");
-		}
-		request.setAttribute("candidateslist", list);
+		request.setAttribute("candidate", candidate);
 		
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showshort.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showCandidateById.jsp");
 		rd.forward(request, response);
 	}
+
 }

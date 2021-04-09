@@ -7,12 +7,12 @@
     
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
     
-<%@ include file="../header.html" %>
+<c:import url="../header.html" charEncoding="UTF-8"/>
 
-<h2>Edit or delete candidates</h2> <br>
+<h2>Muokkaa tai poista ehdokkaita</h2> <br>
 
 <c:forEach var="candidate" items="${requestScope.candidateslist}" >
-<b>${candidate.ehdokas_id}:</b> ${candidate.etunimi} ${candidate.sukunimi}  <a href="/readcandidate?ehdokas_id=${candidate.ehdokas_id}">Edit</a> <a href="/findcandidates?ehdokas_id=${candidate.ehdokas_id}">Show answers</a> <a href='deleteCandidate?id=${candidate.ehdokas_id}'>Delete</a> <br><br>
+<b>${candidate.ehdokas_id}:</b> ${candidate.etunimi} ${candidate.sukunimi}  <a href="/readcandidate?ehdokas_id=${candidate.ehdokas_id}">Muokkaa</a> <a href='deleteCandidate?id=${candidate.ehdokas_id}'>Poista</a> <br><br>
 
 
 </c:forEach>

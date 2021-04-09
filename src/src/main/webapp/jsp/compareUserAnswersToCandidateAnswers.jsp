@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ page import="java.util.ArrayList" %>   
 <%@ page import="data.*" %> 
 <%@ page import="dao.Dao" %>   
@@ -9,26 +8,27 @@
 <link rel="stylesheet" href="koodit.css">
 <link rel="stylesheet" href="center.css">
 
-	  <h2>Vertaa vastauksiasi kandidaattien vastauksiin</h2><br>
-		<c:forEach var="answer" items="${requestScope.candidatesAndAnswersList}">
+<h2>Vertaa vastauksiasi kandidaattien vastauksiin</h2><br>
+
+<c:forEach var="answer" items="${requestScope.candidatesAndAnswersList}">
 		
-		<c:choose> <%-- If the same candidate's name has been shown already, the program won't show it another time --%>
-			<c:when test="${answer.ehdokasEtunimi eq firstname}">
-			<b> </b>
-			</c:when>
-			<c:when test="${answer.ehdokasEtunimi ne firstname}">
-				<b>Ehdokas: </b>
-				<b>${answer.ehdokasSukunimi}</b>
-				<b>${answer.ehdokasEtunimi}</b>
-				<br><br>
-			</c:when>
-		</c:choose>
-			
-			<p>Kysymys: <span>${answer.kysymys_id}</span></p>
-			<p>Vastaus: <span>${answer.vastaus}</span></p>
-			
-			<br> <br>
-			<c:set var="firstname" value = "${answer.ehdokasEtunimi}" />
-			<c:set var="lastname" value = "${answer.ehdokasSukunimi}" />
-		</c:forEach>
+  <c:choose> <%-- If the same candidate's name has been shown already, the program won't show it another time --%>
+    <c:when test="${answer.ehdokasEtunimi eq firstname}">
+    <b> </b>
+    </c:when>
+    <c:when test="${answer.ehdokasEtunimi ne firstname}">
+      <b>Ehdokas: </b>
+      <b>${answer.ehdokasSukunimi}</b>
+      <b>${answer.ehdokasEtunimi}</b>
+      <br><br>
+    </c:when>
+  </c:choose>
+
+    <p>Kysymys: <span>${answer.kysymys_id}</span></p>
+    <p>Vastaus: <span>${answer.vastaus}</span></p>
+
+    <br> <br>
+    <c:set var="firstname" value = "${answer.ehdokasEtunimi}" />
+    <c:set var="lastname" value = "${answer.ehdokasSukunimi}" />
+  </c:forEach>
 <%@ include file="../footer.html" %>

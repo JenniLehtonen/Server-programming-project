@@ -8,8 +8,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
     
 
-<%@ include file="../header.html" %>
+<c:import url="../header.html" charEncoding="UTF-8"/>
 
 <center>The data was successfully added!</center>
 
-<%@ include file="../footer.html" %>
+<c:import url="../footer.html" charEncoding="UTF-8"/>
