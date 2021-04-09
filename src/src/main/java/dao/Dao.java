@@ -119,7 +119,7 @@ public class Dao {
 	
 	public ArrayList<CandidatesAndAnswers> readCandidatesAnswers(int id) {
 		CandidatesAndAnswers a = null;
-		ArrayList<CandidatesAndAnswers> list = new ArrayList();
+		ArrayList<CandidatesAndAnswers> list = new ArrayList<>();
 		try {
 			String sql="select * from vastaukset where ehdokas_id=? order by kysymys_id";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
