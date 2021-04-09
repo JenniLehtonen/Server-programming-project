@@ -35,7 +35,7 @@
 				Totally agree</label> <br> <br>
 	</c:forEach>
 
-	<input type="submit" value="Submit">
+	<input type="submit" value="Submit" class="dropbtn">
 </form>
 
 
