@@ -28,11 +28,11 @@ public class Update extends HttpServlet {
 		if (dao.getConnection()) {
 			list = dao.readAllQuestion();
 		} else {
-			System.out.println("jotain muuta");
+			System.out.println("Toimii");
 		}
-		//response.getWriter().println(dao.readAllQuestion());
+		
 		request.setAttribute("questionlist", list);
-		//response.sendRedirect("/jsp/showquestion2foredit.jsp");
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/showquestion2foredit.jsp");
 		rd.forward(request, response);
 	}
@@ -42,7 +42,7 @@ public class Update extends HttpServlet {
 	 * throws IOException {
 	 * response.sendRedirect("\"/jsp/showquestiontoedit.jsp\""); }
 	 ***/
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	/***public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String id = request.getParameter("id");
 		String whatquestion = request.getParameter("whatquestion");
 
@@ -58,5 +58,5 @@ public class Update extends HttpServlet {
 		request.setAttribute("questionlist", list);
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/showquestion2foredit.jsp");
 		rd.forward(request, response);
-	}
+	}***/
 }

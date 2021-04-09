@@ -34,13 +34,14 @@ public class ReadQuestionToUpdate extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String id=request.getParameter("id");
 		Question f=null;
 		if (dao.getConnection()) {
 			f=dao.readQuestion(id);
 		}
+		System.out.println("Lista readquestionmetodi workkii");
 		request.setAttribute("question", f);
 		
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showquestiontoedit.jsp");
