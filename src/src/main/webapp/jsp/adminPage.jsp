@@ -4,9 +4,9 @@
 <c:import url="../adminHeader.html" charEncoding="UTF-8"/>
 <link rel="stylesheet" href="/jsp/login.css">
 	
-<a class="adminButtons" href="showshort">Edit candidates</a> 
-<a class="adminButtons" href="addCandidate">Add Candidate</a>
-<a class="adminButtons" href="editQuestions">Edit questions</a>
+<a class="adminButtons" href="showshort">Muokkaa kandidaatteja</a> 
+<a class="adminButtons" href="addCandidate">Lisää uusi kandidaatti</a>
+<a class="adminButtons" href="editQuestions">Edit questions</a> <br>
 <a class="adminButtons" href="/addNewQuestions">Lisää kysymys</a>
 <a class="adminButtons" href='/removeQuestions'>Poista kysymyksiä</a> 
 <a class="adminButtons" href="showquestiontoedit">Edit question</a>
