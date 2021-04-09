@@ -110,16 +110,19 @@ public class Dao {
 				f.setWhatquestion(RS.getString("KYSYMYS"));
 				list.add(f);
 			}
+			System.out.println("Lista haettu");
 			return list;
 		}
 		catch(SQLException e) {
+			System.out.println("Listaa ei haettu");
 			return null;
+			
 		}
 	}
 	
 	public ArrayList<CandidatesAndAnswers> readCandidatesAnswers(int id) {
 		CandidatesAndAnswers a = null;
-		ArrayList<CandidatesAndAnswers> list = new ArrayList();
+		ArrayList<CandidatesAndAnswers> list = new ArrayList<>();
 		try {
 			String sql="select * from vastaukset where ehdokas_id=? order by kysymys_id";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
@@ -181,8 +184,8 @@ public class Dao {
 			ResultSet RS=pstmt.executeQuery();
 			while (RS.next()){
 				f=new Question();
-				f.setId(RS.getInt("id"));
-				f.setWhatquestion(RS.getString("whatquestion"));
+				f.setId(RS.getInt("KYSYMYS_ID"));
+				f.setWhatquestion(RS.getString("KYSYMYS"));
 			}
 			return f;
 		}

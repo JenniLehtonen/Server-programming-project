@@ -3,7 +3,10 @@
  
  <%@ page import="java.util.ArrayList" %>   
  <%@ page import="data.Question" %>   
-    
+    <%@ page import="data.Question"%>
+<%@ page import="dao.Dao"%>
+<%@ page import="app.Update"%>
+<%@ page import="app.ReadQuestionToUpdate"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
     
 <!DOCTYPE html>
@@ -13,14 +16,21 @@
 <title>KYSYMYKSET</title>
 
 <link rel="stylesheet" type="text/css" href="mycssfilesomewhere.css">
-<script src="myscriptfile.js"></script>
+
+
+
 
 </head>
 <body>
 <h2>Muokkaa kysymyksiä</h2>
+
+
+
+
 <ol>
 <c:forEach var="question" items="${requestScope.questionlist}" >
-<li>${question.id}: ${question.whatquestion} <a href='/readquestiontoupdate?KYSYMYS_ID=${question.id}'>update</a>
+<li>${question.id}: ${question.whatquestion} <a href='/readquestiontoupdate?id=${question.id}'>update</a>
+<%System.out.println("looppi toimii");%>
 </c:forEach>
 </ol>
 
