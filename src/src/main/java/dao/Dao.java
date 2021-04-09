@@ -187,6 +187,7 @@ public class Dao {
 				f.setId(RS.getInt("KYSYMYS_ID"));
 				f.setWhatquestion(RS.getString("KYSYMYS"));
 			}
+			System.out.println("Lista 1kysymys");
 			return f;
 		}
 		catch(SQLException e) {
