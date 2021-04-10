@@ -7,7 +7,7 @@
 <c:import url="../header.html" charEncoding="UTF-8"/>
 
 <h2>Muokkaa kysymyksiä</h2>
-<form action='update' method='post'>
+<form action='/saveupdatedquestion' method='post'>
 Question id: <input type='text' name='id' value='${requestScope.question.id}' readonly><br> 
    Question: <input type='text' name='whatquestion' value='${requestScope.question.whatquestion}'><br>
 <input type='submit' name='ok' value='Send'> 

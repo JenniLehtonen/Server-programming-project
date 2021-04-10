@@ -51,15 +51,7 @@ public class compareUserAnswersToCandidateAnswers extends HttpServlet{
 		else {
 			System.out.println("No connection to database");
 		}
-		
-		ArrayList<Candidates> list1=null;
-		if (dao.getConnection()) {
-			list1=dao.readAllCandidates();
-		}
-		else {
-			System.out.println("No connection to database");
-		}
-
+		request.setCharacterEncoding("utf-8");
 		request.setAttribute("candidatesAndAnswersList", list);
 
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/compareUserAnswersToCandidateAnswers.jsp");
