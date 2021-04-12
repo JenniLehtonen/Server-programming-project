@@ -62,7 +62,6 @@ public class AddCandidate extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String ehdokas_id_string = request.getParameter("ehdokas_id");
 		String etunimi = request.getParameter("etunimi");
 		String sukunimi = request.getParameter("sukunimi");
 		String puolue = request.getParameter("puolue");
@@ -72,10 +71,9 @@ public class AddCandidate extends HttpServlet {
 		String mita_asioita_haluat_edistaa = request.getParameter("mita_asioita_haluat_edistaa");
 		String ammatti = request.getParameter("ammatti");
 
-		int ehdokas_id = Integer.parseInt(ehdokas_id_string);
 		int ika = Integer.parseInt(ika_string);
 
-		Candidates c = new Candidates(ehdokas_id, etunimi, sukunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan,
+		Candidates c = new Candidates(etunimi, sukunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan,
 				mita_asioita_haluat_edistaa, ammatti);
 
 		dao.addCandidate(c);

@@ -27,6 +27,8 @@ ${candidatePoints.key} | ${candidatePoints.value} <br><br>
 <br>
 <br>
 
+<% int i = 1; %>
+
 <c:forEach var="pointsAndCandidates"
 	items="${requestScope.pointsAndCandidates}">
 
@@ -35,6 +37,14 @@ ${candidatePoints.key} | ${candidatePoints.value} <br><br>
 
 </c:forEach>
 
+<c:forEach var="useranswers" items="${requestScope.useranswers}">
+	<c:set var="useranswers_string" value="${useranswers_string}${useranswers}" />
+	
+	<% i++; %>
+	
+</c:forEach>
+
+<a href="/compareUserAnswersToCandidateAnswers?answers=${useranswers_string}" class="btn">Vertaa vastauksiasi</a> <br>
 
 
 <%@ include file="../footer.html"%>

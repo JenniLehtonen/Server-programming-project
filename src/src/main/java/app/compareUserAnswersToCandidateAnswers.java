@@ -42,21 +42,33 @@ public class compareUserAnswersToCandidateAnswers extends HttpServlet{
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<CandidatesAndAnswers> list=null;
-		if (dao.getConnection()) {
-			list=dao.readAllAnswers();
-			System.out.println(list);
-		}
-		else {
-			System.out.println("No connection to database");
-		}
-		request.setCharacterEncoding("utf-8");
-		request.setAttribute("candidatesAndAnswersList", list);
 
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/compareUserAnswersToCandidateAnswers.jsp");
-		rd.forward(request, response); 
-		
-	}	
+    	@Override
+    	public void doGet(HttpServletRequest request, HttpServletResponse response) 
+    	     throws IOException, ServletException {
+    		String answers_string=request.getParameter("answers");
+    		ArrayList<Integer> useranswers = new ArrayList<>();
+    		    		
+    		for (int i=0; i< answers_string.length(); i++) {
+    			  int digit = Integer.valueOf(answers_string.charAt(i));
+    			  useranswers.add(digit);
+    		}
+    		
+    		ArrayList<CandidatesAndAnswers> list=null;
+    		if (dao.getConnection()) {
+    			list=dao.readAllAnswers();
+    			System.out.println(list);
+    		}
+    		else {
+    			System.out.println("No connection to database");
+    		}
+    		request.setCharacterEncoding("utf-8");
+    		request.setAttribute("candidatesAndAnswersList", list);
+    		
+    		
+    		request.setAttribute("useranswers", useranswers);
+    		RequestDispatcher rd=request.getRequestDispatcher("/jsp/compareUserAnswersToCandidateAnswers.jsp");
+    		rd.forward(request, response);
+    	}
 
 }

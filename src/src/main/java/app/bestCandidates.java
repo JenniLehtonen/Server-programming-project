@@ -124,12 +124,17 @@ public class bestCandidates extends HttpServlet {
 				pointsAndCandidates.add(points);
 				System.out.println("ID: " + points.getCandidate_id() + ", points: " + points.getPointAmount());
 
-				Collections.sort(pointsAndCandidates);
 
 			}
 
 		}
+		
+		Collections.sort(pointsAndCandidates);
+		pointsAndCandidates.subList(5, pointsAndCandidates.size()).clear();
 
+
+
+		request.setAttribute("useranswers", useranswerlist);
 		request.setAttribute("pointsAndCandidates", pointsAndCandidates);
 		// request.setAttribute("pointsHash", pointsHash);
 
