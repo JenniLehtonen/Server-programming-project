@@ -33,8 +33,5 @@
 		
 		
 		
-		<c:forEach var="useranswerlist" items="${requestScope.useranswerlist}">
-		<c:set var="kysymys" value = "${useranswerlist.question}" />
-			<c:set var="vastaus" value = "${useranswerlist.answer}" />
-		</c:forEach>
+		
 <%@ include file="../footer.html" %>

@@ -1,5 +1,4 @@
 package app;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,32 +27,43 @@ import dao.Dao;
 import data.CandidatesAndAnswers;
 import data.Points;
 import data.Candidates;
-import data.Question;
+import data.*;
 
-@WebServlet(name = "listanswersofuser", urlPatterns = { "/listanswersofuser" })
-public class listUserAnswers {
+@WebServlet(name = "listuseranswers", urlPatterns = { "/listanswersofuser" })
+public class listUserAnswers extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	Dao dao = null;
 
-	  public void doGet(HttpServletRequest request, HttpServletResponse response) 
-	      throws IOException {
+	@Override
+	public void init() {
+		dao = new Dao("jdbc:mysql://localhost:3306/vaalikone", "admin", "salasana");
+	}
 
-	    response.setContentType("text/plain");
-	    response.setCharacterEncoding("UTF-8");
-	    
-	    
-	    
-	    RequestDispatcher reqdisp = request.getRequestDispatcher("/bestCandidates");
-	    try {
-	    	reqdisp.forward(request, response);
-	    }catch (Exception e) {
-	    	
-	    }
-	  }
-	 /*** request.setAttribute("useranswerlist", useranswerlist);
-	  
-	  RequestDispatcher dispatcher2 = request.getRequestDispatcher("/jsp/compareUserAnswersToCandidateAnswers.jsp");
-	  dispatcher.forward(request, response);***/
-}
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	
+	
+	public listUserAnswers () {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) 
+	     throws IOException, ServletException {
+		String answers=request.getParameter("answers");
+		ArrayList<CandidatesAndAnswers> list=null;
+		 
+			
+		
+		request.setAttribute("useranswerlist", list);
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/compareUserAnswerToCandidateAnswer.jsp");
+		rd.forward(request, response);
+	}
+	
+	
+}		    
 

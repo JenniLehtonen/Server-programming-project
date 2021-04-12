@@ -29,6 +29,7 @@ import data.CandidatesAndAnswers;
 import data.Points;
 import data.Candidates;
 import data.Question;
+import data.*;
 
 @WebServlet(name = "bestCandidates", urlPatterns = { "/bestCandidates" })
 public class bestCandidates extends HttpServlet {
@@ -49,6 +50,8 @@ public class bestCandidates extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	@SuppressWarnings("unchecked")
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ArrayList<Question> questionlist = null;
@@ -81,20 +84,22 @@ public class bestCandidates extends HttpServlet {
 				answer = Integer.valueOf(answer_string);
 				useranswerlist.add(answer);
 				
+				
 			} else {
 				answer = 0;
 				useranswerlist.add(answer);
 			}
-
+			
 		}
 		
 		for (int i = 0; i < questionlist.size(); i++) {
 			
 		}
-		 response.setContentType("text/plain");
-		    response.setCharacterEncoding("UTF-8");
-
-		    response.getWriter().print(useranswerlist);
+		
+		CandidatesAndAnswers canda = new CandidatesAndAnswers();
+		canda.setAnswerlist2(useranswerlist);
+		
+		    
 
 		int difference = 0;
 		int differenceSum = 0;
@@ -139,6 +144,8 @@ public class bestCandidates extends HttpServlet {
 			}
 
 		}
+		
+		
 
 		request.setAttribute("pointsAndCandidates", pointsAndCandidates);
 		
@@ -153,4 +160,6 @@ public class bestCandidates extends HttpServlet {
 		
 
 	}
+	
+	
 }

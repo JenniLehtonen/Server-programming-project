@@ -38,5 +38,6 @@
 	<input type="submit" value="Submit" class="dropbtn">
 </form>
 
+
 <c:import url="../footer.html" charEncoding="UTF-8"/>
 

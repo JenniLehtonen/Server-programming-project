@@ -16,5 +16,5 @@ public class Answer {
 	
 	
 	
-	ArrayList<Answer> answerArray = new ArrayList<>();
+	
 }
