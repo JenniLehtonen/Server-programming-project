@@ -10,13 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Dao;
-import data.Question;
+import data.Candidates;
 
-/**
- * Servlet implementation class ReadToUpdate
- */
-@WebServlet("/readquestiontoupdate")
-public class ReadQuestionToUpdate extends HttpServlet {
+@WebServlet("/readformore")
+public class ReadForMore extends HttpServlet{
+	
 	private static final long serialVersionUID = 1L;
 	private Dao dao;
 	public void init() {
@@ -26,25 +24,26 @@ public class ReadQuestionToUpdate extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ReadQuestionToUpdate() {
+    public ReadForMore() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String id=request.getParameter("id");
-		Question f=null;
+
+		String id = request.getParameter("ehdokas_id");
+		Candidates candidate=null;
 		if (dao.getConnection()) {
-			f=dao.readQuestion(id);
+			candidate=dao.readCandidate(id);
+			System.out.println("Haetaan ehdokasta");
 		}
+		request.setAttribute("candidate", candidate);
 		
-		request.setAttribute("question", f);
-		
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showquestiontoedit.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/showCandidateById.jsp");
 		rd.forward(request, response);
 	}
+
 }
