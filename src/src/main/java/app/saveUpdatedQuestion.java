@@ -12,7 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.Dao;
 import data.Question;
-
+/***
+ * 
+ * @author liisa
+ * 
+ * Luokka ottaa vastaan muokatun kysymyksen showquestiontoedit.jsp tiedostosta ja kutsuu dao- luokan metodia, millä muokattu kysymys
+ * tallentuu tietokantaan
+ *
+ */
 @WebServlet(name = "saveupdatedquestion", urlPatterns = { "/saveupdatedquestion" })
 public class saveUpdatedQuestion extends HttpServlet {
 
