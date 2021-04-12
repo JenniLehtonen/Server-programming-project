@@ -395,11 +395,15 @@ public class Dao {
 
 	}
 	
+	/**
+	 * 
+	 * @param list
+	 * @param ehdokas_id
+	 */
 				public void addCandidateAnswers(ArrayList<Integer> list, int ehdokas_id)
 				{
 					String sql; 
-					
-					readAllCandidates();
+	
 					try {
 			
 						for(int i = 0; i<list.size();i++)
@@ -425,6 +429,43 @@ public class Dao {
 						e.printStackTrace();
 						System.out.println("Tallennus ei onnistunut!");
 					}
-				}
+					
+				} //addCandidateAnswers-sulje
+				
+				/**
+				 * 
+				 * @param list
+				 * @param ehdokas_id
+				 */
+				
+				public void updateCandidateAnswer(ArrayList<Integer> list, int ehdokas_id)
+				{
+					String sql; 
+					
+					try {
+			
+						for(int i = 0; i<list.size();i++)
+						{
+							sql = "update vastaukset set vastaus = ? where ehdokas_id = ? and kysymys_id = ?";
+					        
+					        PreparedStatement statement = conn.prepareStatement(sql);
+					        statement.setInt(1, list.get(i));
+					        statement.setInt(2, ehdokas_id);
+					        statement.setInt(3, (i+1));
+
+					        int rowsInserted = statement.executeUpdate();
+					        if (rowsInserted > 0) {
+					            System.out.println("Tiedot päivitetty tauluun.");
+					            }
+						}
+
+						
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						System.out.println("Päivitys ei onnistunut!");
+					}
+					
+				} //updateCandidateAnswer-sulje
 
 }

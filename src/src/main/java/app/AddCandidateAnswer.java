@@ -1,9 +1,7 @@
 package app;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,18 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.Dao;
-import data.Candidates;
 import data.Question;
 
-@WebServlet("/updatecandidateanswer")
-
-/**
- * 
- * @author Sanna Nieminen-Vuorio
- *
- */
-public class updateCandidateAnswer extends HttpServlet{
-
+@WebServlet("/addcandidateanswer")
+public class AddCandidateAnswer extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -44,7 +34,6 @@ public class updateCandidateAnswer extends HttpServlet{
 		String id = request.getParameter("ehdokas_id");
 		int ehdokas_id = Integer.valueOf(id);
 		ArrayList<Question> questionlist = null;
-		//ArrayList<Integer> candidatesIds = new ArrayList<Integer>();
 		
 		if (dao.getConnection()) {
 			questionlist = dao.readAllQuestion();
@@ -52,16 +41,7 @@ public class updateCandidateAnswer extends HttpServlet{
 			System.out.println("No connection to database");
 		}
 		
-		/*
-		ArrayList<Candidates> can = new ArrayList<Candidates>();
-		can = dao.readAllCandidates();
-		
-		for(Candidates c : can)
-		{
-			String s = "" + c;
-			int i = Integer.parseInt(s);
-			candidatesIds.add(i);
-		} */
+
 			
 		ArrayList<Integer> candidateanswerlist = new ArrayList<>();
 		String answer_string = null;
@@ -73,22 +53,11 @@ public class updateCandidateAnswer extends HttpServlet{
 			candidateanswerlist.add(answer);
 		}
 		
-		dao.updateCandidateAnswer(candidateanswerlist, ehdokas_id);
-		//dao.addCandidateAnswers(candidateanswerlist, ehdokas_id);
-		/*
-		boolean b = candidatesIds.contains(ehdokas_id);
-		if(b)
-		{
-			dao.updateCandidateAnswer(candidateanswerlist, ehdokas_id);
-		}
-		else
-		{
-			dao.addCandidateAnswers(candidateanswerlist, ehdokas_id);
-		} */
+
+		dao.addCandidateAnswers(candidateanswerlist, ehdokas_id);
 
 		request.setAttribute("answerlist", candidateanswerlist);
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/success.jsp");
 		rd.forward(request, response);
 	}
-
 }

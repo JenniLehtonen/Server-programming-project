@@ -31,7 +31,7 @@
 				Totally agree</label> <br> <br>
 	</c:forEach>
 	<label> Syötä tähän vaalinumerosi:</label>
-	<input type="text" name="ehdokas_id" value="Päläpälä">
+	<input type="text" name="ehdokas_id" value="">
 	<input type="submit" value="Tallenna vastaukset" class='dropbtn'>
 
 </form>
