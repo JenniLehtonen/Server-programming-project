@@ -35,7 +35,7 @@ public class UpdateCandidate extends HttpServlet{
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
-		String ehdokas_id=request.getParameter("ehdokas_id");
+		String ehdokas_id = request.getParameter("ehdokas_id");
 		String sukunimi=request.getParameter("sukunimi");
 		String etunimi=request.getParameter("etunimi");
 		String puolue=request.getParameter("puolue");
@@ -45,7 +45,7 @@ public class UpdateCandidate extends HttpServlet{
 		String mita_asioita_haluat_edistaa=request.getParameter("mita_asioita_haluat_edistaa");
 		String ammatti=request.getParameter("ammatti");
 		
-		Candidates candidate=new Candidates(ehdokas_id, sukunimi, etunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan, mita_asioita_haluat_edistaa, ammatti);
+		Candidates candidate = new Candidates(ehdokas_id, sukunimi, etunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan, mita_asioita_haluat_edistaa, ammatti);
 		
 		ArrayList<Candidates> list=null;
 		if (dao.getConnection()) {

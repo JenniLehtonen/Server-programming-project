@@ -30,6 +30,34 @@ public class Candidates {
 		
 	}
 	
+	public Candidates(int ehdokas_id, String sukunimi, String etunimi, String puolue, String koti, int ika, String miksi, String mita, String ammatti)
+	{
+		setEhdokas_id(ehdokas_id);
+		this.sukunimi = sukunimi;
+		this.etunimi = etunimi;
+		this.puolue = puolue;
+		this.kotipaikkakunta = koti;
+		setIka(ika);
+		this.miksi_eduskuntaan = miksi;
+		this.mita_asioita_haluat_edistaa = mita;
+		this.ammatti = ammatti;
+		
+	}
+	
+	public Candidates(String ehdokas_id, String sukunimi, String etunimi, String puolue, String koti, String ika, String miksi, String mita, String ammatti)
+	{
+		setEhdokas_id(ehdokas_id);
+		this.sukunimi = sukunimi;
+		this.etunimi = etunimi;
+		this.puolue = puolue;
+		this.kotipaikkakunta = koti;
+		setIka(ika);
+		this.miksi_eduskuntaan = miksi;
+		this.mita_asioita_haluat_edistaa = mita;
+		this.ammatti = ammatti;
+		
+	}
+	
 	public Candidates(String sukunimi, String etunimi, String puolue, String koti, String ika, String miksi, String mita, String ammatti)
 	{
 		this.sukunimi = sukunimi;

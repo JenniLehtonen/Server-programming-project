@@ -30,8 +30,8 @@
 			name="${question.id}" value="5"><label for="${question.id}5">5
 				Totally agree</label> <br> <br>
 	</c:forEach>
-	<label> Syötä tähän olemassa oleva vaalinumerosi:</label>
-	<input type="text" name="ehdokas_id" value="">
+	<label style="font-weight: bold"> Vaalinumerosi:</label><br>
+	<input type="text" name="ehdokas_id" placeholder="Syötä tähän vaalinumerosi"> <br>
 	<input type="submit" value="Tallenna vastaukset" class='dropbtn'>
 
 </form>
