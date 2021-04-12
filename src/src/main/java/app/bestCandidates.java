@@ -109,7 +109,7 @@ public class bestCandidates extends HttpServlet {
 		ArrayList<CandidatesAndAnswers> candidatesAnswers = null;
 
 		ArrayList<Points> pointsAndCandidates = new ArrayList<>();
-		
+
 		/**
 		 * Read each particular candidate's answers and put them in a list
 		 */
@@ -132,8 +132,8 @@ public class bestCandidates extends HttpServlet {
 				 * If so, go through them and subtract them from the user's answers to get a score
 				 */
 				for (int j = 0; j < questionlist.size(); j++) {
-					
-					/** 
+
+					/**
 					 * Check if the user has answered a particular question. If not, skip.
 					 */
 					if (useranswerlist.get(j) != 0) {
@@ -153,6 +153,13 @@ public class bestCandidates extends HttpServlet {
 				pointsAndCandidates.add(points);
 				System.out.println("ID: " + points.getCandidate_id() + ", points: " + points.getPointAmount());
 
+
+				/**
+				 * Lajitellaan ehdokaslista pisteiden perusteella. /Sanna
+				 */
+				Collections.sort(pointsAndCandidates);
+
+
 			}
 
 		}
@@ -161,7 +168,7 @@ public class bestCandidates extends HttpServlet {
 		 * Sort the list of points so best candidates are on top
 		 */
 		Collections.sort(pointsAndCandidates);
-		
+
 		/**
 		 * Remove everyone beyond the fifth slot
 		 */
