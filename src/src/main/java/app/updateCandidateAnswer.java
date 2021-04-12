@@ -87,7 +87,7 @@ public class updateCandidateAnswer extends HttpServlet{
 		} */
 
 		request.setAttribute("answerlist", candidateanswerlist);
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/success.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/editOk.jsp");
 		rd.forward(request, response);
 	}
 
