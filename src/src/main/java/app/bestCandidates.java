@@ -114,6 +114,9 @@ public class bestCandidates extends HttpServlet {
 				pointsAndCandidates.add(points);
 				System.out.println("ID: " + points.getCandidate_id() + ", points: " + points.getPointAmount());
 				
+				/**
+				 * Lajitellaan ehdokaslista pisteiden perusteella. /Sanna
+				 */
 				Collections.sort(pointsAndCandidates);
 				
 			}
