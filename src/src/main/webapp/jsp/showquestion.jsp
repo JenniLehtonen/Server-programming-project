@@ -39,4 +39,5 @@
 </form>
 
 
-<%@ include file="../footer.html"%>
+<c:import url="../footer.html" charEncoding="UTF-8"/>
+

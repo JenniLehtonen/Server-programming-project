@@ -34,7 +34,10 @@ ${candidatePoints.key} | ${candidatePoints.value} <br><br>
 	<br>
 
 </c:forEach>
-
+<a href='listUserAnswers?answers=${useranswerlist}'>Vertaa vastauksiasi</a>
+<c:forEach var="useranswerlist" items="${requestScope.useranswerlist}">
+		
+		</c:forEach>
 
 
 <%@ include file="../footer.html"%>

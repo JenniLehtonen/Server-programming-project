@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList" %>   
-<%@ page import="data.*" %> 
-<%@ page import="dao.Dao" %>   
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+
+ 
+ <%@ page import="java.util.ArrayList" %>   
+ <%@ page import="data.*" %> 
+ <%@ page import="dao.Dao" %> 
+ <%@ page import="app.*" %>  
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
+
 <c:import url="../header.html" charEncoding="UTF-8"/>
 <link rel="stylesheet" href="koodit.css">
 <link rel="stylesheet" href="center.css">
@@ -12,6 +16,12 @@
 
 <c:forEach var="answer" items="${requestScope.candidatesAndAnswersList}">
 		
+
+		
+		
+		
+		
+
   <c:choose> <%-- If the same candidate's name has been shown already, the program won't show it another time --%>
     <c:when test="${answer.ehdokasEtunimi eq firstname}">
     <b> </b>
@@ -31,4 +41,5 @@
     <c:set var="firstname" value = "${answer.ehdokasEtunimi}" />
     <c:set var="lastname" value = "${answer.ehdokasSukunimi}" />
   </c:forEach>
+
 <%@ include file="../footer.html" %>
