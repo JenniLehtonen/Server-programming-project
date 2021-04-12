@@ -1,6 +1,11 @@
-<%@ include file="../header.html" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 
-<h2>Edit candidate</h2>
+
+<c:import url="../header.html" charEncoding="UTF-8"/>
+
+<link rel="stylesheet" href="koodit.css">
+
+<h2>Muokkaa ehdokkaan tietoja</h2>
 <br>
 <form action='/updatecandidate' method='post'>
 <b> Candidate's id </b> <br>
@@ -21,7 +26,7 @@
 <input type="text" name='miksi_eduskuntaan' value='${requestScope.candidate.miksi_eduskuntaan}' class='input'> <br>
 <b>Mit‰ asioita haluaisit edist‰‰?</b> <br>
 <input type="text" name='mita_asioita_haluat_edistaa' value='${requestScope.candidate.mita_asioita_haluat_edistaa}' class='input'> <br><br>
-<input type='Submit' name='ok' value='Send' class='dropbtn'> 
+<input type='Submit' name='ok' value='Send' class="btn"> 
 
 </form>
 

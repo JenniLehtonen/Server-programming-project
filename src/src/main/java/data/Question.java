@@ -11,6 +11,10 @@ public class Question {
 	public Question() {
 		// TODO Auto-generated constructor stub
 	}
+	public Question(String kysymys) {
+		whatquestion = kysymys;
+		setWhatquestion(kysymys);
+	}
 	public int getId() {
 		return id;
 	}

@@ -29,6 +29,7 @@ import data.CandidatesAndAnswers;
 import data.Points;
 import data.Candidates;
 import data.Question;
+import data.*;
 
 @WebServlet(name = "bestCandidates", urlPatterns = { "/bestCandidates" })
 public class bestCandidates extends HttpServlet {
@@ -49,6 +50,8 @@ public class bestCandidates extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+
+	@SuppressWarnings("unchecked")
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ArrayList<Question> questionlist = null;
@@ -63,8 +66,6 @@ public class bestCandidates extends HttpServlet {
 			candidatelist = dao.readAllCandidates();
 			for (int i = 0; i < candidatelist.size(); i++) {
 				Candidates x = candidatelist.get(i);
-				//System.out.println(x.getEhdokas_id());
-				//System.out.println(x.getEtunimi() + " " + x.getSukunimi());
 			}
 		} else {
 			System.out.println("No connection to database");
@@ -76,16 +77,34 @@ public class bestCandidates extends HttpServlet {
 
 		for (int i = 0; i < questionlist.size(); i++) {
 			answer_string = request.getParameter("" + (i + 1));
-			answer = Integer.valueOf(answer_string);
-			useranswerlist.add(answer);
+			if (answer_string != null) {
+
+				answer = Integer.valueOf(answer_string);
+				useranswerlist.add(answer);
+
+
+			} else {
+				answer = 0;
+				useranswerlist.add(answer);
+			}
+
 		}
+
+		for (int i = 0; i < questionlist.size(); i++) {
+
+		}
+
+		CandidatesAndAnswers canda = new CandidatesAndAnswers();
+		canda.setAnswerlist2(useranswerlist);
+
+
 
 		int difference = 0;
 		int differenceSum = 0;
 		CandidatesAndAnswers candidateAnswer = null;
 		ArrayList<CandidatesAndAnswers> candidatesAnswers = null;
 
-		//HashMap<Integer, Integer> pointsHash = new HashMap<Integer, Integer>();
+		// HashMap<Integer, Integer> pointsHash = new HashMap<Integer, Integer>();
 		ArrayList<Points> pointsAndCandidates = new ArrayList<>();
 		for (int i = 0; i < candidatelist.size(); i++) {
 			Points points = new Points();
@@ -98,36 +117,56 @@ public class bestCandidates extends HttpServlet {
 			}
 
 			if (candidatesAnswers.size() != 0) {
+
 				for (int j = 0; j < questionlist.size(); j++) {
-					candidateAnswer = candidatesAnswers.get(j);
-					difference = useranswerlist.get(j) - candidateAnswer.getVastaus();
-					differenceSum = differenceSum + Math.abs(difference);
-					
-					System.out.println("ID: " + candidatelist.get(i).getEhdokas_id() + ", vastaus: " + candidatesAnswers.get(j).getVastaus());
+					if (useranswerlist.get(j) != 0) {
+						candidateAnswer = candidatesAnswers.get(j);
+						difference = useranswerlist.get(j) - candidateAnswer.getVastaus();
+						differenceSum = differenceSum + Math.abs(difference);
+
+						System.out.println("ID: " + candidatelist.get(i).getEhdokas_id() + ", vastaus: "
+								+ candidatesAnswers.get(j).getVastaus());
+					}
 
 				}
-				//pointsHash.put(candidateAnswer.getEhdokas_id(), differenceSum);
+				// pointsHash.put(candidateAnswer.getEhdokas_id(), differenceSum);
 				points.setCandidate_id(candidatelist.get(i).getEhdokas_id());
 				points.setPointAmount(differenceSum);
 				points.setCandidateFirstname(candidatelist.get(i).getEtunimi());
 				points.setCandidateSurname(candidatelist.get(i).getSukunimi());
 				pointsAndCandidates.add(points);
 				System.out.println("ID: " + points.getCandidate_id() + ", points: " + points.getPointAmount());
+
 				
 				/**
 				 * Lajitellaan ehdokaslista pisteiden perusteella. /Sanna
 				 */
 				Collections.sort(pointsAndCandidates);
 				
+
 			}
 
 		}
 
+		Collections.sort(pointsAndCandidates);
+		pointsAndCandidates.subList(5, pointsAndCandidates.size()).clear();
+
+
+
+		request.setAttribute("useranswers", useranswerlist);
 		request.setAttribute("pointsAndCandidates", pointsAndCandidates);
-		//request.setAttribute("pointsHash", pointsHash);
+
+		// request.setAttribute("pointsHash", pointsHash);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/bestCandidates.jsp");
+
+
+
 		dispatcher.forward(request, response);
 
+
+
 	}
+
+
 }

@@ -111,16 +111,19 @@ public class Dao {
 				f.setWhatquestion(RS.getString("KYSYMYS"));
 				list.add(f);
 			}
+			System.out.println("Lista haettu");
 			return list;
 		}
 		catch(SQLException e) {
+			System.out.println("Listaa ei haettu");
 			return null;
+			
 		}
 	}
 	
 	public ArrayList<CandidatesAndAnswers> readCandidatesAnswers(int id) {
 		CandidatesAndAnswers a = null;
-		ArrayList<CandidatesAndAnswers> list = new ArrayList();
+		ArrayList<CandidatesAndAnswers> list = new ArrayList<>();
 		try {
 			String sql="select * from vastaukset where ehdokas_id=? order by kysymys_id";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
@@ -141,11 +144,10 @@ public class Dao {
 		}
 
 	public ArrayList<Question> addQuestion(Question q) {
-		String sql = "INSERT INTO kysymykset (kysymys_id, kysymys) VALUES (?,?)";
+		String sql = "INSERT INTO kysymykset (kysymys) VALUES (?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, q.getId());
-			pstmt.setString(2, q.getWhatquestion());
+			pstmt.setString(1, q.getWhatquestion());
 			pstmt.executeUpdate();
 			return readAllQuestion();
 		} catch (SQLException e) {
@@ -182,9 +184,10 @@ public class Dao {
 			ResultSet RS=pstmt.executeQuery();
 			while (RS.next()){
 				f=new Question();
-				f.setId(RS.getInt("id"));
-				f.setWhatquestion(RS.getString("whatquestion"));
+				f.setId(RS.getInt("KYSYMYS_ID"));
+				f.setWhatquestion(RS.getString("KYSYMYS"));
 			}
+			System.out.println("Lista 1kysymys");
 			return f;
 		}
 		catch(SQLException e) {

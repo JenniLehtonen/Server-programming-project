@@ -39,6 +39,7 @@ public class ShowShort extends HttpServlet {
 		
 		if (dao.getConnection()) {
 			list=dao.readAllCandidates();
+			System.out.println("Lyhyt ehdokaslista haettu");
 		}
 		else {
 			System.out.println("No connection to database");
