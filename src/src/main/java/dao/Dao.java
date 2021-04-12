@@ -448,7 +448,7 @@ public class Dao {
 				public String updateCandidateAnswer(ArrayList<Integer> list, int ehdokas_id)
 				{
 					String sql; 
-					String done = "Jotain meni vikaan, ole hyvä ja yritä uudelleen.";
+					String done = "Jotain meni vikaan, eikä tietojen päivitys onnistunut. Tarkista, että ehdokasnumero on oikein.  Jos et ole vielä vastannut kysymyksiin, vastaa kysymyksiin kohdasta Vastaa kysymyksiin. ";
 					
 					try {
 			
