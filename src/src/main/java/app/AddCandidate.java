@@ -62,6 +62,9 @@ public class AddCandidate extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		/**
+		 * Get the parameters from the form
+		 */
 		String etunimi = request.getParameter("etunimi");
 		String sukunimi = request.getParameter("sukunimi");
 		String puolue = request.getParameter("puolue");
@@ -71,11 +74,20 @@ public class AddCandidate extends HttpServlet {
 		String mita_asioita_haluat_edistaa = request.getParameter("mita_asioita_haluat_edistaa");
 		String ammatti = request.getParameter("ammatti");
 
+		/**
+		 * Turn age into a number
+		 */
 		int ika = Integer.parseInt(ika_string);
 
+		/**
+		 * Create an object out of the information gotten from the form
+		 */
 		Candidates c = new Candidates(etunimi, sukunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan,
 				mita_asioita_haluat_edistaa, ammatti);
 
+		/**
+		 * Add the object into the database
+		 */
 		ArrayList<Candidates> list = null;
 		if (dao.getConnection()) {
 			list = dao.addCandidate(c);
