@@ -1,5 +1,7 @@
 package app;
 
+import java.util.ArrayList;
+
 public class Answer {
 	
 	String answer;
@@ -11,4 +13,8 @@ public class Answer {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
+	
+	
+	
+	
 }
