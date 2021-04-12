@@ -47,10 +47,16 @@ public class AddNewQuestions extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String kysymys_id = request.getParameter("kysymys_id");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/addNewQuestions.jsp");
+		dispatcher.forward(request, response);
+
+	}
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String kysymys = request.getParameter("kysymys");
 
-		Question q = new Question(kysymys_id, kysymys);
+		Question q = new Question(kysymys);
 
 		dao.addQuestion(q);
 

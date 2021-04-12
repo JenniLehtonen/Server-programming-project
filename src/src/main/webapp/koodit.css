@@ -175,30 +175,31 @@ button {
 }
 
 button:hover {
+  background-color: #589696;
+  color: white;
+}
+#removeButton{
+ background-color: white !important; 
+  color: black !important; 
+  border: 2px solid #589696;
+  color: black;
+  padding: 12px 18px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  font-family: Arial, sans-serif, Helvetica;
 	background-color: #589696;
 	color: white;
-}
-
-#removeButton {
-	background-color: white;
-	color: black;
-	border: 2px solid #589696;
-	color: black;
-	padding: 14px 20px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin-bottom: 2rem;
-	margin-top: 1rem;
-	transition-duration: 0.4s;
-	cursor: pointer;
-	font-family: Arial, sans-serif, Helvetica;
 }
 
 #removeButton:hover {
-	background-color: #589696;
-	color: white;
+	background-color: #589696 !important;
+	color: white !important;
 }
 
 .btn {

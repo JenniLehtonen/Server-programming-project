@@ -11,6 +11,7 @@
 <c:import url="../header.html" charEncoding="UTF-8"/>
 
 <center>Tietojen muuttaminen onnistui! <br>
-<a href="http://localhost:8080">Palaa etusivulle</a>
+<a href="http://localhost:8080">Palaa etusivulle</a> <br>
+<a href="/showshort">Muokkaa ehdokkaita</a>
 </center>
 <%@ include file="../footer.html" %>
