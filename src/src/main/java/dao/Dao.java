@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import app.Answer;
 import data.Candidates;
 import data.CandidatesAndAnswers;
 import data.Question;
@@ -396,5 +397,37 @@ public class Dao {
 		}
 
 	}
+	
+				public void addCandidateAnswers(ArrayList<Integer> list, int ehdokas_id)
+				{
+					String sql; 
+					
+					readAllCandidates();
+					try {
+			
+						for(int i = 0; i<list.size();i++)
+						{
+							sql = "insert into vastaukset (ehdokas_id, kysymys_id, vastaus, kommentti) VALUES (?, ?, ?, ?)";
+					        
+					        PreparedStatement statement = conn.prepareStatement(sql);
+					        statement.setInt(1, ehdokas_id);
+					        statement.setInt(2, (i+1));
+					        statement.setInt(3, list.get(i));
+					        statement.setString(4, "Ehdokkaan " + ehdokas_id + " vastaus kysymykseen " + (i+1));
+					        //statement.executeUpdate();
+					         
+					        int rowsInserted = statement.executeUpdate();
+					        if (rowsInserted > 0) {
+					            System.out.println("Tiedot syötetty tauluun.");
+					            }
+						}
+
+						
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						System.out.println("Tallennus ei onnistunut!");
+					}
+				}
 
 }
