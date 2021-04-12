@@ -12,6 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 import dao.Dao;
 import data.Question;
 
+/**
+ * @author Sanna Nieminen-Vuorio
+ *
+ * Haetaan ehdokkaan vastaukset ja tallennetaan ne listaan, 
+ * joka lähtetään Dao-luokan metodille, joka tallettaan vastaukset tietokantaan.
+ * Onnistumisen edellytyksenä on, että käyttäjän antamalle id:lle ei ole vielä tallennettu vastauksia.
+ */
+
 @WebServlet("/addcandidateanswer")
 public class AddCandidateAnswer extends HttpServlet{
 
@@ -40,9 +48,7 @@ public class AddCandidateAnswer extends HttpServlet{
 		} else {
 			System.out.println("No connection to database");
 		}
-		
-
-			
+	
 		ArrayList<Integer> candidateanswerlist = new ArrayList<>();
 		String answer_string = null;
 		int answer = 0;
@@ -53,10 +59,10 @@ public class AddCandidateAnswer extends HttpServlet{
 			candidateanswerlist.add(answer);
 		}
 		
+		String done;
+		done = dao.addCandidateAnswers(candidateanswerlist, ehdokas_id);
 
-		dao.addCandidateAnswers(candidateanswerlist, ehdokas_id);
-
-		request.setAttribute("answerlist", candidateanswerlist);
+		request.setAttribute("success", done);
 		RequestDispatcher rd=request.getRequestDispatcher("/jsp/success.jsp");
 		rd.forward(request, response);
 	}

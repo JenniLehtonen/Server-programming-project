@@ -403,9 +403,10 @@ public class Dao {
 	 * @param list
 	 * @param ehdokas_id
 	 */
-				public void addCandidateAnswers(ArrayList<Integer> list, int ehdokas_id)
+				public String addCandidateAnswers(ArrayList<Integer> list, int ehdokas_id)
 				{
 					String sql; 
+					String done = null;
 	
 					try {
 			
@@ -418,12 +419,13 @@ public class Dao {
 					        statement.setInt(2, (i+1));
 					        statement.setInt(3, list.get(i));
 					        statement.setString(4, "Ehdokkaan " + ehdokas_id + " vastaus kysymykseen " + (i+1));
-					        //statement.executeUpdate();
 					         
 					        int rowsInserted = statement.executeUpdate();
 					        if (rowsInserted > 0) {
-					            System.out.println("Tiedot sy�tetty tauluun.");
+					            System.out.println("Tiedot sy�tetty tauluun.");
 					            }
+					        
+					        done = "Vastausten tallennus onnistui!";
 						}
 
 						
@@ -431,7 +433,9 @@ public class Dao {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 						System.out.println("Tallennus ei onnistunut!");
+						done = "Jotain meni vikaan, eikä tietojen tallennus onnistunut. Tarkista, että ehdokasnumero on oikein.  Jos olet jo vastannut kysymyksiin, päivitä vastaukset kohdasta Muokkaa vastauksia. ";
 					}
+					return done;
 					
 				} //addCandidateAnswers-sulje
 				
@@ -441,9 +445,10 @@ public class Dao {
 				 * @param ehdokas_id
 				 */
 				
-				public void updateCandidateAnswer(ArrayList<Integer> list, int ehdokas_id)
+				public String updateCandidateAnswer(ArrayList<Integer> list, int ehdokas_id)
 				{
 					String sql; 
+					String done = "Jotain meni vikaan, ole hyvä ja yritä uudelleen.";
 					
 					try {
 			
@@ -458,16 +463,21 @@ public class Dao {
 
 					        int rowsInserted = statement.executeUpdate();
 					        if (rowsInserted > 0) {
-					            System.out.println("Tiedot p�ivitetty tauluun.");
+					            System.out.println("Tiedot p�ivitetty tauluun.");
+					            done = "Vastausten tallennus onnistui!";
 					            }
+					        
 						}
 
 						
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-						System.out.println("P�ivitys ei onnistunut!");
+						System.out.println("P�ivitys ei onnistunut!");
+						done = "Jotain meni vikaan, eikä tietojen päivitys onnistunut. Tarkista, että ehdokasnumero on oikein.  Jos et ole vielä vastannut kysymyksiin, vastaa kysymyksiin kohdasta Vastaa kysymyksiin. ";
 					}
+					
+					return done;
 					
 				} //updateCandidateAnswer-sulje
 

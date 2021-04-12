@@ -10,7 +10,8 @@
 
 <c:import url="../header.html" charEncoding="UTF-8"/>
 
-<center>Tietojen lisääminen onnistui! <br>
+<center>
+<b>${requestScope.success}</b> <br><br>
 <a href="http://localhost:8080">Palaa etusivulle</a> <br>
 <a href="/showshort">Muokkaa ehdokkaita</a>
 </center>

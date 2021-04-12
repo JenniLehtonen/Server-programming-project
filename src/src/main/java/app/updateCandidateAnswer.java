@@ -73,7 +73,7 @@ public class updateCandidateAnswer extends HttpServlet{
 			candidateanswerlist.add(answer);
 		}
 		
-		dao.updateCandidateAnswer(candidateanswerlist, ehdokas_id);
+		String done = dao.updateCandidateAnswer(candidateanswerlist, ehdokas_id);
 		//dao.addCandidateAnswers(candidateanswerlist, ehdokas_id);
 		/*
 		boolean b = candidatesIds.contains(ehdokas_id);
@@ -86,8 +86,8 @@ public class updateCandidateAnswer extends HttpServlet{
 			dao.addCandidateAnswers(candidateanswerlist, ehdokas_id);
 		} */
 
-		request.setAttribute("answerlist", candidateanswerlist);
-		RequestDispatcher rd=request.getRequestDispatcher("/jsp/editOk.jsp");
+		request.setAttribute("success", done);
+		RequestDispatcher rd=request.getRequestDispatcher("/jsp/success.jsp");
 		rd.forward(request, response);
 	}
 
