@@ -20,7 +20,14 @@ import data.Question;
 
 
 import dao.Dao;
-
+/***
+ * 
+ * @author liisa
+ * 
+ * Luokka hakee dao- luokasta metodin, mikä lukee ja listaa kysymykset tietokannasta.
+ * lista lähetetään showquestion.jsp tiedostolle, missä käyttäjä voi vastata kysymyksiin
+ *
+ */
 
 /**
  * Servlet implementation class ShowQuestion

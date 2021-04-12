@@ -12,6 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.Dao;
 import data.Question;
+/***
+ * 
+ * @author liisa
+ * 
+ * Luokka hakee dao- luokasta metodin, mikä lukee ja listaa kysymykset tietokannasta.
+ * lista lähetetään showquestion2foredit.jsp tiedostolle, missä ylläpitäjä voi halutessaan muokata kysymyksiä
+ *
+ */
 
 @WebServlet(name = "updateQuestion", urlPatterns = { "/updateQuestion" })
 public class Update extends HttpServlet {
