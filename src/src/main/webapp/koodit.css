@@ -64,6 +64,10 @@ body {
 	border-radius: 0 0 10px 10px;
 	color: white;
 }
+li{
+	margin: 20px;
+	
+}
 
 #margin {
 	padding-left: 20px;

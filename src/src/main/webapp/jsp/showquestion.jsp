@@ -16,7 +16,7 @@
 
 
 
-<h2>Answer the questions</h2>
+<h2>Vastaa kysymyksiin</h2>
 <br>
 <br>
 <form method="post" action="bestCandidates">
