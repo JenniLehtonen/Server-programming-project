@@ -16,27 +16,28 @@
 
 
 
-<h2>Answer the questions</h2>
+<h2>Vastaa kysymyksiin</h2>
 <br>
 <br>
 <form method="post" action="bestCandidates">
 	<c:forEach var="question" items="${requestScope.questionlist}">
 		<b>${question.id}: </b>${question.whatquestion} <br> <br>
 			<input type="radio" id="${question.id}1" name="${question.id}"
-			value="1"><label for="${question.id}1">1 Totally
-				disagree</label><br> <input type="radio" id="${question.id}2"
-			name="${question.id}" value="2"><label for="${question.id}2">2</label>
+			value="1"><label for="${question.id}1">1. Täysin
+				eri mieltä</label><br> <input type="radio" id="${question.id}2"
+			name="${question.id}" value="2"><label for="${question.id}2">2. Jokseenkin eri mieltä</label>
 			<br> <input type="radio" id="${question.id}3"
-			name="${question.id}" value="3"> <label for="${question.id}3">3</label>
+			name="${question.id}" value="3"> <label for="${question.id}3">3. En osaa sanoa</label>
 			<br> <input type="radio" id="${question.id}4"
-			name="${question.id}" value="4"> <label for="${question.id}4">4</label>
+			name="${question.id}" value="4"> <label for="${question.id}4">4. Jokseenkin samaa mieltä</label>
 			<br> <input type="radio" id="${question.id}5"
-			name="${question.id}" value="5"><label for="${question.id}5">5
-				Totally agree</label> <br> <br>
+			name="${question.id}" value="5"><label for="${question.id}5">5.
+				Täysin samaa mieltä</label> <br> <br>
 	</c:forEach>
 
 	<input type="submit" value="Submit" class="dropbtn">
 </form>
 
 
-<%@ include file="../footer.html"%>
+<c:import url="../footer.html" charEncoding="UTF-8"/>
+
