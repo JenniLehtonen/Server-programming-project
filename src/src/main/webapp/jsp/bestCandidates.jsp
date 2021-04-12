@@ -11,24 +11,9 @@
 <c:import url="../header.html" charEncoding="UTF-8"/>
 
 
+<h2> Sinulle sopivimmat ehdokkaat:</h2> <br><br>
 
-
-<!--<c:forEach var="candidatePoints" items="${requestScope.pointsHash}">
-
-
-
-${candidatePoints.key} | ${candidatePoints.value} <br><br>
-
-</c:forEach>-->
-
-
-
-<h2> Sinulle sopivimmat ehdokkaat:</h2>
-<br>
-<br>
-
-<% int i = 1; %>
-
+<!-- Loop through the best candidates and show them -->
 <c:forEach var="pointsAndCandidates"
 	items="${requestScope.pointsAndCandidates}">
 
@@ -37,10 +22,9 @@ ${candidatePoints.key} | ${candidatePoints.value} <br><br>
 
 </c:forEach>
 
+<!-- Turn the user's answers into a string of numbers -->
 <c:forEach var="useranswers" items="${requestScope.useranswers}">
 	<c:set var="useranswers_string" value="${useranswers_string}${useranswers}" />
-
-	<% i++; %>
 
 </c:forEach>
 

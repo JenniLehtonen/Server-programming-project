@@ -50,10 +50,12 @@ public class bestCandidates extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	@SuppressWarnings("unchecked")
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		/**
+		 * Get the question list
+		 */
 		ArrayList<Question> questionlist = null;
 		if (dao.getConnection()) {
 			questionlist = dao.readAllQuestion();
@@ -61,6 +63,9 @@ public class bestCandidates extends HttpServlet {
 			System.out.println("No connection to database");
 		}
 
+		/**
+		 * Get candidate list
+		 */
 		ArrayList<Candidates> candidatelist = null;
 		if (dao.getConnection()) {
 			candidatelist = dao.readAllCandidates();
@@ -71,6 +76,9 @@ public class bestCandidates extends HttpServlet {
 			System.out.println("No connection to database");
 		}
 
+		/**
+		 * Construct a list out of user's answers
+		 */
 		ArrayList<Integer> useranswerlist = new ArrayList<>();
 		String answer_string = null;
 		int answer = 0;
@@ -82,7 +90,9 @@ public class bestCandidates extends HttpServlet {
 				answer = Integer.valueOf(answer_string);
 				useranswerlist.add(answer);
 
-
+				/**
+				 * If user didn't answer a question, default to zero
+				 */
 			} else {
 				answer = 0;
 				useranswerlist.add(answer);
@@ -90,22 +100,19 @@ public class bestCandidates extends HttpServlet {
 
 		}
 
-		for (int i = 0; i < questionlist.size(); i++) {
-
-		}
-
 		CandidatesAndAnswers canda = new CandidatesAndAnswers();
 		canda.setAnswerlist2(useranswerlist);
-
-
 
 		int difference = 0;
 		int differenceSum = 0;
 		CandidatesAndAnswers candidateAnswer = null;
 		ArrayList<CandidatesAndAnswers> candidatesAnswers = null;
 
-		// HashMap<Integer, Integer> pointsHash = new HashMap<Integer, Integer>();
 		ArrayList<Points> pointsAndCandidates = new ArrayList<>();
+		
+		/**
+		 * Read each particular candidate's answers and put them in a list
+		 */
 		for (int i = 0; i < candidatelist.size(); i++) {
 			Points points = new Points();
 			differenceSum = 0;
@@ -116,9 +123,19 @@ public class bestCandidates extends HttpServlet {
 				System.out.println("No connection to database");
 			}
 
+			/**
+			 * Check if a candidate has any answers
+			 */
 			if (candidatesAnswers.size() != 0) {
 
+				/**
+				 * If so, go through them and subtract them from the user's answers to get a score
+				 */
 				for (int j = 0; j < questionlist.size(); j++) {
+					
+					/** 
+					 * Check if the user has answered a particular question. If not, skip.
+					 */
 					if (useranswerlist.get(j) != 0) {
 						candidateAnswer = candidatesAnswers.get(j);
 						difference = useranswerlist.get(j) - candidateAnswer.getVastaus();
@@ -129,7 +146,6 @@ public class bestCandidates extends HttpServlet {
 					}
 
 				}
-				// pointsHash.put(candidateAnswer.getEhdokas_id(), differenceSum);
 				points.setCandidate_id(candidatelist.get(i).getEhdokas_id());
 				points.setPointAmount(differenceSum);
 				points.setCandidateFirstname(candidatelist.get(i).getEtunimi());
@@ -137,30 +153,27 @@ public class bestCandidates extends HttpServlet {
 				pointsAndCandidates.add(points);
 				System.out.println("ID: " + points.getCandidate_id() + ", points: " + points.getPointAmount());
 
-
 			}
 
 		}
 
+		/**
+		 * Sort the list of points so best candidates are on top
+		 */
 		Collections.sort(pointsAndCandidates);
+		
+		/**
+		 * Remove everyone beyond the fifth slot
+		 */
 		pointsAndCandidates.subList(5, pointsAndCandidates.size()).clear();
-
-
 
 		request.setAttribute("useranswers", useranswerlist);
 		request.setAttribute("pointsAndCandidates", pointsAndCandidates);
 
-		// request.setAttribute("pointsHash", pointsHash);
-
 		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/bestCandidates.jsp");
-
-
 
 		dispatcher.forward(request, response);
 
-
-
 	}
-
 
 }

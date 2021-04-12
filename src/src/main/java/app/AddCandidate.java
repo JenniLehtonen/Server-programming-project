@@ -76,11 +76,9 @@ public class AddCandidate extends HttpServlet {
 		Candidates c = new Candidates(etunimi, sukunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan,
 				mita_asioita_haluat_edistaa, ammatti);
 
-		dao.addCandidate(c);
-
 		ArrayList<Candidates> list = null;
 		if (dao.getConnection()) {
-			list = dao.readAllCandidates();
+			list = dao.addCandidate(c);
 		} else {
 			System.out.println("No connection to database");
 		}
