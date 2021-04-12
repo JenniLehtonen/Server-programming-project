@@ -66,8 +66,6 @@ public class bestCandidates extends HttpServlet {
 			candidatelist = dao.readAllCandidates();
 			for (int i = 0; i < candidatelist.size(); i++) {
 				Candidates x = candidatelist.get(i);
-				// System.out.println(x.getEhdokas_id());
-				// System.out.println(x.getEtunimi() + " " + x.getSukunimi());
 			}
 		} else {
 			System.out.println("No connection to database");
