@@ -18,6 +18,11 @@ import data.Candidates;
 import data.CandidatesAndAnswers;
 
 @WebServlet("/compareUserAnswersToCandidateAnswers")
+/**
+ * 
+ * @author Jenni, Liisa, Riikka
+ *
+ */
 public class compareUserAnswersToCandidateAnswers extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
@@ -70,8 +75,6 @@ public class compareUserAnswersToCandidateAnswers extends HttpServlet{
     		 * Send candidates' answers to jsp
     		 */
     		request.setAttribute("candidatesAndAnswersList", list);
-    		
-    		
     		request.setAttribute("useranswers", useranswers);
     		RequestDispatcher rd=request.getRequestDispatcher("/jsp/compareUserAnswersToCandidateAnswers.jsp");
     		rd.forward(request, response);

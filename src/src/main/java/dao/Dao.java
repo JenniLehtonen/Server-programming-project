@@ -88,7 +88,7 @@ public class Dao {
 	}
 
 	/**
-	 * Read all answers and add the to the list
+	 * Read candidates' answers to the questions
 	 *
 	 * @return
 	 */

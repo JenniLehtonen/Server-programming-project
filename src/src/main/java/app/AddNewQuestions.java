@@ -26,6 +26,11 @@ import data.Candidates;
 import data.Question;
 
 @WebServlet(name = "addNewQuestions", urlPatterns = { "/addNewQuestions" })
+/**
+ * 
+ * @author Jenni
+ *
+ */
 public class AddNewQuestions extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
