@@ -15,6 +15,13 @@ import data.Question;
 
 import java.sql.Connection;
 
+/***
+ * 
+ * @author liisa, Riikka, Jenni, Sanna
+ * 
+ * This class contains methods that we use to connect to the database and that we use to edit information in the database
+ *
+ */
 public class Dao {
 
 	private String url;
@@ -80,6 +87,11 @@ public class Dao {
 		}
 	}
 
+	/**
+	 * Read all answers and add the to the list
+	 *
+	 * @return
+	 */
 	public ArrayList<CandidatesAndAnswers> readAllAnswers(){
 		ArrayList<CandidatesAndAnswers> list = new ArrayList<>();
 		try {
@@ -99,6 +111,11 @@ public class Dao {
 			return null;
 		}
 	}
+	/**
+	 * Read all questions and add the to the list
+	 *
+	 * @return
+	 */
 
 	public ArrayList<Question> readAllQuestion() {
 		ArrayList<Question> list=new ArrayList<>();
@@ -121,6 +138,12 @@ public class Dao {
 		}
 	}
 	
+	/**
+	 * reads candidates' responses from the database by candidate id and question id
+	 *
+	 * @return
+	 */
+	
 	public ArrayList<CandidatesAndAnswers> readCandidatesAnswers(int id) {
 		CandidatesAndAnswers a = null;
 		ArrayList<CandidatesAndAnswers> list = new ArrayList<>();
@@ -142,6 +165,12 @@ public class Dao {
 			return null;
 		}
 		}
+	
+	/**
+	 *  Add new question to the database
+	 *
+	 * @return
+	 */
 
 	public ArrayList<Question> addQuestion(Question q) {
 		String sql = "INSERT INTO kysymykset (kysymys) VALUES (?)";
@@ -161,6 +190,11 @@ public class Dao {
 		}
 	}
 
+	/**
+	 * Update question by question id
+	 *
+	 * @return
+	 */
 	public ArrayList<Question> updateQuestion(Question f) {
 		try {
 			String sql="update kysymykset set kysymys=? where KYSYMYS_ID=?";
@@ -174,7 +208,11 @@ public class Dao {
 			return null;
 		}
 	}
-
+	/**
+	 * Read one question by question id
+	 *
+	 * @return
+	 */
 	public Question readQuestion(String id) {
 		Question f=null;
 		try {
@@ -196,7 +234,7 @@ public class Dao {
 	}
 
 	/**
-	 * Update a name of one candidate. Don't need this yet. Needs all parameters
+	 * Update  information of one candidate by id. 
 	 *
 	 * @param c
 	 * @return
@@ -227,7 +265,7 @@ public class Dao {
 		}
 
 	/**
-	 * Delete candidate based on id
+	 * Delete candidate by id
 	 *
 	 * @param id
 	 * @return
@@ -243,7 +281,11 @@ public class Dao {
 			return null;
 		}
 	}
-
+	/**
+	 * Remove question from database by id
+	 *
+	 * @return
+	 */
 	public ArrayList<Question> removeQuestion(String id) {
 		try {
 			String sql = "delete from kysymykset where kysymys_id=?";
@@ -256,6 +298,11 @@ public class Dao {
 		}
 	}
 
+	/**
+	 *  Add new candidate's information to the database
+	 *
+	 * @return
+	 */
 	public ArrayList<Candidates> addCandidate(Candidates c) {
 		String sql = "INSERT INTO ehdokkaat (ehdokas_id, sukunimi, etunimi, puolue, kotipaikkakunta, ika, miksi_eduskuntaan, mita_asioita_haluat_edistaa, ammatti) VALUES (?,?,?,?,?,?,?,?,?)";
 		try {
@@ -279,7 +326,7 @@ public class Dao {
 	}
 
 	/**
-	 * Read one candidate based on ehdokas_id
+	 * Read information of one candidate by id
 	 *
 	 * @param id
 	 * @return
@@ -312,7 +359,7 @@ public class Dao {
 	}
 
 	/**
-	 * Read candidates based on party
+	 * Read candidates by parties
 	 *
 	 * @param party
 	 * @return
@@ -349,7 +396,7 @@ public class Dao {
 
 	
 	/**
-	 * 
+	 * Add answer of candidate to database 
 	 * @param list
 	 * @param ehdokas_id
 	 */
@@ -390,7 +437,7 @@ public class Dao {
 				} //addCandidateAnswers-sulje
 				
 				/**
-				 * 
+				 * Update candidate's answer on database
 				 * @param list
 				 * @param ehdokas_id
 				 */

@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import dao.Dao;
 import data.Question;
 /***
- * @Liisa
- * Luokka lukee muokattavaksi valitut kysymykset showquestionforedit2.jsp tiedostosta ja lähetttää ne showquestiontoedit.jsp tiedostolle
- * missä valittua kysymystä on mahdollista muokata
+ * 
+ *  @Liisa
+ *  
+ *  The class reads the questions for editing from the showquestionforedit2.jsp file and sends them to the showquestiontoedit.jsp file.
+ *   where the selected question can be edited
  * 
  */
 /**

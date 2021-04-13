@@ -16,8 +16,8 @@ import data.Question;
  * 
  * @author liisa
  * 
- * Luokka hakee dao- luokasta metodin, mikä lukee ja listaa kysymykset tietokannasta.
- * lista lähetetään showquestion2foredit.jsp tiedostolle, missä ylläpitäjä voi halutessaan muokata kysymyksiä
+ * The class retrieves a method from the dao class, which reads and lists the questions from the database.
+ * the list is sent to the showquestion2foredit.jsp file, where the administrator can select the question for edit.
  *
  */
 

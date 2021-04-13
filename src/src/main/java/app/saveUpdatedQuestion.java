@@ -16,8 +16,8 @@ import data.Question;
  * 
  * @author liisa
  * 
- * Luokka ottaa vastaan muokatun kysymyksen showquestiontoedit.jsp tiedostosta ja kutsuu dao- luokan metodia, millä muokattu kysymys
- * tallentuu tietokantaan
+ * The class receives a modified question from the showquestiontoedit.jsp file and calls the dao- class method,
+ *  which stores the question in a database
  *
  */
 @WebServlet(name = "saveupdatedquestion", urlPatterns = { "/saveupdatedquestion" })
