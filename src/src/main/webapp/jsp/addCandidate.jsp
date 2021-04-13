@@ -5,9 +5,9 @@
  <%@ page import="data.*" %> 
  <%@ page import="dao.Dao" %>   
     
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>   
-<link rel="stylesheet" href="center.css"> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
     
+
 <c:import url="../adminHeader.html" charEncoding="UTF-8"/>
 
 <form method="post" action="addCandidate">
@@ -29,7 +29,7 @@
 </textarea> <br><br>
 <label for="ammatti">Ammatti</label> <br>
 <input type="text" id="ammatti" name="ammatti"> <br><br>
-<input type="submit" class="adminButtons" value="Tallenna">
+<input type="submit" value="Submit">
 </form>
 
 <%@ include file="../footer.html" %>

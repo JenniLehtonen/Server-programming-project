@@ -6,10 +6,10 @@
 				<h2>Kirjaudu sis√§√§n</h2>
 				<form action="/login" method="GET">
 					<label>K√§ytt√§j√§tunnus : </label><br>
-		            <input type="text" placeholder="Syˆt‰ k‰ytt‰j‰tunnus" name="username"><br> 
+		            <input type="text" placeholder="Sy√∂t√§ k√§ytt√§j√§tunnus" name="username"><br> 
 		            <label>Salasana : </label><br>
-		            <input type="password" placeholder="Syˆt‰ salasana" name="password"><br>  
-		            <button type="submit">Kirjaudu sis‰‰n</button>   
+		            <input type="password" placeholder="Sy√∂t√§ salasana" name="password"><br>  
+		            <button type="submit">Kirjaudu sis√§√§n</button>   
 				</form>
 				<%
 					String userProvidedUsername = (String)request.getAttribute("userProvidedUsername");
