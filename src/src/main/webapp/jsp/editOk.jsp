@@ -10,8 +10,8 @@
 
 <c:import url="../adminHeader.html" charEncoding="UTF-8"/>
 
-<center>Tietojen muuttaminen onnistui! <br>
-<a href="http://localhost:8080/jsp/adminPage.jsp">Palaa etusivulle</a> <br>
-<a href="/showshort">Muokkaa ehdokkaita</a>
+<center>Tietojen muuttaminen onnistui! <br><br>
+<a href="http://localhost:8080/jsp/adminPage.jsp" class="btn">Palaa etusivulle</a> <br> 
+<a href="/updateQuestion" class="btn">Palaa muokkaamaan kysymyksiä</a>
 </center>
 <%@ include file="../footer.html" %>
