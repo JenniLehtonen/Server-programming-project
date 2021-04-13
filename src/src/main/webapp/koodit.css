@@ -33,12 +33,12 @@ body {
 	border-right: 1px solid #226666;
 }
 
-.navi a {
+.navi a:link, .navi a:visited {
 	color: white;
 	text-decoration: none;
 }
 
-.navi a:hover {
+.navi a:hover, .navi a:active {
 	text-decoration:underline;
 }
 
@@ -52,6 +52,15 @@ body {
 .body2 {
 	padding: 10px;
 	color: black;
+}
+
+.body2 a:link, .body2 a:visited {
+	color:#226666;
+	text-decoration:none;
+}
+
+.body2 a:hover, .body2 a:active {
+	text-decoration:underline;
 }
 
 .footer {
