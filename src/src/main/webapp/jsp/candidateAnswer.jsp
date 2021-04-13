@@ -7,7 +7,7 @@
 <%@ page import="app.ShowQuestion"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:import url="../header.html" charEncoding="UTF-8"/>
+<c:import url="../adminHeader.html" charEncoding="UTF-8"/>
 
 
 <h2>Vastaa kysymyksiin:</h2>
