@@ -17,7 +17,7 @@ import java.sql.Connection;
 
 /***
  * 
- * @author liisa, Riikka, Jenni, Sanna
+ * @author Liisa, Riikka, Jenni, Sanna
  * 
  * This class contains methods that we use to connect to the database and that we use to edit information in the database
  *
@@ -396,9 +396,11 @@ public class Dao {
 
 	
 	/**
-	 * Add answer of candidate to database 
+	 * Add candidate's answers to database
+	 * Returns string, which tells if the adding was done successfully or not
 	 * @param list
 	 * @param ehdokas_id
+	 * @return
 	 */
 				public String addCandidateAnswers(ArrayList<Integer> list, int ehdokas_id)
 				{
@@ -437,9 +439,11 @@ public class Dao {
 				} //addCandidateAnswers-sulje
 				
 				/**
-				 * Update candidate's answer on database
+				 * Update candidate's answers to database
+				 * Returns string, which tells if the updating was done successfully or not
 				 * @param list
 				 * @param ehdokas_id
+				 * @return
 				 */
 				
 				public String updateCandidateAnswer(ArrayList<Integer> list, int ehdokas_id)
