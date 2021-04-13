@@ -29,7 +29,7 @@
 					} else if (data.LoginData.CheckPasswords(MD5Password, password)==false || userProvidedUsername!=username)
 					{
 				%>
-						<div id="loginFailed">K√§ytt√§j√§tunnus tai salasana v√§√§rin!</div> <!-- if the password is incorrect, show this -->
+						<div id="loginFailed">K‰ytt‰j‰tunnus tai salasana v‰‰rin!</div> <!-- if the password is incorrect, show this -->
 				<%
 					}
 				%>

@@ -10,14 +10,6 @@
 
 <c:import url="../header.html" charEncoding="UTF-8"/>
 
-
-
-
-
-
-
-
-
 <h2>Vastaa kysymyksiin</h2>
 <br>
 <br>
@@ -37,7 +29,7 @@
 				Täysin samaa mieltä</label> <br> <br>
 	</c:forEach>
 
-	<input type="submit" value="Submit" class="dropbtn">
+	<input type="submit" value="Tallenna" class="button">
 </form>
 
 
