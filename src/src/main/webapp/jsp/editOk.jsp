@@ -12,6 +12,6 @@
 
 <center>Tietojen muuttaminen onnistui! <br><br>
 <a href="http://localhost:8080/jsp/adminPage.jsp" class="btn">Palaa etusivulle</a> <br> 
-<a href="/updateQuestion" class="btn">Palaa muokkaamaan kysymyksiä</a>
+<a href="/updatecandidate" class="btn">Palaa muokkaamaan ehdokkaita</a>
 </center>
 <%@ include file="../footer.html" %>
