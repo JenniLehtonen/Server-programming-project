@@ -9,17 +9,7 @@ public class CandidatesAndAnswers {
 	private int kysymys_id;
 	private String ehdokasEtunimi;
 	private String ehdokasSukunimi;
-	private ArrayList<Integer> answerlist2=null;
 	
-	
-	
-	public ArrayList<Integer> getAnswerlist2() {
-		return answerlist2;
-	}
-
-	public void setAnswerlist2(ArrayList<Integer> answerlist2) {
-		this.answerlist2 = answerlist2;
-	}
 	
 	
 
