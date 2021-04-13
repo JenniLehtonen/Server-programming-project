@@ -4,12 +4,11 @@
 <c:import url="../adminHeader.html" charEncoding="UTF-8"/>
 
 <link rel="stylesheet" href="koodit.css">
+<link rel="stylesheet" href="center.css">
 
 <h2>Muokkaa ehdokkaan tietoja</h2>
 <br>
 <form action='/updatecandidate' method='post'>
-<b> Candidate's id </b> <br>
-<input type="text" name='ehdokas_id' value='${requestScope.candidate.ehdokas_id}' readonly class='input'> <br>
 <b> Sukunimi </b> <br>
 <input type="text" name='sukunimi' value='${requestScope.candidate.sukunimi}' class='input'> <br>
 <b> Etunimi </b> <br>
@@ -26,7 +25,7 @@
 <input type="text" name='miksi_eduskuntaan' value='${requestScope.candidate.miksi_eduskuntaan}' class='input'> <br>
 <b>Mit‰ asioita haluaisit edist‰‰?</b> <br>
 <input type="text" name='mita_asioita_haluat_edistaa' value='${requestScope.candidate.mita_asioita_haluat_edistaa}' class='input'> <br><br>
-<input type='Submit' name='ok' value='Send' class="btn"> 
+<input type='Submit' name='ok' value='Tallenna' class="btn"> 
 
 </form>
 
