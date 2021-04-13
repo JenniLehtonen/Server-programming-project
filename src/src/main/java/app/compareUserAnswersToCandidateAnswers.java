@@ -54,6 +54,9 @@ public class compareUserAnswersToCandidateAnswers extends HttpServlet{
     		String answers_string=request.getParameter("answers");
     		ArrayList<Integer> useranswers = new ArrayList<>();
     		    		
+    		/**
+    		 * Add the received parameter number series into an arraylist for easier handling later on
+    		 */
     		for (int i=0; i< answers_string.length(); i++) {
     			  int digit = Integer.valueOf(answers_string.charAt(i));
     			  useranswers.add(digit);
@@ -72,7 +75,7 @@ public class compareUserAnswersToCandidateAnswers extends HttpServlet{
     		}
     		request.setCharacterEncoding("utf-8");
     		/**
-    		 * Send candidates' answers to jsp
+    		 * Send user's and candidates' answers to jsp
     		 */
     		request.setAttribute("candidatesAndAnswersList", list);
     		request.setAttribute("useranswers", useranswers);

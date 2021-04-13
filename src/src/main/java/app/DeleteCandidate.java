@@ -13,6 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import dao.Dao;
 import data.Candidates;
 
+/**
+ * @author Riikka Siukola
+ * This class will handle deleting a candidate based on the id received as a parameter in the url.
+ */
+
 @WebServlet(
     name = "DeleteCandidate",
     urlPatterns = {"/deleteCandidate"}

@@ -24,6 +24,14 @@ import com.mysql.jdbc.PreparedStatement;
 import dao.Dao;
 import data.Candidates;
 
+/**
+ * @author Riikka Siukola
+ * This class will add a new candidate. 
+ * If no form data is received, the user will be redirected to the addCandidate.jsp.
+ * If the class receives data from a form, the data is handled and added to the database.
+ * If all goes well, the user is then redirected to editOk.jsp.
+ */
+
 @WebServlet(name = "AddCandidate", urlPatterns = { "/addCandidate" })
 public class AddCandidate extends HttpServlet {
 

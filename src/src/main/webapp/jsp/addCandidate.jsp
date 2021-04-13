@@ -11,6 +11,8 @@
 
 <c:import url="../adminHeader.html" charEncoding="UTF-8"/>
 
+<h2>Syötä uusi ehdokas</h2>
+
 <form method="post" action="addCandidate">
 <label for="etunimi">Etunimi</label> <br>
 <input type="text" id="etunimi" name="etunimi"> <br><br>

@@ -31,6 +31,11 @@ import data.Candidates;
 import data.Question;
 import data.*;
 
+/**
+ * @author Riikka Siukola
+ * This class will determine the five best candidates based on the user's answers.
+ */
+
 @WebServlet(name = "bestCandidates", urlPatterns = { "/bestCandidates" })
 public class bestCandidates extends HttpServlet {
 
