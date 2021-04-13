@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="../center.css">
 	
 <a class="adminButtons" href="/showshort">Muokkaa ehdokkaita</a> 
-<a class="adminButtons" href="/addCandidate">Lisää uusi ehdokas</a>
+<a class="adminButtons" href="/addCandidate">Lisää uusi ehdokas</a><br>
 <a class="adminButtons" href="/addNewQuestions">Lisää kysymys</a>
 <a class="adminButtons" href='/removeQuestions'>Poista kysymyksiä</a> 
 <a class="adminButtons" href="/updateQuestion">Muokkaa kysymyksiä</a> <br>
