@@ -6,7 +6,7 @@
 
 <c:import url="../adminHeader.html" charEncoding="UTF-8"/>
 
-<link rel="stylesheet" href="koodit.css">
+<link rel="stylesheet" href="center.css">
 
 <h2>Muokkaa ehdokkaan tietoja</h2>
 <br>
@@ -26,11 +26,10 @@
 <b> Ammatti </b> <br>
 <input type="text" name='ammatti' value='${requestScope.candidate.ammatti}' class='input'> <br> 
 <b>Miksi sinut tulisi valita eduskuntaan? </b><br>
-<input type="text" name='miksi_eduskuntaan' value='${requestScope.candidate.miksi_eduskuntaan}' class='input'> <br>
+<textarea rows="5" cols="80" name='miksi_eduskuntaan' class='input' style="width:24rem;">${requestScope.candidate.miksi_eduskuntaan}</textarea><br>
 <b>Mitä asioita haluaisit edistää?</b> <br>
-<input type="text" name='mita_asioita_haluat_edistaa' value='${requestScope.candidate.mita_asioita_haluat_edistaa}' class='input'> <br><br>
+<textarea rows="5" cols="80" name='mita_asioita_haluat_edistaa' class='input' style="width:24rem;">${requestScope.candidate.mita_asioita_haluat_edistaa}</textarea><br>
 <input type='Submit' name='ok' value='Tallenna' class="btn"> 
-
 </form>
 
 <%@ include file="../footer.html" %>

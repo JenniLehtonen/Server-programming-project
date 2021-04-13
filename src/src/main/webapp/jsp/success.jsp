@@ -12,7 +12,6 @@
 
 <center>
 <b>${requestScope.success}</b> <br><br>
-<a href="http://localhost:8080/jsp/adminPage.jsp">Palaa etusivulle</a> <br>
-<a href="/showshort">Muokkaa ehdokkaita</a>
+<a href="http://localhost:8080/jsp/adminPage.jsp" class="btn">Palaa etusivulle</a>
 </center>
 <%@ include file="../footer.html" %>

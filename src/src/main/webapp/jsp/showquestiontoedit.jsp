@@ -9,7 +9,7 @@
 <label>Kysymysid:</label><br>
 <input type='text' name='id' value='${requestScope.question.id}' readonly><br> 
 <label>Kysymys:</label><br>
-<input type='text' name='whatquestion' value='${requestScope.question.whatquestion}'><br>
+<textarea rows="5" cols="80" name='whatquestion'style="width:24rem; margin-top: 10px;">${requestScope.question.whatquestion}</textarea><br><br>
 <input type='submit' name='ok' value='Muokkaa' class="button"> 
 </form>
 </body>
