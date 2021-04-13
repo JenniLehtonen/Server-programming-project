@@ -46,7 +46,7 @@ public class saveUpdatedQuestion extends HttpServlet {
 		}
 		response.getWriter().println(dao.readAllQuestion());
 		request.setAttribute("questionlist", list);
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp/showquestiontoedit.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/jsp/editOKQuestions.jsp");
 		rd.forward(request, response);
 	}
 }
