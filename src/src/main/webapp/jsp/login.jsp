@@ -24,7 +24,7 @@
 					else if(MD5Password==null || password==null || userProvidedUsername==null)
 					{
 				%>
-					<div id="loginFailed" hidden>Username or password incorrect!</div> <!-- Hide this if MD5Password or password is null -->
+					<div id="loginFailed" hidden>K‰ytt‰j‰tunnus tai salasana v‰‰rin!</div> <!-- Hide this if MD5Password or password is null -->
 				<%
 					} else if (data.LoginData.CheckPasswords(MD5Password, password)==false || userProvidedUsername!=username)
 					{

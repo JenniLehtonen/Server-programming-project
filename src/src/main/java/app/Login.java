@@ -29,13 +29,19 @@ public class Login extends HttpServlet {
     response.setContentType("text/plain");
     response.setCharacterEncoding("UTF-8");
     
-    String username = request.getParameter("username"); //Get the username from the login.jsp
-	String password = request.getParameter("password"); //Get the password from the login.jsp
+    /**
+     * Get the username and the password that the user has provided. The information comes from login.jsp
+     */
+    String username = request.getParameter("username");
+	String password = request.getParameter("password");
     
-    
-    String dbUrl = getServletContext().getInitParameter("DBUrl");
+    /**
+     * Get the database url, username and password from the servlet context
+     */
+    String dbUrl = getServletContext().getInitParameter("DBUrl"); 
     String dbUsername = getServletContext().getInitParameter("username");
     String dbPassword = getServletContext().getInitParameter("password");
+    
     Connection conn = null;
     ResultSet result = null;
     Statement statement = null;
@@ -50,6 +56,9 @@ public class Login extends HttpServlet {
 		e.printStackTrace();
 	} 
     
+    /**
+     * Create database connection using the variables that get the information from servlet context
+     */
     try {
 	    conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
 	 
