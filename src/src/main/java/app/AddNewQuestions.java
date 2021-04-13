@@ -67,7 +67,7 @@ public class AddNewQuestions extends HttpServlet {
 			System.out.println("No connection to database");
 		}
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/addNewQuestions.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/editOkQuestions.jsp");
 		dispatcher.forward(request, response);
 
 	}

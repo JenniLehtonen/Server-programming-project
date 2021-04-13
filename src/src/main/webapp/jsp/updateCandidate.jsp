@@ -29,7 +29,7 @@
 <input type="text" name='miksi_eduskuntaan' value='${requestScope.candidate.miksi_eduskuntaan}' class='input'> <br>
 <b>Mitä asioita haluaisit edistää?</b> <br>
 <input type="text" name='mita_asioita_haluat_edistaa' value='${requestScope.candidate.mita_asioita_haluat_edistaa}' class='input'> <br><br>
-<input type='Submit' name='ok' value='Send' class="btn"> 
+<input type='Submit' name='ok' value='Tallenna' class="btn"> 
 
 </form>
 

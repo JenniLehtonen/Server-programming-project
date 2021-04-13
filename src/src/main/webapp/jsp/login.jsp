@@ -6,13 +6,13 @@
 <link rel="stylesheet" href="center.css">
 
 
-				<h2>Kirjaudu sisÃ¤Ã¤n</h2>
+				<h2>Kirjaudu sisään</h2>
 				<form action="/login" method="GET">
-					<label>KÃ¤yttÃ¤jÃ¤tunnus : </label><br>
-		            <input type="text" placeholder="SyÃ¶tÃ¤ kÃ¤yttÃ¤jÃ¤tunnus" name="username"><br> 
+					<label>Käyttäjätunnus : </label><br>
+		            <input type="text" placeholder="Syötä käyttäjätunnus" name="username"><br> 
 		            <label>Salasana : </label><br>
-		            <input type="password" placeholder="SyÃ¶tÃ¤ salasana" name="password"><br>  
-		            <button type="submit">Kirjaudu sisÃ¤Ã¤n</button>   
+		            <input type="password" placeholder="Syötä salasana" name="password"><br>  
+		            <button type="submit">Kirjaudu sisään</button>   
 				</form>
 				<%
 					String userProvidedUsername = (String)request.getAttribute("userProvidedUsername");
@@ -27,7 +27,7 @@
 					else if(MD5Password==null || password==null || userProvidedUsername==null)
 					{
 				%>
-					<div id="loginFailed" hidden>K�ytt�j�tunnus tai salasana v��rin!</div> <!-- Hide this if MD5Password or password is null -->
+					<div id="loginFailed" hidden>Käyttäjätunnus tai salasana väärin!</div> <!-- Hide this if MD5Password or password is null -->
 				<%
 					} else if (data.LoginData.CheckPasswords(MD5Password, password)==false || userProvidedUsername!=username)
 					{

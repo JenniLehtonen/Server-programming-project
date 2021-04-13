@@ -15,7 +15,7 @@
 
 <ol>
 <c:forEach var="question" items="${requestScope.questionlist}" >
-<li>${question.whatquestion} <a href='/readquestiontoupdate?id=${question.id}'>update</a>
+<li>${question.whatquestion} <a href='/readquestiontoupdate?id=${question.id}'>Muokkaa</a>
 
 </c:forEach>
 </ol>

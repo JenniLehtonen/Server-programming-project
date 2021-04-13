@@ -97,7 +97,7 @@ public class AddCandidate extends HttpServlet {
 
 		request.setAttribute("candidateslist", list);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/addCandidate.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/editOk.jsp");
 		dispatcher.forward(request, response);
 
 	}
