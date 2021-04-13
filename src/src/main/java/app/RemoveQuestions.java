@@ -17,6 +17,11 @@ import data.Question;
     name = "RemoveQuestions",
     urlPatterns = {"/removeQuestions"}
 )
+/**
+ * 
+ * @author Jenni
+ *
+ */
 public class RemoveQuestions extends HttpServlet {
 	private Dao dao;
 	public void init() {
@@ -25,10 +30,16 @@ public class RemoveQuestions extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
-		String id=request.getParameter("id"); //Get the question id from removeQuestions.jsp
+		/**
+		 * Get the question id from removeQuestions.jsp
+		 */
+		String id=request.getParameter("id");
 		ArrayList<Question> list=null;
 		if (dao.getConnection()) {
-			list=dao.removeQuestion(id); //send the question id to dao
+			/**
+			 * send the question id to method that will remove the question from the database
+			 */
+			list=dao.removeQuestion(id);
 			System.out.println("connected");
 			System.out.println(list);
 		}

@@ -15,12 +15,15 @@
 		            <button type="submit">Kirjaudu sisään</button>   
 				</form>
 				<%
+					//Get the variables that were sent from Login.java
 					String userProvidedUsername = (String)request.getAttribute("userProvidedUsername");
 					String username = (String)request.getAttribute("username");
 					String password = (String)request.getAttribute("password");
 					String MD5Password = (String)request.getAttribute("MD5Password");
 				%>
 				<%
+				//Check that the user has providedt the correct username and password. If the username and the password are correct,
+				//admin page will be shown, otherwise there will be an error message in the user interface.
 					if(data.LoginData.CheckPasswords(MD5Password, password)==true && userProvidedUsername.equals(username)){
 						response.sendRedirect("/jsp/adminPage.jsp");
 					}

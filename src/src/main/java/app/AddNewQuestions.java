@@ -26,6 +26,11 @@ import data.Candidates;
 import data.Question;
 
 @WebServlet(name = "addNewQuestions", urlPatterns = { "/addNewQuestions" })
+/**
+ * 
+ * @author Jenni
+ *
+ */
 public class AddNewQuestions extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -54,19 +59,27 @@ public class AddNewQuestions extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		/**
+		 * Get the new question from addNewQuestions.jsp
+		 */
 		String kysymys = request.getParameter("kysymys");
 
 		Question q = new Question(kysymys);
 
-		dao.addQuestion(q);
-
+		/**
+		 * Send the new question to dao where addQuestion method will add it to the database
+		 */
 		ArrayList<Question> list = null;
 		if (dao.getConnection()) {
-			list = dao.readAllQuestion();
+			list = dao.addQuestion(q);
 		} else {
 			System.out.println("No connection to database");
 		}
-
+		
+		/**
+		 * Show success-message after adding the new question
+		 */
 		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/editOkQuestions.jsp");
 		dispatcher.forward(request, response);
 

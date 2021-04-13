@@ -2,9 +2,18 @@ package data;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+/**
+ * 
+ * @author Jenni
+ *
+ */
 public class LoginData {
-	
+	/**
+	 * This method checks if the password provided by the user is correct
+	 * @param password1
+	 * @param password2
+	 * @return
+	 */
 	public static Boolean CheckPasswords (String password1, String password2) {
 		boolean passwordCorrect = false;
 		
@@ -20,6 +29,11 @@ public class LoginData {
 		
 	}
 	
+	/**
+	 * This method crypts the admin's password and the password that the user provides
+	 * @param str
+	 * @return
+	 */
 	public static String crypt(String str) {
 	      if (str == null || str.length() == 0) {
 	          throw new IllegalArgumentException("String to encript cannot be null or zero length");

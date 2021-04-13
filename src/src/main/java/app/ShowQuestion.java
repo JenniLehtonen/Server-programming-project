@@ -24,8 +24,9 @@ import dao.Dao;
  * 
  * @author liisa
  * 
- * Luokka hakee dao- luokasta metodin, mikä lukee ja listaa kysymykset tietokannasta.
- * lista lähetetään showquestion.jsp tiedostolle, missä käyttäjä voi vastata kysymyksiin
+ * The class retrieves a method from the dao class, which reads and lists the questions from the database.
+ * the list is sent to the showquestion.jsp file where the user can answer questions
+ * 
  *
  */
 

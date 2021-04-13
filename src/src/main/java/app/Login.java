@@ -20,6 +20,11 @@ import data.LoginData;
     name = "login",
     urlPatterns = {"/login"}
 )
+/**
+ * 
+ * @author Jenni
+ *
+ */
 public class Login extends HttpServlet {
 
   @Override
@@ -80,6 +85,9 @@ public class Login extends HttpServlet {
 		e.printStackTrace();
 	}
 	
+	/**
+	 * Excecute the sql sentence that was introduced in the line 73
+	 */
 	try {
 		result = statement.executeQuery(sql);
 	} catch (SQLException e) {
@@ -87,12 +95,22 @@ public class Login extends HttpServlet {
 		e.printStackTrace();
 	}
 	 
+	
 	try {
 		while (result.next()){
-		    adminUsername = result.getString(1); //get admin's username and password from the database
+			/**
+			 * Go through the results of the SQL sentence and save the admin's username and password to variables
+			 */
+		    adminUsername = result.getString(1);
 		    adminPassword = result.getString(2);
-		    MD5Password = data.LoginData.crypt(adminPassword); //crypt admin's password
-		    password = data.LoginData.crypt(password); //crypt the password that the user has provided
+		    /**
+		     * Crypt admin's password that came from the database
+		     */
+		    MD5Password = data.LoginData.crypt(adminPassword);
+		    /**
+		     * Crypt the password that the user had provided
+		     */
+		    password = data.LoginData.crypt(password);
 		}
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
@@ -100,7 +118,10 @@ public class Login extends HttpServlet {
 	} catch(IllegalArgumentException e) {
 		e.printStackTrace();
 	}
-	request.setAttribute("userProvidedUsername", username); //send variables to login.jsp
+	/**
+	 * Send variables to login.jsp that checks if the username and password that the user has provided are correct or not
+	 */
+	request.setAttribute("userProvidedUsername", username);
 	request.setAttribute("username", adminUsername);
 	request.setAttribute("password", password); 
 	request.setAttribute("MD5Password", MD5Password);

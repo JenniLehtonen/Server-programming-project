@@ -18,6 +18,11 @@ import data.Candidates;
 import data.CandidatesAndAnswers;
 
 @WebServlet("/compareUserAnswersToCandidateAnswers")
+/**
+ * 
+ * @author Jenni, Liisa, Riikka
+ *
+ */
 public class compareUserAnswersToCandidateAnswers extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
@@ -37,7 +42,6 @@ public class compareUserAnswersToCandidateAnswers extends HttpServlet{
     }
 
 	/**
-	 * @param list1 
 	 * @param list 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -46,6 +50,7 @@ public class compareUserAnswersToCandidateAnswers extends HttpServlet{
     	@Override
     	public void doGet(HttpServletRequest request, HttpServletResponse response) 
     	     throws IOException, ServletException {
+    		
     		String answers_string=request.getParameter("answers");
     		ArrayList<Integer> useranswers = new ArrayList<>();
     		    		
@@ -54,6 +59,9 @@ public class compareUserAnswersToCandidateAnswers extends HttpServlet{
     			  useranswers.add(digit);
     		}
     		
+    		/**
+    		 * Get candidates' answers from the database
+    		 */
     		ArrayList<CandidatesAndAnswers> list=null;
     		if (dao.getConnection()) {
     			list=dao.readAllAnswers();
@@ -63,9 +71,10 @@ public class compareUserAnswersToCandidateAnswers extends HttpServlet{
     			System.out.println("No connection to database");
     		}
     		request.setCharacterEncoding("utf-8");
+    		/**
+    		 * Send candidates' answers to jsp
+    		 */
     		request.setAttribute("candidatesAndAnswersList", list);
-    		
-    		
     		request.setAttribute("useranswers", useranswers);
     		RequestDispatcher rd=request.getRequestDispatcher("/jsp/compareUserAnswersToCandidateAnswers.jsp");
     		rd.forward(request, response);
