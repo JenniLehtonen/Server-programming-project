@@ -346,57 +346,7 @@ public class Dao {
 		}
 	}
 
-	public HashMap<Integer, Integer> candidatesAnswers()
-	{
-		HashMap<Integer, Integer> answers1 = new HashMap<Integer, Integer>();
-		HashMap<Integer, Integer> answers2 = new HashMap<Integer, Integer>();
-		HashMap<Integer, Integer> answers3 = new HashMap<Integer, Integer>();
-		HashMap<Integer, Integer> answers4 = new HashMap<Integer, Integer>();
-		HashMap<Integer, Integer> answers5 = new HashMap<Integer, Integer>();
-		//ArrayList<Integer> list=new ArrayList<>();
-		try {
-			Statement stmt=conn.createStatement();
-			String sql="select ehdokas_id, vastaus from vastaukset";
-			//PreparedStatement pstmt=conn.prepareStatement(sql);
-			//pstmt.setInt(1, ehdokas_id);
-			ResultSet RS=stmt.executeQuery(sql);
 
-				while (RS.next()){
-
-					int ehdokas_id = RS.getInt("ehdokas_id");
-					int answer = RS.getInt("vastaus");
-					int kysymys_id = RS.getInt("kysymys_id");
-
-					switch(ehdokas_id)
-					{
-					case 1:
-						answers1.put(kysymys_id, answer);
-					case 2:
-						answers2.put(kysymys_id, answer);
-					case 3:
-						answers3.put(kysymys_id, answer);
-					case 4:
-						answers4.put(kysymys_id, answer);
-					case 5:
-						answers5.put(kysymys_id, answer);
-					}
-
-				}
-				System.out.println("Answers collected");
-				System.out.println("Ehdokkaan 1 vastaukset: " + answers1 + ".");
-				System.out.println("Ehdokkaan 2 vastaukset: " + answers2 + ".");
-				System.out.println("Ehdokkaan 3 vastaukset: " + answers3 + ".");
-				System.out.println("Ehdokkaan 4 vastaukset: " + answers4 + ".");
-				System.out.println("Ehdokkaan 5 vastaukset: " + answers5 + ".");
-			return answers1;
-		}
-		catch(SQLException e)
-		{
-			System.out.println("Can't get the answers");
-			return null;
-		}
-
-	}
 	
 	/**
 	 * 

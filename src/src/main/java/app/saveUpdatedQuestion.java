@@ -44,7 +44,6 @@ public class saveUpdatedQuestion extends HttpServlet {
 		} else {
 			System.out.println("No connection to database");
 		}
-		response.getWriter().println(dao.readAllQuestion());
 		request.setAttribute("questionlist", list);
 		RequestDispatcher rd = request.getRequestDispatcher("/jsp/editOKQuestions.jsp");
 		rd.forward(request, response);
