@@ -8,7 +8,7 @@
 <h2>Muokkaa ehdokkaan tietoja</h2>
 <br>
 <form action='/updatecandidate' method='post'>
-<b> Candidate's id </b> <br>
+<b> Ehdokasnumero </b> <br>
 <input type="text" name='ehdokas_id' value='${requestScope.candidate.ehdokas_id}' readonly class='input'> <br>
 <b> Sukunimi </b> <br>
 <input type="text" name='sukunimi' value='${requestScope.candidate.sukunimi}' class='input'> <br>
