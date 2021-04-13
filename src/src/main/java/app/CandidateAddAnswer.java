@@ -14,9 +14,10 @@ import dao.Dao;
 @WebServlet("/candidateaddanswer")
 
 /**
+ * @author Sanna Nieminen-Vuorio
  * 
- * @author Sanna
- *
+ * This class will fetch all the questions from database and redirect them to CandidateAnswer.jsp,
+ * where candidate can answer all the questions and the answers will be saved to database
  */
 public class CandidateAddAnswer extends HttpServlet {
 	
@@ -39,7 +40,7 @@ public class CandidateAddAnswer extends HttpServlet {
 		ArrayList<Question> list=null;
 		if (dao.getConnection()) {
 			list=dao.readAllQuestion();
-			System.out.println("connected");
+			System.out.println("Connected");
 		}
 		else {
 			System.out.println("No connection to database");

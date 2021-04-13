@@ -13,6 +13,15 @@ import dao.Dao;
 import data.Candidates;
 
 @WebServlet("/showcandidates")
+
+/**
+ * 
+ * @author Sanna Nieminen-Vuorio
+ * 
+ * This class will read all the candidates' informations from database.
+ * Showcandidates.jsp page will show all the informations.
+ *
+ */
 public class ShowCandidates extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
@@ -23,17 +32,11 @@ public class ShowCandidates extends HttpServlet{
 		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "admin", "salasana");
 	}
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public ShowCandidates() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Candidates> list=null;
 		if (dao.getConnection()) {

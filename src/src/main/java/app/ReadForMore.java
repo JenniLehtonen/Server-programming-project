@@ -13,6 +13,15 @@ import dao.Dao;
 import data.Candidates;
 
 @WebServlet("/readformore")
+
+/**
+ * 
+ * @author Sanna Nieminen-Vuorio
+ * 
+ * This class will be used to read one candidate from database based on candidate's id, which is given as a parameter.
+ * Candidate's information will be shown in showCandidateById.jsp. This is just for showing the information.
+ *
+ */
 public class ReadForMore extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;

@@ -18,6 +18,14 @@ import data.Candidates;
 	    name = "ReadParty",
 	    urlPatterns = {"/readparty"})
 	    
+/**
+ * 
+ * @author Sanna Nieminen-Vuorio
+ * 
+ * This class is used for reading candidates based on their party. 
+ * Party is given to the class as a parameter.
+ *
+ */
 public class ReadParty extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;

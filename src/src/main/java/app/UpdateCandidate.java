@@ -16,6 +16,15 @@ import data.Candidates;
 
 @WebServlet(name = "Update", urlPatterns = { "/updatecandidate" })
 
+
+/**
+ * 
+ * @author Sanna Nieminen-Vuorio
+ * 
+ * With this class the candidate's informations will be updated in the database. 
+ * This class will get the informations from updatecandidate.jsp, which will give the informations as parameters.
+ *
+ */
 public class UpdateCandidate extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

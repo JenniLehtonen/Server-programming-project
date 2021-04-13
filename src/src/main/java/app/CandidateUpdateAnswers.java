@@ -15,11 +15,18 @@ import data.Question;
 
 @WebServlet("/candidateupdateanswer")
 
+/**
+ * 
+ * @author Sanna Nieminen-Vuorio
+ *
+ *This class will fetch all the questions from database and redirect them to CandidateUpdateAnswer.jsp,
+ * where candidate can answer all the questions and the answers will be updated to database
+ */
+
 public class CandidateUpdateAnswers extends HttpServlet{
 	
 	public CandidateUpdateAnswers() {
-        super();
-        // TODO Auto-generated constructor stub
+
     }
 	
 	private static final long serialVersionUID = 1L;

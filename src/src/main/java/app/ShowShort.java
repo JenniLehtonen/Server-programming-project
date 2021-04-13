@@ -14,6 +14,15 @@ import data.*;
 
 
 @WebServlet("/showshort")
+
+/**
+ * 
+ * @author Sanna Nieminen-Vuorio
+ * 
+ * This class will get all the candidates' informations from database.
+ * At showshort.jps will be shown just the names and ids of the candidates.
+ *
+ */
 public class ShowShort extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Dao dao=null;

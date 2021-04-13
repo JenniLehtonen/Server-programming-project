@@ -1,5 +1,14 @@
 package data;
 
+/**
+ * 
+ * @author Sanna Nieminen-Vuorio
+ * 
+ * In this class are all the information of Candidates.
+ * Constructors are made for both ints and strings.
+ * Changing candidates personal informations, this class will be used. 
+ *
+ */
 public class Candidates {
 	
 	private int ehdokas_id;

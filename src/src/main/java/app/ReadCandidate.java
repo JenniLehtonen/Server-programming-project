@@ -13,6 +13,15 @@ import dao.Dao;
 import data.Candidates;
 
 @WebServlet("/readcandidate")
+
+/**
+ * 
+ * @author Sanna Nieminen-Vuorio
+ * 
+ * This class gets parameter ehdokas_id (candidate's id) and reads one candidate from database based on id.
+ * Candidate's information if given for updatecandidate.jsp where admin can update candidate's informations. 
+ *
+ */
 public class ReadCandidate extends HttpServlet{
 	
 	private static final long serialVersionUID = 1L;
@@ -21,17 +30,13 @@ public class ReadCandidate extends HttpServlet{
 		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "admin", "salasana");
 	}
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public ReadCandidate() {
         super();
 
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String id = request.getParameter("ehdokas_id");
