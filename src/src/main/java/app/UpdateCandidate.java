@@ -23,7 +23,7 @@ import data.Candidates;
  * 
  * With this class the candidate's informations will be updated in the database. 
  * This class will get the informations from updatecandidate.jsp, which will give the informations as parameters.
- *
+ * After edit it takes the page which tells that the updating was done.
  */
 public class UpdateCandidate extends HttpServlet {
 

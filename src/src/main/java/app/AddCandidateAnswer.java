@@ -15,9 +15,10 @@ import data.Question;
 /**
  * @author Sanna Nieminen-Vuorio
  *
- * Haetaan ehdokkaan vastaukset ja tallennetaan ne listaan, 
- * joka lähtetään Dao-luokan metodille, joka tallettaan vastaukset tietokantaan.
- * Onnistumisen edellytyksenä on, että käyttäjän antamalle id:lle ei ole vielä tallennettu vastauksia.
+ * This class will add the candidate's answers to database.
+ * It gets the candidate's id as a parameter.
+ * Class will redirect user to success.jsp-page and gives it a string attribute,
+ * which tells the user if the adding has been done successfully or not.
  */
 
 @WebServlet("/addcandidateanswer")
