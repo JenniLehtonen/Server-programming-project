@@ -8,6 +8,8 @@
 <a class="adminButtons" href="/addCandidate">Lisää uusi kandidaatti</a>
 <a class="adminButtons" href="/addNewQuestions">Lisää kysymys</a>
 <a class="adminButtons" href='/removeQuestions'>Poista kysymyksiä</a> 
-<a class="adminButtons" href="/updateQuestion">Muokkaa kysymyksiä</a>
+<a class="adminButtons" href="/updateQuestion">Muokkaa kysymyksiä</a> <br>
+<a class="adminButtons" href="/candidateaddanswer">Ehdokas vastaa kysymyksiin</a>
+<a class="adminButtons" href="/candidateupdateanswer">Ehdokas muokkaa vastauksia</a>
  	
 <%@ include file="../footer.html" %>
