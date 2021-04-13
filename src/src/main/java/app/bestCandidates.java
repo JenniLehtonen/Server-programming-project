@@ -100,8 +100,7 @@ public class bestCandidates extends HttpServlet {
 
 		}
 
-		CandidatesAndAnswers canda = new CandidatesAndAnswers();
-		canda.setAnswerlist2(useranswerlist);
+		
 
 		int difference = 0;
 		int differenceSum = 0;
