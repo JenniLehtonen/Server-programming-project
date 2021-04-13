@@ -14,7 +14,7 @@
 <br>
 <br>
 <form method="post" action="/addcandidateanswer">
-	<c:forEach var="question" items="${requestScope.questionlist}">
+
 	<c:forEach var="question" items="${requestScope.questionlist}">
 		<b>${question.id}: </b>${question.whatquestion} <br> <br>
 			<input type="radio" id="${question.id}1" name="${question.id}"
@@ -29,7 +29,7 @@
 			name="${question.id}" value="5"><label for="${question.id}5"> 5.
 				Täysin samaa mieltä</label> <br> <br>
 	</c:forEach>
-	</c:forEach>
+
 	<label style="font-weight: bold"> Vaalinumerosi:</label> <br>
 	<input type="text" name="ehdokas_id" placeholder="Syötä tähän vaalinumerosi"><br>
 	<input type="submit" value="Tallenna vastaukset" class='button'>
