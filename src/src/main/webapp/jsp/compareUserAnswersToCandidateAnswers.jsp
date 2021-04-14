@@ -49,7 +49,7 @@ Vastaus: <span><b>${answer.vastaus}</b></span>
 
 <div style="flex:50%;">
 
-			<% for (int j=0; j<20;j++) { %>
+			<% for (int j=0; j<21;j++) { %>
 			<% i=1; %>
 
 	<b>Sinä:</b><br><br>
