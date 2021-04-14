@@ -159,7 +159,7 @@ public class bestCandidates extends HttpServlet {
 
 
 				/**
-				 * Lajitellaan ehdokaslista pisteiden perusteella. /Sanna
+				 * Sort the candidate list based on their points. /Sanna
 				 */
 				Collections.sort(pointsAndCandidates);
 
