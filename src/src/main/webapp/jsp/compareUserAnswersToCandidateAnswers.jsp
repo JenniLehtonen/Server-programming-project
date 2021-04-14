@@ -9,7 +9,6 @@
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:import url="../header.html" charEncoding="UTF-8"/>
-<link rel="stylesheet" href="koodit.css">
 <link rel="stylesheet" href="center.css">
 
 <h2>Vertaa vastauksiasi kandidaattien vastauksiin</h2>
