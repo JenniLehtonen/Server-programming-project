@@ -12,12 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.Dao;
 import data.Question;
+
 /***
  * 
  * @author liisa
  * 
- * The class receives a modified question from the showquestiontoedit.jsp file and calls the dao- class method,
- *  which stores the question in a database
+ *         The class receives a modified question from the
+ *         showquestiontoedit.jsp file and calls the dao- class method, which
+ *         stores the question in a database
  *
  */
 @WebServlet(name = "saveupdatedquestion", urlPatterns = { "/saveupdatedquestion" })
@@ -29,9 +31,7 @@ public class saveUpdatedQuestion extends HttpServlet {
 	public void init() {
 		dao = new Dao("jdbc:mysql://localhost:3306/vaalikone", "admin", "salasana");
 	}
-	
-	
-	 
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		String id = request.getParameter("id");
 		String whatquestion = request.getParameter("whatquestion");
@@ -44,8 +44,14 @@ public class saveUpdatedQuestion extends HttpServlet {
 		} else {
 			System.out.println("No connection to database");
 		}
-		request.setAttribute("questionlist", list);
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp/editOKQuestions.jsp");
-		rd.forward(request, response);
+		try {
+			request.setAttribute("questionlist", list);
+			RequestDispatcher rd = request.getRequestDispatcher("/jsp/editOKQuestions.jsp");
+			rd.forward(request, response);
+		} catch (NoClassDefFoundError e) {
+			request.setAttribute("questionlist", list);
+			RequestDispatcher rd = request.getRequestDispatcher("/jsp/adminPage.jsp");
+			rd.forward(request, response);
+		}
 	}
 }
