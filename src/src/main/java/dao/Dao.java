@@ -140,7 +140,7 @@ public class Dao {
 	
 	/**
 	 * reads candidates' responses from the database by candidate id and question id
-	 *
+	 *@param id
 	 * @return
 	 */
 	
@@ -168,7 +168,7 @@ public class Dao {
 	
 	/**
 	 *  Add new question to the database
-	 *
+	 *@param q
 	 * @return
 	 */
 
@@ -192,7 +192,7 @@ public class Dao {
 
 	/**
 	 * Update question by question id
-	 *
+	 *@param f
 	 * @return
 	 */
 	public ArrayList<Question> updateQuestion(Question f) {
@@ -210,7 +210,7 @@ public class Dao {
 	}
 	/**
 	 * Read one question by question id
-	 *
+	 *@param id
 	 * @return
 	 */
 	public Question readQuestion(String id) {
@@ -236,7 +236,7 @@ public class Dao {
 	/**
 	 * Update  information of one candidate by id. 
 	 *
-	 * @param c
+	 * @param candidate
 	 * @return
 	 */
 	public ArrayList<Candidates> updateCandidate(Candidates candidate) throws SQLException {
@@ -283,7 +283,7 @@ public class Dao {
 	}
 	/**
 	 * Remove question from database by id
-	 *
+	 *@param id
 	 * @return
 	 */
 	public ArrayList<Question> removeQuestion(String id) {
@@ -300,7 +300,7 @@ public class Dao {
 
 	/**
 	 *  Add new candidate's information to the database
-	 *
+	 *@param c
 	 * @return
 	 */
 	public ArrayList<Candidates> addCandidate(Candidates c) {
