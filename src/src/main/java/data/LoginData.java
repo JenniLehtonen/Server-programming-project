@@ -5,14 +5,16 @@ import java.security.NoSuchAlgorithmException;
 /**
  * 
  * @author Jenni
- *
+ * This class is used when the user wants to log in to admin's page. 
+ * Here CheckPasswords method checks that the password provided by the user is correct.
+ * Crypt method crypts the admin's real password and the password provided by the user and later those crypted passwords will be compared.
  */
 public class LoginData {
 	/**
 	 * This method checks if the password provided by the user is correct
-	 * @param password1
-	 * @param password2
-	 * @return
+	 * @param password1 is the correct password
+	 * @param password2 is the password provided by the user
+	 * @return boolean value. True if the password is correct and false is the password is incorrect.
 	 */
 	public static Boolean CheckPasswords (String password1, String password2) {
 		boolean passwordCorrect = false;
@@ -31,8 +33,8 @@ public class LoginData {
 	
 	/**
 	 * This method crypts the admin's password and the password that the user provides
-	 * @param str
-	 * @return
+	 * @param str is the password that needs to be crypted
+	 * @return the crypted password
 	 */
 	public static String crypt(String str) {
 	      if (str == null || str.length() == 0) {

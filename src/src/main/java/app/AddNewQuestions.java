@@ -29,7 +29,8 @@ import data.Question;
 /**
  * 
  * @author Jenni
- *
+ * This class is for adding new questions to the database. 
+ * After adding the question to the database, a "success" page will be shown to the user.
  */
 public class AddNewQuestions extends HttpServlet {
 
@@ -78,7 +79,7 @@ public class AddNewQuestions extends HttpServlet {
 		}
 		
 		/**
-		 * Show success-message after adding the new question
+		 * Show success-page after adding the new question
 		 */
 		RequestDispatcher dispatcher = request.getRequestDispatcher("jsp/editOkQuestions.jsp");
 		dispatcher.forward(request, response);

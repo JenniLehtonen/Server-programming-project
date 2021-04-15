@@ -20,7 +20,8 @@ import data.Question;
 /**
  * 
  * @author Jenni
- *
+ *This class is for removing the questions from the database. The question will be removed by the id that the program gets from the UI when
+ *the user clicks button under the question that they want to remove.
  */
 public class RemoveQuestions extends HttpServlet {
 	private Dao dao;
