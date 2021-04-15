@@ -20,7 +20,7 @@ import data.Question;
  * 
  * This class will update the candidate's answers to database. 
  * It gets the candidates id as a parameter.
- * It will pass to the success.jsp page a parameter which tells if the updating was done successfully or not.
+ * It will pass to the success.jsp page a string parameter which tells if the updating was done successfully or not.
  *
  */
 public class updateCandidateAnswer extends HttpServlet{

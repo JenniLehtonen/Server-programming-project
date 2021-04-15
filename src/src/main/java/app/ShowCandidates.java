@@ -19,7 +19,8 @@ import data.Candidates;
  * @author Sanna Nieminen-Vuorio
  * 
  * This class will read all the candidates' informations from database.
- * Showcandidates.jsp page will show all the informations.
+ * Informations will be saved in a Array List. And the list will be redirected to 
+ * Showcandidates.jsp page, which will show all the informations.
  *
  */
 public class ShowCandidates extends HttpServlet{

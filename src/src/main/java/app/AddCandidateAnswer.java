@@ -37,6 +37,7 @@ public class AddCandidateAnswer extends HttpServlet{
 				response.sendRedirect("index.html");
 		     }
 	
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) 
 	     throws IOException, ServletException {
 		
