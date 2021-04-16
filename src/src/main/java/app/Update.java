@@ -19,6 +19,7 @@ import data.Question;
  * The class retrieves a method from the dao class, which reads and lists the questions from the database.
  * the list is sent to the showquestion2foredit.jsp file, where the administrator can select the question for edit.
  *
+ *
  */
 
 @WebServlet(name = "updateQuestion", urlPatterns = { "/updateQuestion" })
@@ -26,7 +27,9 @@ public class Update extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private Dao dao;
-
+/***
+ * connect to the data base
+ */
 	public void init() {
 		dao = new Dao("jdbc:mysql://localhost:3306/vaalikone", "admin", "salasana");
 	}
