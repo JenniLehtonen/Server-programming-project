@@ -17,7 +17,8 @@ import data.CandidatesAndAnswers;
 /**
  * 
  * @author Jenni, Liisa, Riikka
- *
+ * This class is for comparing the candidates' answers to the user's answers. Candidates' answers are searched from the database.
+ * The candidates' and user's answers are being shown next to each other in the user interface.
  */
 public class compareUserAnswersToCandidateAnswers extends HttpServlet{
 	

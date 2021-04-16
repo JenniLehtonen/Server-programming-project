@@ -168,8 +168,8 @@ public class Dao {
 	
 	/**
 	 *  Add new question to the database
-	 *@param q
-	 * @return
+	 *@param q is the new question that the user wants to add to the database
+	 * @return function that executes an sql command that searches all the questions that are in the database
 	 */
 
 	public ArrayList<Question> addQuestion(Question q) {
@@ -283,8 +283,8 @@ public class Dao {
 	}
 	/**
 	 * Remove question from database by id
-	 *@param id
-	 * @return
+	 *@param id of the question that needs to be removed.
+	 * @return function that executes an sql command that searches all the questions that are in the database
 	 */
 	public ArrayList<Question> removeQuestion(String id) {
 		try {

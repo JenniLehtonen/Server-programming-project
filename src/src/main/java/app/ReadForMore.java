@@ -30,17 +30,12 @@ public class ReadForMore extends HttpServlet{
 		dao=new Dao("jdbc:mysql://localhost:3306/vaalikone", "admin", "salasana");
 	}
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public ReadForMore() {
         super();
 
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String id = request.getParameter("ehdokas_id");

@@ -26,6 +26,19 @@ public class Candidates {
 		
 	}
 
+	/**
+	 * Constructor with all Candidate's parameters as a string type, so it is easier to create object
+	 * using parameters from request scope
+	 * 
+	 * @param sukunimi
+	 * @param etunimi
+	 * @param puolue
+	 * @param koti
+	 * @param ika
+	 * @param miksi
+	 * @param mita
+	 * @param ammatti
+	 */
 	public Candidates(String sukunimi, String etunimi, String puolue, String koti, int ika, String miksi, String mita, String ammatti)
 	{
 		this.sukunimi = sukunimi;
@@ -39,6 +52,19 @@ public class Candidates {
 		
 	}
 	
+	/**
+	 * Constructor with all Candidate's parameters as the same type that they are in database
+	 * 
+	 * @param ehdokas_id
+	 * @param sukunimi
+	 * @param etunimi
+	 * @param puolue
+	 * @param koti
+	 * @param ika
+	 * @param miksi
+	 * @param mita
+	 * @param ammatti
+	 */
 	public Candidates(int ehdokas_id, String sukunimi, String etunimi, String puolue, String koti, int ika, String miksi, String mita, String ammatti)
 	{
 		setEhdokas_id(ehdokas_id);
@@ -52,6 +78,21 @@ public class Candidates {
 		this.ammatti = ammatti;
 		
 	}
+	
+	/**
+	 * Constructor with all Candidate's parameters as a string type, so it is easier to create object
+	 * using parameters from request scope
+	 * 
+	 * @param ehdokas_id
+	 * @param sukunimi
+	 * @param etunimi
+	 * @param puolue
+	 * @param koti
+	 * @param ika
+	 * @param miksi
+	 * @param mita
+	 * @param ammatti
+	 */
 	
 	public Candidates(String ehdokas_id, String sukunimi, String etunimi, String puolue, String koti, String ika, String miksi, String mita, String ammatti)
 	{
@@ -67,6 +108,19 @@ public class Candidates {
 		
 	}
 	
+	/**
+	 * Constructor without ehdokas_id (candidate id) variable, because it is auto increment, so it would not be needed in all methods
+	 * 
+	 * @param sukunimi
+	 * @param etunimi
+	 * @param puolue
+	 * @param koti
+	 * @param ika
+	 * @param miksi
+	 * @param mita
+	 * @param ammatti
+	 */
+	
 	public Candidates(String sukunimi, String etunimi, String puolue, String koti, String ika, String miksi, String mita, String ammatti)
 	{
 		this.sukunimi = sukunimi;
@@ -79,6 +133,12 @@ public class Candidates {
 		this.ammatti = ammatti;
 		
 	}
+	
+	/**
+	 * Getters and setters
+	 * Int-type variables have two different sets, other one gets a string and converts it to int
+	 * 
+	 */
 	
 	public int getEhdokas_id() {
 		return ehdokas_id;

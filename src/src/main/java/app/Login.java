@@ -23,7 +23,11 @@ import data.LoginData;
 /**
  * 
  * @author Jenni
- *
+ * This class is for logging in to admin's page. Here the database's correct username and password are searched from servlet context saved to
+ * variables. The database connection is created using those variables.
+ * Admin's username and password are searched from the database and sent to Data package's LoginData.java file and they are crypted in a method there.
+ * Also the the password provided by the user in the UI is sent to the same method and crypted. The crypted passwords are then compared
+ * login.jsp and if the password and the username are correct, log in has succeeded.
  */
 public class Login extends HttpServlet {
 
