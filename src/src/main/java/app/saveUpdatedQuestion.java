@@ -47,7 +47,7 @@ public class saveUpdatedQuestion extends HttpServlet {
 		}
 		try {
 			request.setAttribute("questionlist", list);
-			RequestDispatcher rd = request.getRequestDispatcher("/jsp/editOKQuestions.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/jsp/editOkQuestions.jsp");
 			rd.forward(request, response);
 		} catch (NoClassDefFoundError e) {
 			request.setAttribute("questionlist", list);
