@@ -19,7 +19,8 @@ import java.sql.Connection;
  * 
  * @author Liisa, Riikka, Jenni, Sanna
  * 
- * This class contains methods that we use to connect to the database and that we use to edit information in the database
+ *         This class contains methods that we use to connect to the database
+ *         and that we use to edit information in the database
  *
  */
 public class Dao {
@@ -92,11 +93,12 @@ public class Dao {
 	 *
 	 * @return
 	 */
-	public ArrayList<CandidatesAndAnswers> readAllAnswers(){
+	public ArrayList<CandidatesAndAnswers> readAllAnswers() {
 		ArrayList<CandidatesAndAnswers> list = new ArrayList<>();
 		try {
 			Statement stmt = conn.createStatement();
-			ResultSet RS = stmt.executeQuery("select vastaukset.kysymys_id, vastaukset.vastaus, ehdokkaat.ehdokas_id, ehdokkaat.etunimi, ehdokkaat.sukunimi from vastaukset inner join ehdokkaat on vastaukset.ehdokas_id=ehdokkaat.ehdokas_id;");
+			ResultSet RS = stmt.executeQuery(
+					"select vastaukset.kysymys_id, vastaukset.vastaus, ehdokkaat.ehdokas_id, ehdokkaat.etunimi, ehdokkaat.sukunimi from vastaukset inner join ehdokkaat on vastaukset.ehdokas_id=ehdokkaat.ehdokas_id;");
 			while (RS.next()) {
 				CandidatesAndAnswers answer = new CandidatesAndAnswers();
 				answer.setEhdokasEtunimi(RS.getString("etunimi"));
@@ -111,6 +113,7 @@ public class Dao {
 			return null;
 		}
 	}
+
 	/**
 	 * Read all questions and add the to the list
 	 *
@@ -118,58 +121,59 @@ public class Dao {
 	 */
 
 	public ArrayList<Question> readAllQuestion() {
-		ArrayList<Question> list=new ArrayList<>();
+		ArrayList<Question> list = new ArrayList<>();
 		try {
-			Statement stmt=conn.createStatement();
-			ResultSet RS=stmt.executeQuery("select * from kysymykset");
-			while (RS.next()){
-				Question f=new Question();
+			Statement stmt = conn.createStatement();
+			ResultSet RS = stmt.executeQuery("select * from kysymykset");
+			while (RS.next()) {
+				Question f = new Question();
 				f.setId(RS.getInt("KYSYMYS_ID"));
 				f.setWhatquestion(RS.getString("KYSYMYS"));
 				list.add(f);
 			}
 			System.out.println("Lista haettu");
 			return list;
-		}
-		catch(SQLException e) {
+		} catch (SQLException e) {
 			System.out.println("Listaa ei haettu");
 			return null;
-			
+
 		}
 	}
-	
+
 	/**
 	 * reads candidates' responses from the database by candidate id and question id
-	 *@param id
+	 * 
+	 * @param id
 	 * @return
 	 */
-	
+
 	public ArrayList<CandidatesAndAnswers> readCandidatesAnswers(int id) {
 		CandidatesAndAnswers a = null;
 		ArrayList<CandidatesAndAnswers> list = new ArrayList<>();
 		try {
-			String sql="select * from vastaukset where ehdokas_id=? order by kysymys_id";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
+			String sql = "select * from vastaukset where ehdokas_id=? order by kysymys_id";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, id);
-			ResultSet RS=pstmt.executeQuery();
-			while (RS.next()){
+			ResultSet RS = pstmt.executeQuery();
+			while (RS.next()) {
 				a = new CandidatesAndAnswers();
 				a.setEhdokas_id(RS.getInt("ehdokas_id"));
 				a.setVastaus(RS.getInt("vastaus"));
-				a.setKysymys_id(RS.getInt("kysymys_id"));			
+				a.setKysymys_id(RS.getInt("kysymys_id"));
 				list.add(a);
 			}
 			return list;
-		}
-		catch(SQLException e) {
+		} catch (SQLException e) {
 			return null;
 		}
-		}
-	
+	}
+
 	/**
-	 *  Add new question to the database
-	 *@param q is the new question that the user wants to add to the database
-	 * @return function that executes an sql command that searches all the questions that are in the database
+	 * Add new question to the database
+	 * 
+	 * @param q is the new question that the user wants to add to the database
+	 * @return function that executes an sql command that searches all the questions
+	 *         that are in the database
 	 */
 
 	public ArrayList<Question> addQuestion(Question q) {
@@ -192,49 +196,50 @@ public class Dao {
 
 	/**
 	 * Update question by question id
-	 *@param f
+	 * 
+	 * @param f
 	 * @return
 	 */
 	public ArrayList<Question> updateQuestion(Question f) {
 		try {
-			String sql="update kysymykset set kysymys=? where KYSYMYS_ID=?";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
+			String sql = "update kysymykset set kysymys=? where KYSYMYS_ID=?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, f.getWhatquestion());
 			pstmt.setInt(2, f.getId());
 			pstmt.executeUpdate();
 			return readAllQuestion();
-		}
-		catch(SQLException e) {
-			return null;
-		}
-	}
-	/**
-	 * Read one question by question id
-	 *@param id
-	 * @return
-	 */
-	public Question readQuestion(String id) {
-		Question f=null;
-		try {
-			String sql="select * from kysymykset where KYSYMYS_ID=?";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, id);
-			ResultSet RS=pstmt.executeQuery();
-			while (RS.next()){
-				f=new Question();
-				f.setId(RS.getInt("KYSYMYS_ID"));
-				f.setWhatquestion(RS.getString("KYSYMYS"));
-			}
-			System.out.println("Lista 1kysymys");
-			return f;
-		}
-		catch(SQLException e) {
+		} catch (SQLException e) {
 			return null;
 		}
 	}
 
 	/**
-	 * Update  information of one candidate by id. 
+	 * Read one question by question id
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Question readQuestion(String id) {
+		Question f = null;
+		try {
+			String sql = "select * from kysymykset where KYSYMYS_ID=?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			ResultSet RS = pstmt.executeQuery();
+			while (RS.next()) {
+				f = new Question();
+				f.setId(RS.getInt("KYSYMYS_ID"));
+				f.setWhatquestion(RS.getString("KYSYMYS"));
+			}
+			System.out.println("Lista 1kysymys");
+			return f;
+		} catch (SQLException e) {
+			return null;
+		}
+	}
+
+	/**
+	 * Update information of one candidate by id.
 	 *
 	 * @param candidate
 	 * @return
@@ -242,27 +247,26 @@ public class Dao {
 	public ArrayList<Candidates> updateCandidate(Candidates candidate) throws SQLException {
 
 		try {
-				String sql="update ehdokkaat set sukunimi=?, etunimi=?, puolue=?, kotipaikkakunta=?, ika=?, miksi_eduskuntaan=?, mita_asioita_haluat_edistaa=?, ammatti=? where ehdokas_id=?";
-				PreparedStatement pstmt=conn.prepareStatement(sql);
-				pstmt.setString(1, candidate.getSukunimi());
-				pstmt.setString(2, candidate.getEtunimi());
-				pstmt.setString(3, candidate.getPuolue());
-				pstmt.setString(4, candidate.getKotipaikkakunta());
-				pstmt.setInt(5, candidate.getIka());
-				pstmt.setString(6, candidate.getMiksi_eduskuntaan());
-				pstmt.setString(7, candidate.getMita_asioita_haluat_edistaa());
-				pstmt.setString(8, candidate.getAmmatti());
-				pstmt.setInt(9, candidate.getEhdokas_id());
-				pstmt.executeUpdate();
-				System.out.println("Updated");
-				return readAllCandidates();
-			}
-			catch(SQLException e) {
-				System.out.println("Updating fails");
-				return null;
-			}
-
+			String sql = "update ehdokkaat set sukunimi=?, etunimi=?, puolue=?, kotipaikkakunta=?, ika=?, miksi_eduskuntaan=?, mita_asioita_haluat_edistaa=?, ammatti=? where ehdokas_id=?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, candidate.getSukunimi());
+			pstmt.setString(2, candidate.getEtunimi());
+			pstmt.setString(3, candidate.getPuolue());
+			pstmt.setString(4, candidate.getKotipaikkakunta());
+			pstmt.setInt(5, candidate.getIka());
+			pstmt.setString(6, candidate.getMiksi_eduskuntaan());
+			pstmt.setString(7, candidate.getMita_asioita_haluat_edistaa());
+			pstmt.setString(8, candidate.getAmmatti());
+			pstmt.setInt(9, candidate.getEhdokas_id());
+			pstmt.executeUpdate();
+			System.out.println("Updated");
+			return readAllCandidates();
+		} catch (SQLException e) {
+			System.out.println("Updating fails");
+			return null;
 		}
+
+	}
 
 	/**
 	 * Delete candidate by id
@@ -281,10 +285,13 @@ public class Dao {
 			return null;
 		}
 	}
+
 	/**
 	 * Remove question from database by id
-	 *@param id of the question that needs to be removed.
-	 * @return function that executes an sql command that searches all the questions that are in the database
+	 * 
+	 * @param id of the question that needs to be removed.
+	 * @return function that executes an sql command that searches all the questions
+	 *         that are in the database
 	 */
 	public ArrayList<Question> removeQuestion(String id) {
 		try {
@@ -299,8 +306,9 @@ public class Dao {
 	}
 
 	/**
-	 *  Add new candidate's information to the database
-	 *@param c
+	 * Add new candidate's information to the database
+	 * 
+	 * @param c
 	 * @return
 	 */
 	public ArrayList<Candidates> addCandidate(Candidates c) {
@@ -393,93 +401,87 @@ public class Dao {
 		}
 	}
 
-
-	
 	/**
-	 * Add candidate's answers to database
-	 * Returns string, which tells if the adding was done successfully or not
+	 * Add candidate's answers to database Returns string, which tells if the adding
+	 * was done successfully or not
+	 * 
 	 * @param list
 	 * @param ehdokas_id
 	 * @return
 	 */
-				public String addCandidateAnswers(ArrayList<Integer> list, int ehdokas_id)
-				{
-					String sql; 
-					String done = null;
-	
-					try {
-			
-						for(int i = 0; i<list.size();i++)
-						{
-							sql = "insert into vastaukset (ehdokas_id, kysymys_id, vastaus, kommentti) VALUES (?, ?, ?, ?)";
-					        
-					        PreparedStatement statement = conn.prepareStatement(sql);
-					        statement.setInt(1, ehdokas_id);
-					        statement.setInt(2, (i+1));
-					        statement.setInt(3, list.get(i));
-					        statement.setString(4, "Ehdokkaan " + ehdokas_id + " vastaus kysymykseen " + (i+1));
-					         
-					        int rowsInserted = statement.executeUpdate();
-					        if (rowsInserted > 0) {
-					            System.out.println("Tiedot sy�tetty tauluun.");
-					            }
-					        
-					        done = "Vastausten tallennus onnistui!";
-						}
+	public String addCandidateAnswers(ArrayList<Integer> list, int ehdokas_id) {
+		String sql;
+		String done = null;
 
-						
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-						System.out.println("Tallennus ei onnistunut!");
-						done = "Jotain meni vikaan, eikä tietojen tallennus onnistunut. Tarkista, että ehdokasnumero on oikein.  Jos olet jo vastannut kysymyksiin, päivitä vastaukset kohdasta Muokkaa vastauksia. ";
-					}
-					return done;
-					
-				} //addCandidateAnswers-sulje
-				
-				/**
-				 * Update candidate's answers to database
-				 * Returns string, which tells if the updating was done successfully or not
-				 * @param list
-				 * @param ehdokas_id
-				 * @return
-				 */
-				
-				public String updateCandidateAnswer(ArrayList<Integer> list, int ehdokas_id)
-				{
-					String sql; 
-					String done = "Jotain meni vikaan, eikä tietojen päivitys onnistunut. Tarkista, että ehdokasnumero on oikein.  Jos et ole vielä vastannut kysymyksiin, vastaa kysymyksiin kohdasta Vastaa kysymyksiin. ";
-					
-					try {
-			
-						for(int i = 0; i<list.size();i++)
-						{
-							sql = "update vastaukset set vastaus = ? where ehdokas_id = ? and kysymys_id = ?";
-					        
-					        PreparedStatement statement = conn.prepareStatement(sql);
-					        statement.setInt(1, list.get(i));
-					        statement.setInt(2, ehdokas_id);
-					        statement.setInt(3, (i+1));
+		try {
 
-					        int rowsInserted = statement.executeUpdate();
-					        if (rowsInserted > 0) {
-					            System.out.println("Tiedot p�ivitetty tauluun.");
-					            done = "Vastausten tallennus onnistui!";
-					            }
-					        
-						}
+			for (int i = 0; i < list.size(); i++) {
+				sql = "insert into vastaukset (ehdokas_id, kysymys_id, vastaus, kommentti) VALUES (?, ?, ?, ?)";
 
-						
-					} catch (SQLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-						System.out.println("P�ivitys ei onnistunut!");
-						done = "Jotain meni vikaan, eikä tietojen päivitys onnistunut. Tarkista, että ehdokasnumero on oikein.  Jos et ole vielä vastannut kysymyksiin, vastaa kysymyksiin kohdasta Vastaa kysymyksiin. ";
-					}
-					
-					return done;
-					
-				} //updateCandidateAnswer-sulje
+				PreparedStatement statement = conn.prepareStatement(sql);
+				statement.setInt(1, ehdokas_id);
+				statement.setInt(2, (i + 1));
+				statement.setInt(3, list.get(i));
+				statement.setString(4, "Ehdokkaan " + ehdokas_id + " vastaus kysymykseen " + (i + 1));
+
+				int rowsInserted = statement.executeUpdate();
+				if (rowsInserted > 0) {
+					System.out.println("Tiedot sy�tetty tauluun.");
+				}
+
+				done = "Vastausten tallennus onnistui!";
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("Tallennus ei onnistunut!");
+			done = "Jotain meni vikaan, eikä tietojen tallennus onnistunut. Tarkista, että ehdokasnumero on oikein.  Jos olet jo vastannut kysymyksiin, päivitä vastaukset kohdasta Muokkaa vastauksia. ";
+		}
+		return done;
+
+	} // addCandidateAnswers-sulje
+
+	/**
+	 * Update candidate's answers to database Returns string, which tells if the
+	 * updating was done successfully or not
+	 * 
+	 * @param list
+	 * @param ehdokas_id
+	 * @return
+	 */
+
+	public String updateCandidateAnswer(ArrayList<Integer> list, int ehdokas_id) {
+		String sql;
+		String done = "Jotain meni vikaan, eikä tietojen päivitys onnistunut. Tarkista, että ehdokasnumero on oikein.  Jos et ole vielä vastannut kysymyksiin, vastaa kysymyksiin kohdasta Vastaa kysymyksiin. ";
+
+		try {
+
+			for (int i = 0; i < list.size(); i++) {
+				sql = "update vastaukset set vastaus = ? where ehdokas_id = ? and kysymys_id = ?";
+
+				PreparedStatement statement = conn.prepareStatement(sql);
+				statement.setInt(1, list.get(i));
+				statement.setInt(2, ehdokas_id);
+				statement.setInt(3, (i + 1));
+
+				int rowsInserted = statement.executeUpdate();
+				if (rowsInserted > 0) {
+					System.out.println("Tiedot p�ivitetty tauluun.");
+					done = "Vastausten tallennus onnistui!";
+				}
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("P�ivitys ei onnistunut!");
+			done = "Jotain meni vikaan, eikä tietojen päivitys onnistunut. Tarkista, että ehdokasnumero on oikein.  Jos et ole vielä vastannut kysymyksiin, vastaa kysymyksiin kohdasta Vastaa kysymyksiin. ";
+		}
+
+		return done;
+
+	} // updateCandidateAnswer-sulje
 
 }
